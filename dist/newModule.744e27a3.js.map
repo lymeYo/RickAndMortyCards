@@ -1,0 +1,1 @@
+{"version":3,"sources":["js/newModule.js"],"names":["a"],"mappings":";;;;;;AAAO,IAAIA,CAAC,GAAG,EAAR","file":"newModule.744e27a3.js","sourceRoot":"..","sourcesContent":["export let a = 10;"]}

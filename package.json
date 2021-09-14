@@ -1,0 +1,17 @@
+{
+  "name": "rickandmortycards",
+  "version": "1.0.0",
+  "description": "rick and morty cards modules",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "rickmortyapi": "^1.0.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  }
+}

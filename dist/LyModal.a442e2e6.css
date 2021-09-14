@@ -1,0 +1,100 @@
+.lyModal {
+}
+.lyModal__wrapper {
+   z-index: 10;
+   background-color: rgba(161, 161, 161, 0);
+   visibility: hidden;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   border: 2px solid #000;
+   transition: all .7s ease;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.state-animate {
+   animation: heartBeat 1s ease;
+   /* animation-name: heartBeat; */
+}
+.lyModal__content {
+   padding: 10px 10px 50px 10px;
+   width: 40%;
+   border: 2px solid #000;
+   background-color: #fff;
+   border-radius: 10px;
+   position: absolute;
+   z-index: 5;
+   min-height: 300px;
+}
+#lyModal-content {
+   transition: all .5s ease;
+   transform: translateY(-100vh);
+}
+.lyModal.active #lyModal-content {
+   transform: translateY(0);
+}
+.lyModal.active .lyModal__wrapper {
+   background-color: rgba(161, 161, 161, 0.7);
+   visibility: visible;
+}
+.lyModal.after-active .lyModal__content {
+   /* transform: translate(-50%, -230%); */
+}
+.lyModal.after-active .lyModal__wrapper {
+   /* background-color: rgba(161, 161, 161, 0); */
+   /* visibility: hidden; */
+
+}
+.lyModal__title-wrapper {
+   margin: 0;
+   padding: 0;
+}
+.lyModal__title {
+   font-size: 26px;
+   font-weight: 600;
+}
+.lyModal__text-wrapper {
+   padding: 0;
+   margin: 0;
+   font-size: 19px;
+}
+.lyModal__close-icon {
+   position: absolute;
+   top: 0;
+   right: 0;
+   cursor: pointer;
+}
+.lyModal__close-icon img {
+   pointer-events: none;
+}
+.lyModal__decore-line {
+   border-top: 1px solid rgba(0, 0, 0, 0.5);
+   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+   padding: 15px;
+   margin: 20px 0px 20px 0px;
+}
+.lyModal__handlers {
+}
+.lyModal__buttons {
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   margin: 20px 10px 10px 0px;
+   display: flex;
+   justify-content: flex-end;
+}
+.lyModal__buttons > button {
+   height: 30px;
+   padding: 0 15px;
+   cursor: pointer;
+}
+.lyModal__close-btn {
+   margin-right: 20px;
+}
+.lyModal__open-btn {
+}
+
+/*# sourceMappingURL=/LyModal.a442e2e6.css.map */
