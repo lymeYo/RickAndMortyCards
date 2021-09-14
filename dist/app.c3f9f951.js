@@ -11361,11 +11361,11 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
           cards.render(responce);
           cards.initArchi();
           _context.next = 7;
-          return _axios.default.get('https://rickandmortyapi.com/api/character/1');
+          return _axios.default.get('https://rickandmortyapi.com/api/character/4');
 
         case 7:
           character = _context.sent;
-          console.log(character);
+          console.dir(character);
 
         case 9:
         case "end":
@@ -11402,7 +11402,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59738" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50970" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

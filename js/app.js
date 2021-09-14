@@ -19,6 +19,6 @@ const cards = new Cards();
    let responce = await processingAPI.getAPI();
    cards.render(responce);
    cards.initArchi();
-   let character = await axios.get('https://rickandmortyapi.com/api/character/1');
-   console.log(character);
+   let character = await axios.get('https://rickandmortyapi.com/api/character/4');
+   console.dir(character);
 }());
