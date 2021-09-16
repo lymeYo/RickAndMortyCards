@@ -1,10 +1,43 @@
 import 'regenerator-runtime/runtime';
 import { getEpisode } from 'rickmortyapi';
+import { getEpisodes } from 'rickmortyapi';
+import { getCharacter } from 'rickmortyapi';
+import { getCharacters } from 'rickmortyapi';
+
+const AmountCharacters = 30;
 
 export class ProcessingAPI {
    constructor() { }
 
-   async getAPI() {
+   async getCharactersAPI(amountTotalCharacters) {
+      // let responce = await getCharacters();
+      const characters = [];
+
+      if (+amountTotalCharacters?.[0]) {
+         for (let id of amountTotalCharacters) {
+            let character = await getCharacter(id);
+            characters.push(character.data);
+         }
+      } // добавляю в начало массива основных персонажей
+      
+      for (let i = 1; i <= AmountCharacters; i++) {
+         let id = Math.ceil(Math.random() * 300 + 5);
+
+         while (amountTotalCharacters.includes(id)) {
+            id = Math.ceil(Math.random() * 300 + 5);
+         }
+         
+         let character = await getCharacter(id);
+         characters.push(character.data);
+      }
+
+      console.log(characters);
+      
+
+      return characters;
+   }
+   
+   async getEpisodesAPI() {
       let episodes = [];
       for (let counter = 1; counter < 42; counter++) {
          let ep = await getEpisode(counter);

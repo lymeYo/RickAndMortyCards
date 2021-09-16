@@ -1,0 +1,7 @@
+class interfaceArchitecture {
+   constructor() {}
+   
+   render() {
+      
+   }
+}

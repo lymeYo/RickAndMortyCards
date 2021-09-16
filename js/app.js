@@ -14,11 +14,8 @@ const processingAPI = new ProcessingAPI();
 const cards = new Cards();
 
 
-
 (async function() {
-   let responce = await processingAPI.getAPI();
-   cards.render(responce);
-   cards.initArchi();
-   let character = await axios.get('https://rickandmortyapi.com/api/character/4');
-   console.dir(character);
+   let characters = await processingAPI.getCharactersAPI([1, 2, 3, 4, 5]);    
+   cards.renderCharacters(characters); 
+
 }());

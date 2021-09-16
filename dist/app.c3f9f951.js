@@ -10982,6 +10982,12 @@ require("regenerator-runtime/runtime");
 
 var _rickmortyapi = require("rickmortyapi");
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -10992,39 +10998,144 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var AmountCharacters = 30;
+
 var ProcessingAPI = /*#__PURE__*/function () {
   function ProcessingAPI() {
     _classCallCheck(this, ProcessingAPI);
   }
 
   _createClass(ProcessingAPI, [{
-    key: "getAPI",
+    key: "getCharactersAPI",
     value: function () {
-      var _getAPI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var episodes, counter, ep;
+      var _getCharactersAPI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(amountTotalCharacters) {
+        var characters, _iterator, _step, id, character, i, _id, _character;
+
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
+              case 0:
+                // let responce = await getCharacters();
+                characters = [];
+
+                if (!+(amountTotalCharacters === null || amountTotalCharacters === void 0 ? void 0 : amountTotalCharacters[0])) {
+                  _context.next = 21;
+                  break;
+                }
+
+                _iterator = _createForOfIteratorHelper(amountTotalCharacters);
+                _context.prev = 3;
+
+                _iterator.s();
+
+              case 5:
+                if ((_step = _iterator.n()).done) {
+                  _context.next = 13;
+                  break;
+                }
+
+                id = _step.value;
+                _context.next = 9;
+                return (0, _rickmortyapi.getCharacter)(id);
+
+              case 9:
+                character = _context.sent;
+                characters.push(character.data);
+
+              case 11:
+                _context.next = 5;
+                break;
+
+              case 13:
+                _context.next = 18;
+                break;
+
+              case 15:
+                _context.prev = 15;
+                _context.t0 = _context["catch"](3);
+
+                _iterator.e(_context.t0);
+
+              case 18:
+                _context.prev = 18;
+
+                _iterator.f();
+
+                return _context.finish(18);
+
+              case 21:
+                i = 1;
+
+              case 22:
+                if (!(i <= AmountCharacters)) {
+                  _context.next = 32;
+                  break;
+                }
+
+                _id = Math.ceil(Math.random() * 300 + 5);
+
+                while (amountTotalCharacters.includes(_id)) {
+                  _id = Math.ceil(Math.random() * 300 + 5);
+                }
+
+                _context.next = 27;
+                return (0, _rickmortyapi.getCharacter)(_id);
+
+              case 27:
+                _character = _context.sent;
+                characters.push(_character.data);
+
+              case 29:
+                i++;
+                _context.next = 22;
+                break;
+
+              case 32:
+                console.log(characters);
+                return _context.abrupt("return", characters);
+
+              case 34:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[3, 15, 18, 21]]);
+      }));
+
+      function getCharactersAPI(_x) {
+        return _getCharactersAPI.apply(this, arguments);
+      }
+
+      return getCharactersAPI;
+    }()
+  }, {
+    key: "getEpisodesAPI",
+    value: function () {
+      var _getEpisodesAPI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        var episodes, counter, ep;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
               case 0:
                 episodes = [];
                 counter = 1;
 
               case 2:
                 if (!(counter < 42)) {
-                  _context.next = 10;
+                  _context2.next = 10;
                   break;
                 }
 
-                _context.next = 5;
+                _context2.next = 5;
                 return (0, _rickmortyapi.getEpisode)(counter);
 
               case 5:
-                ep = _context.sent;
+                ep = _context2.sent;
                 episodes.push(ep);
 
               case 7:
                 counter++;
-                _context.next = 2;
+                _context2.next = 2;
                 break;
 
               case 10:
@@ -11033,21 +11144,21 @@ var ProcessingAPI = /*#__PURE__*/function () {
                 }); // console.log(episodes);
 
                 this.setEpisodeDescription(episodes);
-                return _context.abrupt("return", episodes);
+                return _context2.abrupt("return", episodes);
 
               case 13:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, this);
+        }, _callee2, this);
       }));
 
-      function getAPI() {
-        return _getAPI.apply(this, arguments);
+      function getEpisodesAPI() {
+        return _getEpisodesAPI.apply(this, arguments);
       }
 
-      return getAPI;
+      return getEpisodesAPI;
     }()
   }, {
     key: "setEpisodeDescription",
@@ -11096,10 +11207,10 @@ var LyModal = /*#__PURE__*/function () {
     this.openCheck = true;
     this.modale = document.querySelector('.lyModal');
     this.renderModale();
-    this._checkScrollbar = this._checkScrollbar();
     document.querySelectorAll('.close-lyModal').forEach(function (point) {
       point.addEventListener('click', function (e) {
-        _this.close.call(_this, e);
+        _this._close.call(_this, e); //TODO поменял вызов рендерящего close(this.close) на изначальный
+
       });
     });
   }
@@ -11121,7 +11232,12 @@ var LyModal = /*#__PURE__*/function () {
     }
   }, {
     key: "setContent",
-    value: function setContent(title, text) {
+    value: function setContent(clientContent, title, text) {
+      if (clientContent) {
+        this.modale.querySelector('#lyModal-content').innerHTML = clientContent;
+        return;
+      }
+
       var titleModal = document.querySelector('.lyModal__title');
       var textModal = document.querySelector('.lyModal__text');
       titleModal.textContent = title || titleModal.textContent;
@@ -11152,13 +11268,11 @@ var LyModal = /*#__PURE__*/function () {
     value: function open() {
       var _this2 = this;
 
-      this.openCheck = false;
-      document.body.style.overflow = 'hidden';
+      this.openCheck = false; //animate__bounce
 
-      this._checkScrollbar(); //animate__bounce
+      this.modale.classList.add('active');
 
-
-      this.modale.classList.add('active'); // deleteAnim(true)
+      this._imitateScrollbar();
 
       if (this.options.setAnim) setTimeout(this._renderAnim.bind(this, true), 500); // content.classList.add('.state-animate');
       //animation-name: heartBeat;
@@ -11178,9 +11292,8 @@ var LyModal = /*#__PURE__*/function () {
     key: "close",
     value: function close() {
       if (this.options.setAnim) this._renderAnim(false);
-      document.body.style.overflow = 'auto';
 
-      this._checkScrollbar();
+      this._returnScrollbar();
 
       this.modale.classList.remove('active');
     }
@@ -11195,12 +11308,20 @@ var LyModal = /*#__PURE__*/function () {
       this.modale.innerHTML = ''; //полностью очищает элемент lyModal
     }
   }, {
-    key: "_checkScrollbar",
-    value: function _checkScrollbar() {
-      var srcWidth = document.body.clientWidth;
-      return function () {
-        if (document.body.clientWidth != srcWidth && document.body.clientWidth - srcWidth < 50) document.body.style.paddingRight = document.body.clientWidth - srcWidth + 'px';else document.body.style.paddingRight = '0px';
-      };
+    key: "_returnScrollbar",
+    value: function _returnScrollbar() {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.overflowY = '';
+      window.scrollTo(0, this.scrollTop);
+    }
+  }, {
+    key: "_imitateScrollbar",
+    value: function _imitateScrollbar() {
+      this.scrollTop = window.pageYOffset;
+      document.body.style.position = 'fixed';
+      document.body.style.top = -this.scrollTop + 'px';
+      document.body.style.overflowY = 'scroll';
     } //хуки
 
   }, {
@@ -11224,7 +11345,26 @@ var LyModal = /*#__PURE__*/function () {
 }();
 
 exports.LyModal = LyModal;
-;
+; // let lyModal = new LyModal(
+//    null,
+//    'Title',
+//    true,
+//    'Text content here!',
+//    true,
+//    [{
+//       textBtn: 'Вывод в консоль',
+//       classStylesBtn: 'btn-class',
+//       handlerBtn: () => console.log('Работает!'),
+//    },],
+// );
+// document.querySelector('.open-btn-modal').addEventListener('click', () => {
+//    lyModal.open()
+//    // document.querySelector('.animate__animated').classList.add('animate__bounce')
+// })
+// document.querySelector('.rubbish-btn-modal').addEventListener('click', () => {
+//    lyModal.rubbish()
+// })
+
 /**
  * footerButtons: [
  *    {
@@ -11251,14 +11391,15 @@ exports.Cards = void 0;
 
 var _LyModal = require("../../../My-plugins/LyModale-plugin/LyModal");
 
+var _rickmortyapi = require("rickmortyapi");
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var modal = new _LyModal.LyModal("<div class=\"test-modal\" id=\"lyModal-content\">Myself modal</div>");
-console.log(123);
+var newModal = new _LyModal.LyModal("<div class=\"character-modal\" id=\"lyModal-content\"></div>"); // setTimeout(() => newModal.open(), 2000)
 
 var Cards = /*#__PURE__*/function () {
   function Cards() {
@@ -11268,9 +11409,60 @@ var Cards = /*#__PURE__*/function () {
   }
 
   _createClass(Cards, [{
-    key: "render",
-    value: function render(orderEpisodes) {
+    key: "renderCharacters",
+    value: function renderCharacters(orderCharacters) {
       var _this = this;
+
+      console.log(orderCharacters);
+      orderCharacters.forEach(function (data) {
+        var name = data.name,
+            image = data.image,
+            id = data.id;
+        var html = "\n            <li class=\"cards-list__item character-item\">\n               <div class=\"cards-list__logo\">\n                  <img src=\"".concat(image, "\" alt=\"\">\n               </div>\n               <div class=\"cards-list__title\">").concat(name, "</div>\n               <div class=\"cards-list__button-area\">\n               <button class=\"cards-list__button\">\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435</button>\n               </div>\n            </li>\n         ");
+
+        _this.list.insertAdjacentHTML('beforeend', html);
+
+        var currentButton = document.querySelectorAll('.cards-list__button')[document.querySelectorAll('.cards-list__button').length - 1];
+        currentButton.addEventListener('click', function () {
+          return _this.cardModalRender(data);
+        });
+      });
+    } // created: "2017-11-04T18:48:46.250Z"
+    // episode: (41)['https://rickandmortyapi.com/api/episode/1', 'https://rickandmortyapi.com/api/episode/2', 'https://rickandmortyapi.com/api/episode/3', 'https://rickandmortyapi.com/api/episode/4', 'https://rickandmortyapi.com/api/episode/5', 'https://rickandmortyapi.com/api/episode/6', 'https://rickandmortyapi.com/api/episode/7', 'https://rickandmortyapi.com/api/episode/8', 'https://rickandmortyapi.com/api/episode/9', 'https://rickandmortyapi.com/api/episode/10', 'https://rickandmortyapi.com/api/episode/11', 'https://rickandmortyapi.com/api/episode/12', 'https://rickandmortyapi.com/api/episode/13', 'https://rickandmortyapi.com/api/episode/14', 'https://rickandmortyapi.com/api/episode/15', 'https://rickandmortyapi.com/api/episode/16', 'https://rickandmortyapi.com/api/episode/17', 'https://rickandmortyapi.com/api/episode/18', 'https://rickandmortyapi.com/api/episode/19', 'https://rickandmortyapi.com/api/episode/20', 'https://rickandmortyapi.com/api/episode/21', 'https://rickandmortyapi.com/api/episode/22', 'https://rickandmortyapi.com/api/episode/23', 'https://rickandmortyapi.com/api/episode/24', 'https://rickandmortyapi.com/api/episode/25', 'https://rickandmortyapi.com/api/episode/26', 'https://rickandmortyapi.com/api/episode/27', 'https://rickandmortyapi.com/api/episode/28', 'https://rickandmortyapi.com/api/episode/29', 'https://rickandmortyapi.com/api/episode/30', 'https://rickandmortyapi.com/api/episode/31', 'https://rickandmortyapi.com/api/episode/32', 'https://rickandmortyapi.com/api/episode/33', 'https://rickandmortyapi.com/api/episode/34', 'https://rickandmortyapi.com/api/episode/35', 'https://rickandmortyapi.com/api/episode/36', 'https://rickandmortyapi.com/api/episode/37', 'https://rickandmortyapi.com/api/episode/38', 'https://rickandmortyapi.com/api/episode/39', 'https://rickandmortyapi.com/api/episode/40', 'https://rickandmortyapi.com/api/episode/41']
+    // gender: "Male"
+    // id: 1
+    // image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+    // location: { name: 'Earth (Replacement Dimension)', url: 'https://rickandmortyapi.com/api/location/20' }
+    // name: "Rick Sanchez"
+    // origin: { name: 'Earth (C-137)', url: 'https://rickandmortyapi.com/api/location/1' }
+    // species: "Human"
+    // status: "Alive"
+    // type: ""
+
+  }, {
+    key: "setModalCardContent",
+    value: function setModalCardContent(_ref) {
+      var id = _ref.id,
+          status = _ref.status,
+          name = _ref.name,
+          image = _ref.image,
+          species = _ref.species,
+          location = _ref.location,
+          origin = _ref.origin,
+          gender = _ref.gender;
+      var modalContent = "<div class=\"character-modal\" id=\"lyModal-content\">\n         <div class=\"character-modal__image-area\">\n            <div class=\"character-modal__image-area-name\">".concat(name, "</div>\n            <div class=\"character-modal__image-area-img\">\n               <img src=\"").concat(image, "\" alt=\"\">\n            </div>\n         </div>\n         <div class=\"character-modal__content\">\n            <div class=\"character-modal__info-item\">Status: ").concat(status, "</div>\n            <div class=\"character-modal__info-item\">Species: ").concat(species, "</div>\n            <div class=\"character-modal__info-item\">Location: ").concat(location.name, "</div>\n            <div class=\"character-modal__info-item\">Gender: ").concat(gender, "</div>\n         </div>\n      </div>");
+      newModal.setContent("<div class=\"character-modal__image-area\">\n            <div class=\"character-modal__image-area-name\">".concat(name, "</div>\n            <div class=\"character-modal__image-area-img\">\n               <img src=\"").concat(image, "\" alt=\"\">\n            </div>\n         </div>\n         <div class=\"character-modal__content\">\n            <div class=\"character-modal__info-item\">Status: ").concat(status, "</div>\n            <div class=\"character-modal__info-item\">Species: ").concat(species, "</div>\n            <div class=\"character-modal__info-item\">Location: ").concat(location.name, "</div>\n            <div class=\"character-modal__info-item\">Gender: ").concat(gender, "</div>\n         </div>"));
+    }
+  }, {
+    key: "cardModalRender",
+    value: function cardModalRender(id) {
+      this.setModalCardContent(id);
+      newModal.open();
+    }
+  }, {
+    key: "renderEpisodes",
+    value: function renderEpisodes(orderEpisodes) {
+      var _this2 = this;
 
       orderEpisodes.forEach(function (episodeInfo) {
         var name = episodeInfo.name,
@@ -11287,22 +11479,22 @@ var Cards = /*#__PURE__*/function () {
           section.classList.add('section-items');
           section.innerHTML = "\n               <div class='cards-list__turn-section' data-section-point=\"".concat(id, "\">\n                  ").concat(id, " - \u0421\u0435\u0437\u043E\u043D\n                  <span class=\"material-icons section-open-icon\"> expand_more </span>\n               </div>\n               <div class='cards-list__content-section' data-section=\"").concat(id, "\"></div>\n            ");
 
-          _this.list.insertAdjacentElement('beforeend', section);
+          _this2.list.insertAdjacentElement('beforeend', section);
         }
 
         ;
         var htmlCurrentSection = document.querySelector("[data-section=\"".concat(id, "\"]"));
         htmlCurrentSection.insertAdjacentHTML('beforeend', html);
         htmlCurrentSection.querySelector("[data-seria=\"".concat(seria, "\"]")).querySelector('.cards-list__button').addEventListener('click', function () {
-          _this.renderModalCard(episodeInfo);
+          _this2.renderModalCard(episodeInfo);
         });
       });
     }
   }, {
     key: "renderModalCard",
     value: function renderModalCard(ep) {
-      console.log(ep);
-      modal.open();
+      console.log(ep); // modal.open(); 
+      // TODO модалка переделана 
     } //метод с функциями для обработки всех архитектурных элементов сайта
 
   }, {
@@ -11325,7 +11517,7 @@ var Cards = /*#__PURE__*/function () {
 }();
 
 exports.Cards = Cards;
-},{"../../../My-plugins/LyModale-plugin/LyModal":"../../My-plugins/LyModale-plugin/LyModal.js"}],"js/app.js":[function(require,module,exports) {
+},{"../../../My-plugins/LyModale-plugin/LyModal":"../../My-plugins/LyModale-plugin/LyModal.js","rickmortyapi":"node_modules/rickmortyapi/dist/index.js"}],"js/app.js":[function(require,module,exports) {
 'use strict';
 
 require("regenerator-runtime/runtime");
@@ -11348,26 +11540,19 @@ var processingAPI = new _ProcessingAPI.ProcessingAPI();
 var cards = new _Cards.Cards();
 
 _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-  var responce, character;
+  var characters;
   return regeneratorRuntime.wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return processingAPI.getAPI();
+          return processingAPI.getCharactersAPI([1, 2, 3, 4, 5]);
 
         case 2:
-          responce = _context.sent;
-          cards.render(responce);
-          cards.initArchi();
-          _context.next = 7;
-          return _axios.default.get('https://rickandmortyapi.com/api/character/4');
+          characters = _context.sent;
+          cards.renderCharacters(characters);
 
-        case 7:
-          character = _context.sent;
-          console.dir(character);
-
-        case 9:
+        case 4:
         case "end":
           return _context.stop();
       }
@@ -11402,7 +11587,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50970" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62197" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
