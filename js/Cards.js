@@ -3,7 +3,6 @@ import { getCharacters } from 'rickmortyapi';
 import { getEpisodes } from 'rickmortyapi';
 
 let newModal = new LyModal(`<div class="character-modal" id="lyModal-content"></div>`);
-// setTimeout(() => newModal.open(), 2000)
 
 export class Cards {
    constructor() {
