@@ -3,6 +3,8 @@
 
 $contSize: 1050px;
 $mainClr: rgb(81, 118, 187);
+$mainClr-hover: rgb(109, 140, 196);
+$borderCardsClr: rgb(119, 155, 158);
 // $listBg: rgb(158, 123, 179);
 $listBg: rgb(182, 135, 209);
 $listBg-hover: rgb(169, 122, 196);
@@ -12,6 +14,7 @@ $itemFF: ('Noto Sans JP', sans-serif);
 input::-webkit-input-placeholder { color: rgba(255, 255, 255, 0.300); }
 
 body {
+   background-color: $listBg;
 }
 .test-modal {
    background-color: #faf;
@@ -109,17 +112,19 @@ body {
    margin: 60px 0px 0px 0px;
 }
 .cards {
-   
+   background-color: $listBg;
    
    &-list {
       padding: 0px 20px 0px 20px;
-      min-height: 100vh;
-      background-color: $listBg;
       display: grid;
-         gap: 30px;
-         grid-template-columns: repeat(auto-fill, minmax(200px, 415px));
-         justify-content: center;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 415px));
+      justify-content: center;
       font-family: $mainFF;
+
+      &.disable {
+         display: none;
+      }
 
       @media(max-width:450px) {
          padding: 10px;
@@ -180,7 +185,7 @@ body {
       }
 
       &__item {
-         border: 2px solid rgb(119, 155, 158);
+         border: 2px solid $borderCardsClr;
          background-color: #fff;
          border-radius: 10px;
          padding: 25px;
@@ -267,11 +272,113 @@ body {
       &__air-date {
          text-align: right;
       }
-   }  
+   } 
+   
+   &__filter-area {
+
+   }
+
+   &__filter {
+      font-size: 18px;
+      // border: 2px solid #000;
+      padding: 10px 0px 60px 0px;
+
+
+      &-themes {
+         padding: 0px 0px 0px 77px;
+         display: flex;
+         align-items: start;
+         color: #fff;
+         min-height: 50px;
+      }
+      
+      &-content + &-content {
+         margin-left: 30px;
+      }
+      
+      &-content {
+         position: relative;
+         background-color: $mainClr;
+         border: 1px solid #000;
+         overflow: hidden;
+         // min-width: 300px;
+
+         &.active {
+
+            .cards__filter-list {
+               display: block;
+            }
+
+            #key-list-area {
+
+               .material-icons {
+                  transform: rotate(-90deg);   
+               }
+            }
+
+            // opacity: 1;
+
+            
+         }
+      }
+
+      &-list {
+         position: relative;
+         display: none;
+         transition: top .5s ease;
+         cursor: pointer;
+      }
+
+      #key-list-area {
+         background-color: $mainClr-hover;
+         position: relative;
+         z-index: 5;
+         width: 100%;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         
+         > .material-icons {
+            transform: rotate(0); 
+            transition: transform .25s ease;
+         }
+      }
+
+      &-item {
+         padding: 10px;
+         cursor: pointer; 
+
+         &-title {}
+
+         &:hover {
+            background-color: $mainClr-hover;
+         }
+      }
+
+   }
+
+   &__loader {
+      width: 100%;
+      display: none;
+      justify-content: center;
+
+
+      &.active {
+         display: flex;
+      }
+      
+      &-img {
+
+         > img {
+
+         }
+      }
+   }
 }
 
 .character-modal {
    background-color: #fff;
+   border: 2px solid $borderCardsClr;
    display: flex;
    padding: 30px;
    width: 100%;

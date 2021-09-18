@@ -1,5 +1,6 @@
 import { LyModal } from '../../../My-plugins/LyModale-plugin/LyModal';
 import { getCharacters } from 'rickmortyapi';
+import { getCharacter } from 'rickmortyapi';
 import { getEpisodes } from 'rickmortyapi';
 
 let newModal = new LyModal(`<div class="character-modal" id="lyModal-content"></div>`);
@@ -8,11 +9,15 @@ export class Cards {
    constructor() {
       this.list = document.querySelector('#cards-list');
    }
+
+   setSourceCharacters(orderCharacters) {
+      this.sourceOrderCharacters = orderCharacters;
+      this.renderCharacters(orderCharacters);
+   }
    
    renderCharacters(orderCharacters) {
       console.log(orderCharacters);
-      
-      
+      this.sourceOrderCharacters = orderCharacters;
 
       orderCharacters.forEach((data) => {
          let { name, image, id } = data;
@@ -31,9 +36,73 @@ export class Cards {
          this.list.insertAdjacentHTML('beforeend', html);
 
          let currentButton = document.querySelectorAll('.cards-list__button')[document.querySelectorAll('.cards-list__button').length - 1];
-         currentButton.addEventListener('click', () => this.cardModalRender(data))
+         currentButton.addEventListener('click', () => this.cardModalRender(data));
       });
+
+      this.filterArguments = document.querySelectorAll('.choisable-item');
+
+      this.filterArguments.forEach(argument => {
+         argument.addEventListener('click', this.renderSeedingCards.bind(this, argument))
+      })
+
+      this.renderLodaerList(false);
    }
+
+   // фильтрация всех данных, которая получает на вход html элемент с соответствующими дата элементами
+   async renderSeedingCards(argument) {
+      // console.log(argument);
+
+      let filterKey = argument.parentNode.dataset.filterType; // беру указанные данные в датасете по объектам API для фильтрации
+      let filterValue = argument.dataset.value;
+      
+      await this.renderLodaerList(true);
+
+      let countCharacters = 1;
+      let lastCharacter = await getCharacter(countCharacters);
+      const totalOrderCharacters = [];
+
+      do {
+         // если свойство по которому происходит фильтрация находится во вложенных обmектах, 
+         //то я достаю этот вложенный объект, и присваю его currentCharacter, а свойство в valueInKeyPath
+         let { currentCharacter, valueInKeyPath } = this._parsingKeyPath(filterKey, lastCharacter.data); 
+         
+         if (currentCharacter[valueInKeyPath] == filterValue)
+            totalOrderCharacters.push(lastCharacter.data);
+            
+         countCharacters++;
+         lastCharacter = await getCharacter(countCharacters);
+      } while (lastCharacter.statusMessage != 'Character not found')
+      
+      this.list.innerHTML = "";
+      this.renderCharacters(totalOrderCharacters);
+   }
+
+   _parsingKeyPath(filterKey, currentCharacter) {
+      let keyPath = filterKey.split('-').reverse(); // прохожусь по указанному пути до исходного ключа, если это объекты (obj-obj-key)
+      let valueInKeyPath = keyPath.slice(-1);
+      keyPath = keyPath.slice(0, -1) // разбиваю путь на объекты и финальное значение (valueInKeyPath)
+
+      if (keyPath.length)
+         for (let pathStep of keyPath)
+            currentCharacter = currentCharacter[pathStep];
+
+      return { currentCharacter, valueInKeyPath };
+   }
+
+   renderLodaerList(renderLoader) {
+      const list = document.querySelector('#cards-list');
+      const loaderArea = document.querySelector('.cards__loader');
+
+      if (renderLoader) {
+         list.classList.add('disable');
+         loaderArea.classList.add('active');
+      }
+      else {
+         list.classList.remove('disable');
+         loaderArea.classList.remove('active');
+      }
+   }
+   
    // created: "2017-11-04T18:48:46.250Z"
    // episode: (41)['https://rickandmortyapi.com/api/episode/1', 'https://rickandmortyapi.com/api/episode/2', 'https://rickandmortyapi.com/api/episode/3', 'https://rickandmortyapi.com/api/episode/4', 'https://rickandmortyapi.com/api/episode/5', 'https://rickandmortyapi.com/api/episode/6', 'https://rickandmortyapi.com/api/episode/7', 'https://rickandmortyapi.com/api/episode/8', 'https://rickandmortyapi.com/api/episode/9', 'https://rickandmortyapi.com/api/episode/10', 'https://rickandmortyapi.com/api/episode/11', 'https://rickandmortyapi.com/api/episode/12', 'https://rickandmortyapi.com/api/episode/13', 'https://rickandmortyapi.com/api/episode/14', 'https://rickandmortyapi.com/api/episode/15', 'https://rickandmortyapi.com/api/episode/16', 'https://rickandmortyapi.com/api/episode/17', 'https://rickandmortyapi.com/api/episode/18', 'https://rickandmortyapi.com/api/episode/19', 'https://rickandmortyapi.com/api/episode/20', 'https://rickandmortyapi.com/api/episode/21', 'https://rickandmortyapi.com/api/episode/22', 'https://rickandmortyapi.com/api/episode/23', 'https://rickandmortyapi.com/api/episode/24', 'https://rickandmortyapi.com/api/episode/25', 'https://rickandmortyapi.com/api/episode/26', 'https://rickandmortyapi.com/api/episode/27', 'https://rickandmortyapi.com/api/episode/28', 'https://rickandmortyapi.com/api/episode/29', 'https://rickandmortyapi.com/api/episode/30', 'https://rickandmortyapi.com/api/episode/31', 'https://rickandmortyapi.com/api/episode/32', 'https://rickandmortyapi.com/api/episode/33', 'https://rickandmortyapi.com/api/episode/34', 'https://rickandmortyapi.com/api/episode/35', 'https://rickandmortyapi.com/api/episode/36', 'https://rickandmortyapi.com/api/episode/37', 'https://rickandmortyapi.com/api/episode/38', 'https://rickandmortyapi.com/api/episode/39', 'https://rickandmortyapi.com/api/episode/40', 'https://rickandmortyapi.com/api/episode/41']
    // gender: "Male"
@@ -46,10 +115,23 @@ export class Cards {
    // status: "Alive"
    // type: ""
 
+   async getAllFilteredCharacters() {
+      let countCharacters = 1;
+      let lastCharacter = await getCharacter(countCharacters);
+      const totalOrderCharacters = [];
+
+      do {
+         // собираю всех персонажей в массив
+         totalOrderCharacters.push(lastCharacter.data);
+         countCharacters++;
+         lastCharacter = await getCharacter(countCharacters);
+      } while (lastCharacter.statusMessage != 'Character not found')
+
+      return totalOrderCharacters;
+   }
 
    setModalCardContent({ id, status, name, image, species, location, origin, gender }) {
-      let modalContent = 
-      `<div class="character-modal" id="lyModal-content">
+      let modalContent = `
          <div class="character-modal__image-area">
             <div class="character-modal__image-area-name">${name}</div>
             <div class="character-modal__image-area-img">
@@ -62,19 +144,8 @@ export class Cards {
             <div class="character-modal__info-item">Location: ${location.name}</div>
             <div class="character-modal__info-item">Gender: ${gender}</div>
          </div>
-      </div>`;
-      newModal.setContent(`<div class="character-modal__image-area">
-            <div class="character-modal__image-area-name">${name}</div>
-            <div class="character-modal__image-area-img">
-               <img src="${image}" alt="">
-            </div>
-         </div>
-         <div class="character-modal__content">
-            <div class="character-modal__info-item">Status: ${status}</div>
-            <div class="character-modal__info-item">Species: ${species}</div>
-            <div class="character-modal__info-item">Location: ${location.name}</div>
-            <div class="character-modal__info-item">Gender: ${gender}</div>
-         </div>`);
+         `;
+      newModal.setContent(modalContent);
    }
    
    cardModalRender(id) {
@@ -133,21 +204,5 @@ export class Cards {
       
       // modal.open(); 
       // TODO модалка переделана 
-   }
-
-   //метод с функциями для обработки всех архитектурных элементов сайта
-   initArchi() {
-      (function initToggleSections() {
-         let pointers = document.querySelectorAll(".cards-list__turn-section");
-         pointers.forEach(point => {
-            point.addEventListener('click', () => {
-               let id = point.dataset.sectionPoint;
-               let section = document.querySelector(`[data-section="${id}"]`);
-               section.parentElement.classList.toggle('disable');
-            })
-         })
-      })();
-
-
    }
 }

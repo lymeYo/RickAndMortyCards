@@ -10,6 +10,7 @@ export class ProcessingAPI {
    constructor() { }
 
    async getCharactersAPI(amountTotalCharacters) {
+      
       // let responce = await getCharacters();
       const characters = [];
 

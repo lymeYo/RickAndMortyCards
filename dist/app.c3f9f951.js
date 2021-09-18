@@ -1896,7 +1896,7 @@ module.exports = function xhrAdapter(config) {
   });
 };
 
-},{"./../utils":"node_modules/axios/lib/utils.js","./../core/settle":"node_modules/axios/lib/core/settle.js","./../helpers/cookies":"node_modules/axios/lib/helpers/cookies.js","./../helpers/buildURL":"node_modules/axios/lib/helpers/buildURL.js","../core/buildFullPath":"node_modules/axios/lib/core/buildFullPath.js","./../helpers/parseHeaders":"node_modules/axios/lib/helpers/parseHeaders.js","./../helpers/isURLSameOrigin":"node_modules/axios/lib/helpers/isURLSameOrigin.js","../core/createError":"node_modules/axios/lib/core/createError.js"}],"node_modules/process/browser.js":[function(require,module,exports) {
+},{"./../utils":"node_modules/axios/lib/utils.js","./../core/settle":"node_modules/axios/lib/core/settle.js","./../helpers/cookies":"node_modules/axios/lib/helpers/cookies.js","./../helpers/buildURL":"node_modules/axios/lib/helpers/buildURL.js","../core/buildFullPath":"node_modules/axios/lib/core/buildFullPath.js","./../helpers/parseHeaders":"node_modules/axios/lib/helpers/parseHeaders.js","./../helpers/isURLSameOrigin":"node_modules/axios/lib/helpers/isURLSameOrigin.js","../core/createError":"node_modules/axios/lib/core/createError.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -2242,7 +2242,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-},{"./utils":"node_modules/axios/lib/utils.js","./helpers/normalizeHeaderName":"node_modules/axios/lib/helpers/normalizeHeaderName.js","./core/enhanceError":"node_modules/axios/lib/core/enhanceError.js","./adapters/xhr":"node_modules/axios/lib/adapters/xhr.js","./adapters/http":"node_modules/axios/lib/adapters/xhr.js","process":"node_modules/process/browser.js"}],"node_modules/axios/lib/core/transformData.js":[function(require,module,exports) {
+},{"./utils":"node_modules/axios/lib/utils.js","./helpers/normalizeHeaderName":"node_modules/axios/lib/helpers/normalizeHeaderName.js","./core/enhanceError":"node_modules/axios/lib/core/enhanceError.js","./adapters/xhr":"node_modules/axios/lib/adapters/xhr.js","./adapters/http":"node_modules/axios/lib/adapters/xhr.js","process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"node_modules/axios/lib/core/transformData.js":[function(require,module,exports) {
 'use strict';
 
 var utils = require('./../utils');
@@ -2448,21 +2448,21 @@ module.exports = function mergeConfig(config1, config2) {
 
 },{"../utils":"node_modules/axios/lib/utils.js"}],"node_modules/axios/package.json":[function(require,module,exports) {
 module.exports = {
-  "_from": "axios",
+  "_from": "axios@^0.21.4",
   "_id": "axios@0.21.4",
   "_inBundle": false,
   "_integrity": "sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==",
   "_location": "/axios",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "range",
     "registry": true,
-    "raw": "axios",
+    "raw": "axios@^0.21.4",
     "name": "axios",
     "escapedName": "axios",
-    "rawSpec": "",
+    "rawSpec": "^0.21.4",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "^0.21.4"
   },
   "_requiredBy": [
     "#USER",
@@ -2470,7 +2470,7 @@ module.exports = {
   ],
   "_resolved": "https://registry.npmjs.org/axios/-/axios-0.21.4.tgz",
   "_shasum": "c67b90dc0568e5c1cf2b0b858c43ba28e2eda575",
-  "_spec": "axios",
+  "_spec": "axios@^0.21.4",
   "_where": "C:\\Users\\79814\\OneDrive\\Рабочий стол\\Web-portal-to-Alvaro\\Projects\\RickAndMortyCards",
   "author": {
     "name": "Matt Zabriskie"
@@ -2999,7 +2999,7 @@ module.exports.default = axios;
 
 },{"./utils":"node_modules/axios/lib/utils.js","./helpers/bind":"node_modules/axios/lib/helpers/bind.js","./core/Axios":"node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"node_modules/axios/lib/core/mergeConfig.js","./defaults":"node_modules/axios/lib/defaults.js","./cancel/Cancel":"node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"node_modules/axios/lib/helpers/spread.js","./helpers/isAxiosError":"node_modules/axios/lib/helpers/isAxiosError.js"}],"node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"node_modules/axios/lib/axios.js"}],"node_modules/stream-http/lib/capability.js":[function(require,module,exports) {
+},{"./lib/axios":"node_modules/axios/lib/axios.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/capability.js":[function(require,module,exports) {
 var global = arguments[3];
 exports.fetch = isFunction(global.fetch) && isFunction(global.ReadableStream)
 
@@ -3075,7 +3075,7 @@ function isFunction (value) {
 
 xhr = null // Help gc
 
-},{}],"node_modules/inherits/inherits_browser.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js":[function(require,module,exports) {
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -3104,7 +3104,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],"node_modules/process-nextick-args/index.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process-nextick-args/index.js":[function(require,module,exports) {
 var process = require("process");
 'use strict';
 
@@ -3152,14 +3152,14 @@ function nextTick(fn, arg1, arg2, arg3) {
 }
 
 
-},{"process":"node_modules/process/browser.js"}],"node_modules/isarray/index.js":[function(require,module,exports) {
+},{"process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/isarray/index.js":[function(require,module,exports) {
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],"node_modules/events/events.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/events/events.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -3626,10 +3626,10 @@ function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
     throw new TypeError('The "emitter" argument must be of type EventEmitter. Received type ' + typeof emitter);
   }
 }
-},{}],"node_modules/readable-stream/lib/internal/streams/stream-browser.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/stream-browser.js":[function(require,module,exports) {
 module.exports = require('events').EventEmitter;
 
-},{"events":"node_modules/events/events.js"}],"node_modules/base64-js/index.js":[function(require,module,exports) {
+},{"events":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/events/events.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/base64-js/index.js":[function(require,module,exports) {
 'use strict'
 
 exports.byteLength = byteLength
@@ -3781,7 +3781,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],"node_modules/ieee754/index.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/ieee754/index.js":[function(require,module,exports) {
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -3868,7 +3868,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],"node_modules/buffer/index.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js":[function(require,module,exports) {
 
 var global = arguments[3];
 /*!
@@ -5661,7 +5661,7 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-},{"base64-js":"node_modules/base64-js/index.js","ieee754":"node_modules/ieee754/index.js","isarray":"node_modules/isarray/index.js","buffer":"node_modules/buffer/index.js"}],"node_modules/safe-buffer/index.js":[function(require,module,exports) {
+},{"base64-js":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/base64-js/index.js","ieee754":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/ieee754/index.js","isarray":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/isarray/index.js","buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/safe-buffer/index.js":[function(require,module,exports) {
 
 /* eslint-disable node/no-deprecated-api */
 var buffer = require('buffer')
@@ -5726,7 +5726,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
   return buffer.SlowBuffer(size)
 }
 
-},{"buffer":"node_modules/buffer/index.js"}],"node_modules/core-util-is/lib/util.js":[function(require,module,exports) {
+},{"buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/core-util-is/lib/util.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -5835,9 +5835,9 @@ function objectToString(o) {
   return Object.prototype.toString.call(o);
 }
 
-},{"buffer":"node_modules/buffer/index.js"}],"node_modules/parcel-bundler/src/builtins/_empty.js":[function(require,module,exports) {
+},{"buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/_empty.js":[function(require,module,exports) {
 
-},{}],"node_modules/readable-stream/lib/internal/streams/BufferList.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/BufferList.js":[function(require,module,exports) {
 
 'use strict';
 
@@ -5918,7 +5918,7 @@ if (util && util.inspect && util.inspect.custom) {
     return this.constructor.name + ' ' + obj;
   };
 }
-},{"safe-buffer":"node_modules/safe-buffer/index.js","util":"node_modules/parcel-bundler/src/builtins/_empty.js"}],"node_modules/readable-stream/lib/internal/streams/destroy.js":[function(require,module,exports) {
+},{"safe-buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/safe-buffer/index.js","util":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/_empty.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/destroy.js":[function(require,module,exports) {
 'use strict';
 
 /*<replacement>*/
@@ -5993,7 +5993,7 @@ module.exports = {
   destroy: destroy,
   undestroy: undestroy
 };
-},{"process-nextick-args":"node_modules/process-nextick-args/index.js"}],"node_modules/util-deprecate/browser.js":[function(require,module,exports) {
+},{"process-nextick-args":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process-nextick-args/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/util-deprecate/browser.js":[function(require,module,exports) {
 var global = arguments[3];
 
 /**
@@ -6063,7 +6063,7 @@ function config (name) {
   return String(val).toLowerCase() === 'true';
 }
 
-},{}],"node_modules/readable-stream/lib/_stream_writable.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_writable.js":[function(require,module,exports) {
 var process = require("process");
 
 var global = arguments[3];
@@ -6742,7 +6742,7 @@ Writable.prototype._destroy = function (err, cb) {
   this.end();
   cb(err);
 };
-},{"process-nextick-args":"node_modules/process-nextick-args/index.js","core-util-is":"node_modules/core-util-is/lib/util.js","inherits":"node_modules/inherits/inherits_browser.js","util-deprecate":"node_modules/util-deprecate/browser.js","./internal/streams/stream":"node_modules/readable-stream/lib/internal/streams/stream-browser.js","safe-buffer":"node_modules/safe-buffer/index.js","./internal/streams/destroy":"node_modules/readable-stream/lib/internal/streams/destroy.js","./_stream_duplex":"node_modules/readable-stream/lib/_stream_duplex.js","process":"node_modules/process/browser.js"}],"node_modules/readable-stream/lib/_stream_duplex.js":[function(require,module,exports) {
+},{"process-nextick-args":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process-nextick-args/index.js","core-util-is":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/core-util-is/lib/util.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js","util-deprecate":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/util-deprecate/browser.js","./internal/streams/stream":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/stream-browser.js","safe-buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/safe-buffer/index.js","./internal/streams/destroy":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/destroy.js","./_stream_duplex":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_duplex.js","process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_duplex.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -6874,7 +6874,7 @@ Duplex.prototype._destroy = function (err, cb) {
 
   pna.nextTick(cb, err);
 };
-},{"process-nextick-args":"node_modules/process-nextick-args/index.js","core-util-is":"node_modules/core-util-is/lib/util.js","inherits":"node_modules/inherits/inherits_browser.js","./_stream_readable":"node_modules/readable-stream/lib/_stream_readable.js","./_stream_writable":"node_modules/readable-stream/lib/_stream_writable.js"}],"node_modules/string_decoder/lib/string_decoder.js":[function(require,module,exports) {
+},{"process-nextick-args":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process-nextick-args/index.js","core-util-is":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/core-util-is/lib/util.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js","./_stream_readable":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_readable.js","./_stream_writable":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_writable.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/string_decoder/lib/string_decoder.js":[function(require,module,exports) {
 
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -7172,7 +7172,7 @@ function simpleWrite(buf) {
 function simpleEnd(buf) {
   return buf && buf.length ? this.write(buf) : '';
 }
-},{"safe-buffer":"node_modules/safe-buffer/index.js"}],"node_modules/readable-stream/lib/_stream_readable.js":[function(require,module,exports) {
+},{"safe-buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/safe-buffer/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_readable.js":[function(require,module,exports) {
 
 var global = arguments[3];
 var process = require("process");
@@ -8195,7 +8195,7 @@ function indexOf(xs, x) {
   }
   return -1;
 }
-},{"process-nextick-args":"node_modules/process-nextick-args/index.js","isarray":"node_modules/isarray/index.js","events":"node_modules/events/events.js","./internal/streams/stream":"node_modules/readable-stream/lib/internal/streams/stream-browser.js","safe-buffer":"node_modules/safe-buffer/index.js","core-util-is":"node_modules/core-util-is/lib/util.js","inherits":"node_modules/inherits/inherits_browser.js","util":"node_modules/parcel-bundler/src/builtins/_empty.js","./internal/streams/BufferList":"node_modules/readable-stream/lib/internal/streams/BufferList.js","./internal/streams/destroy":"node_modules/readable-stream/lib/internal/streams/destroy.js","./_stream_duplex":"node_modules/readable-stream/lib/_stream_duplex.js","string_decoder/":"node_modules/string_decoder/lib/string_decoder.js","process":"node_modules/process/browser.js"}],"node_modules/readable-stream/lib/_stream_transform.js":[function(require,module,exports) {
+},{"process-nextick-args":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process-nextick-args/index.js","isarray":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/isarray/index.js","events":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/events/events.js","./internal/streams/stream":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/stream-browser.js","safe-buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/safe-buffer/index.js","core-util-is":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/core-util-is/lib/util.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js","util":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/_empty.js","./internal/streams/BufferList":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/BufferList.js","./internal/streams/destroy":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/destroy.js","./_stream_duplex":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_duplex.js","string_decoder/":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/string_decoder/lib/string_decoder.js","process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_transform.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -8410,7 +8410,7 @@ function done(stream, er, data) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":"node_modules/readable-stream/lib/_stream_duplex.js","core-util-is":"node_modules/core-util-is/lib/util.js","inherits":"node_modules/inherits/inherits_browser.js"}],"node_modules/readable-stream/lib/_stream_passthrough.js":[function(require,module,exports) {
+},{"./_stream_duplex":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_duplex.js","core-util-is":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/core-util-is/lib/util.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_passthrough.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -8458,7 +8458,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":"node_modules/readable-stream/lib/_stream_transform.js","core-util-is":"node_modules/core-util-is/lib/util.js","inherits":"node_modules/inherits/inherits_browser.js"}],"node_modules/readable-stream/readable-browser.js":[function(require,module,exports) {
+},{"./_stream_transform":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_transform.js","core-util-is":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/core-util-is/lib/util.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/readable-browser.js":[function(require,module,exports) {
 exports = module.exports = require('./lib/_stream_readable.js');
 exports.Stream = exports;
 exports.Readable = exports;
@@ -8467,7 +8467,7 @@ exports.Duplex = require('./lib/_stream_duplex.js');
 exports.Transform = require('./lib/_stream_transform.js');
 exports.PassThrough = require('./lib/_stream_passthrough.js');
 
-},{"./lib/_stream_readable.js":"node_modules/readable-stream/lib/_stream_readable.js","./lib/_stream_writable.js":"node_modules/readable-stream/lib/_stream_writable.js","./lib/_stream_duplex.js":"node_modules/readable-stream/lib/_stream_duplex.js","./lib/_stream_transform.js":"node_modules/readable-stream/lib/_stream_transform.js","./lib/_stream_passthrough.js":"node_modules/readable-stream/lib/_stream_passthrough.js"}],"node_modules/stream-http/lib/response.js":[function(require,module,exports) {
+},{"./lib/_stream_readable.js":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_readable.js","./lib/_stream_writable.js":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_writable.js","./lib/_stream_duplex.js":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_duplex.js","./lib/_stream_transform.js":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_transform.js","./lib/_stream_passthrough.js":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_passthrough.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/response.js":[function(require,module,exports) {
 var process = require("process");
 var Buffer = require("buffer").Buffer;
 var global = arguments[3];
@@ -8696,7 +8696,7 @@ IncomingMessage.prototype._onXHRProgress = function () {
 	}
 }
 
-},{"./capability":"node_modules/stream-http/lib/capability.js","inherits":"node_modules/inherits/inherits_browser.js","readable-stream":"node_modules/readable-stream/readable-browser.js","process":"node_modules/process/browser.js","buffer":"node_modules/buffer/index.js"}],"node_modules/to-arraybuffer/index.js":[function(require,module,exports) {
+},{"./capability":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/capability.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js","readable-stream":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/readable-browser.js","process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js","buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/to-arraybuffer/index.js":[function(require,module,exports) {
 
 var Buffer = require('buffer').Buffer
 
@@ -8726,7 +8726,7 @@ module.exports = function (buf) {
 	}
 }
 
-},{"buffer":"node_modules/buffer/index.js"}],"node_modules/stream-http/lib/request.js":[function(require,module,exports) {
+},{"buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/request.js":[function(require,module,exports) {
 var Buffer = require("buffer").Buffer;
 var global = arguments[3];
 var process = require("process");
@@ -9058,7 +9058,7 @@ var unsafeHeaders = [
 	'via'
 ]
 
-},{"./capability":"node_modules/stream-http/lib/capability.js","inherits":"node_modules/inherits/inherits_browser.js","./response":"node_modules/stream-http/lib/response.js","readable-stream":"node_modules/readable-stream/readable-browser.js","to-arraybuffer":"node_modules/to-arraybuffer/index.js","buffer":"node_modules/buffer/index.js","process":"node_modules/process/browser.js"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
+},{"./capability":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/capability.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js","./response":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/response.js","readable-stream":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/readable-browser.js","to-arraybuffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/to-arraybuffer/index.js","buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js","process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/xtend/immutable.js":[function(require,module,exports) {
 module.exports = extend;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -9077,7 +9077,7 @@ function extend() {
 
   return target;
 }
-},{}],"node_modules/builtin-status-codes/browser.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/builtin-status-codes/browser.js":[function(require,module,exports) {
 module.exports = {
   "100": "Continue",
   "101": "Switching Protocols",
@@ -9143,7 +9143,7 @@ module.exports = {
   "511": "Network Authentication Required"
 }
 
-},{}],"node_modules/node-libs-browser/node_modules/punycode/punycode.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/node-libs-browser/node_modules/punycode/punycode.js":[function(require,module,exports) {
 var global = arguments[3];
 var define;
 /*! https://mths.be/punycode v1.4.1 by @mathias */
@@ -9680,7 +9680,7 @@ var define;
 
 }(this));
 
-},{}],"node_modules/url/util.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/url/util.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = {
@@ -9698,7 +9698,7 @@ module.exports = {
   }
 };
 
-},{}],"node_modules/querystring-es3/decode.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/querystring-es3/decode.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -9784,7 +9784,7 @@ module.exports = function (qs, sep, eq, options) {
 var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
-},{}],"node_modules/querystring-es3/encode.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/querystring-es3/encode.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -9873,12 +9873,12 @@ var objectKeys = Object.keys || function (obj) {
 
   return res;
 };
-},{}],"node_modules/querystring-es3/index.js":[function(require,module,exports) {
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/querystring-es3/index.js":[function(require,module,exports) {
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
-},{"./decode":"node_modules/querystring-es3/decode.js","./encode":"node_modules/querystring-es3/encode.js"}],"node_modules/url/url.js":[function(require,module,exports) {
+},{"./decode":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/querystring-es3/decode.js","./encode":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/querystring-es3/encode.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/url/url.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -10612,7 +10612,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"punycode":"node_modules/node-libs-browser/node_modules/punycode/punycode.js","./util":"node_modules/url/util.js","querystring":"node_modules/querystring-es3/index.js"}],"node_modules/stream-http/index.js":[function(require,module,exports) {
+},{"punycode":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/node-libs-browser/node_modules/punycode/punycode.js","./util":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/url/util.js","querystring":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/querystring-es3/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/index.js":[function(require,module,exports) {
 var global = arguments[3];
 var ClientRequest = require('./lib/request')
 var response = require('./lib/response')
@@ -10699,7 +10699,7 @@ http.METHODS = [
 	'UNLOCK',
 	'UNSUBSCRIBE'
 ]
-},{"./lib/request":"node_modules/stream-http/lib/request.js","./lib/response":"node_modules/stream-http/lib/response.js","xtend":"node_modules/xtend/immutable.js","builtin-status-codes":"node_modules/builtin-status-codes/browser.js","url":"node_modules/url/url.js"}],"node_modules/https-browserify/index.js":[function(require,module,exports) {
+},{"./lib/request":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/request.js","./lib/response":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/response.js","xtend":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/xtend/immutable.js","builtin-status-codes":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/builtin-status-codes/browser.js","url":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/url/url.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/https-browserify/index.js":[function(require,module,exports) {
 var http = require('http')
 var url = require('url')
 
@@ -10732,7 +10732,7 @@ function validateParams (params) {
   return params
 }
 
-},{"http":"node_modules/stream-http/index.js","url":"node_modules/url/url.js"}],"node_modules/rickmortyapi/dist/index.js":[function(require,module,exports) {
+},{"http":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/index.js","url":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/url/url.js"}],"node_modules/rickmortyapi/dist/index.js":[function(require,module,exports) {
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -10970,7 +10970,7 @@ var I = function I() {
   getLocation: getLocation,
   getLocations: getLocations
 });
-},{"https":"node_modules/https-browserify/index.js"}],"js/utils/ProcessingAPI.js":[function(require,module,exports) {
+},{"https":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/https-browserify/index.js"}],"js/utils/ProcessingAPI.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11393,6 +11393,16 @@ var _LyModal = require("../../../My-plugins/LyModale-plugin/LyModal");
 
 var _rickmortyapi = require("rickmortyapi");
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -11409,11 +11419,18 @@ var Cards = /*#__PURE__*/function () {
   }
 
   _createClass(Cards, [{
+    key: "setSourceCharacters",
+    value: function setSourceCharacters(orderCharacters) {
+      this.sourceOrderCharacters = orderCharacters;
+      this.renderCharacters(orderCharacters);
+    }
+  }, {
     key: "renderCharacters",
     value: function renderCharacters(orderCharacters) {
       var _this = this;
 
       console.log(orderCharacters);
+      this.sourceOrderCharacters = orderCharacters;
       orderCharacters.forEach(function (data) {
         var name = data.name,
             image = data.image,
@@ -11427,6 +11444,117 @@ var Cards = /*#__PURE__*/function () {
           return _this.cardModalRender(data);
         });
       });
+      this.filterArguments = document.querySelectorAll('.choisable-item');
+      this.filterArguments.forEach(function (argument) {
+        argument.addEventListener('click', _this.renderSeedingCards.bind(_this, argument));
+      });
+      this.renderLodaerList(false);
+    } // фильтрация всех данных, которая получает на вход html элемент с соответствующими дата элементами
+
+  }, {
+    key: "renderSeedingCards",
+    value: function () {
+      var _renderSeedingCards = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(argument) {
+        var filterKey, filterValue, countCharacters, lastCharacter, totalOrderCharacters, _this$_parsingKeyPath, currentCharacter, valueInKeyPath;
+
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                // console.log(argument);
+                filterKey = argument.parentNode.dataset.filterType; // беру указанные данные в датасете по объектам API для фильтрации
+
+                filterValue = argument.dataset.value;
+                _context.next = 4;
+                return this.renderLodaerList(true);
+
+              case 4:
+                countCharacters = 1;
+                _context.next = 7;
+                return (0, _rickmortyapi.getCharacter)(countCharacters);
+
+              case 7:
+                lastCharacter = _context.sent;
+                totalOrderCharacters = [];
+
+              case 9:
+                // если свойство по которому происходит фильтрация находится во вложенных обmектах, 
+                //то я достаю этот вложенный объект, и присваю его currentCharacter, а свойство в valueInKeyPath
+                _this$_parsingKeyPath = this._parsingKeyPath(filterKey, lastCharacter.data), currentCharacter = _this$_parsingKeyPath.currentCharacter, valueInKeyPath = _this$_parsingKeyPath.valueInKeyPath;
+                if (currentCharacter[valueInKeyPath] == filterValue) totalOrderCharacters.push(lastCharacter.data);
+                countCharacters++;
+                _context.next = 14;
+                return (0, _rickmortyapi.getCharacter)(countCharacters);
+
+              case 14:
+                lastCharacter = _context.sent;
+
+              case 15:
+                if (lastCharacter.statusMessage != 'Character not found') {
+                  _context.next = 9;
+                  break;
+                }
+
+              case 16:
+                this.list.innerHTML = "";
+                this.renderCharacters(totalOrderCharacters);
+
+              case 18:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function renderSeedingCards(_x) {
+        return _renderSeedingCards.apply(this, arguments);
+      }
+
+      return renderSeedingCards;
+    }()
+  }, {
+    key: "_parsingKeyPath",
+    value: function _parsingKeyPath(filterKey, currentCharacter) {
+      var keyPath = filterKey.split('-').reverse(); // прохожусь по указанному пути до исходного ключа, если это объекты (obj-obj-key)
+
+      var valueInKeyPath = keyPath.slice(-1);
+      keyPath = keyPath.slice(0, -1); // разбиваю путь на объекты и финальное значение (valueInKeyPath)
+
+      if (keyPath.length) {
+        var _iterator = _createForOfIteratorHelper(keyPath),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var pathStep = _step.value;
+            currentCharacter = currentCharacter[pathStep];
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      }
+
+      return {
+        currentCharacter: currentCharacter,
+        valueInKeyPath: valueInKeyPath
+      };
+    }
+  }, {
+    key: "renderLodaerList",
+    value: function renderLodaerList(renderLoader) {
+      var list = document.querySelector('#cards-list');
+      var loaderArea = document.querySelector('.cards__loader');
+
+      if (renderLoader) {
+        list.classList.add('disable');
+        loaderArea.classList.add('active');
+      } else {
+        list.classList.remove('disable');
+        loaderArea.classList.remove('active');
+      }
     } // created: "2017-11-04T18:48:46.250Z"
     // episode: (41)['https://rickandmortyapi.com/api/episode/1', 'https://rickandmortyapi.com/api/episode/2', 'https://rickandmortyapi.com/api/episode/3', 'https://rickandmortyapi.com/api/episode/4', 'https://rickandmortyapi.com/api/episode/5', 'https://rickandmortyapi.com/api/episode/6', 'https://rickandmortyapi.com/api/episode/7', 'https://rickandmortyapi.com/api/episode/8', 'https://rickandmortyapi.com/api/episode/9', 'https://rickandmortyapi.com/api/episode/10', 'https://rickandmortyapi.com/api/episode/11', 'https://rickandmortyapi.com/api/episode/12', 'https://rickandmortyapi.com/api/episode/13', 'https://rickandmortyapi.com/api/episode/14', 'https://rickandmortyapi.com/api/episode/15', 'https://rickandmortyapi.com/api/episode/16', 'https://rickandmortyapi.com/api/episode/17', 'https://rickandmortyapi.com/api/episode/18', 'https://rickandmortyapi.com/api/episode/19', 'https://rickandmortyapi.com/api/episode/20', 'https://rickandmortyapi.com/api/episode/21', 'https://rickandmortyapi.com/api/episode/22', 'https://rickandmortyapi.com/api/episode/23', 'https://rickandmortyapi.com/api/episode/24', 'https://rickandmortyapi.com/api/episode/25', 'https://rickandmortyapi.com/api/episode/26', 'https://rickandmortyapi.com/api/episode/27', 'https://rickandmortyapi.com/api/episode/28', 'https://rickandmortyapi.com/api/episode/29', 'https://rickandmortyapi.com/api/episode/30', 'https://rickandmortyapi.com/api/episode/31', 'https://rickandmortyapi.com/api/episode/32', 'https://rickandmortyapi.com/api/episode/33', 'https://rickandmortyapi.com/api/episode/34', 'https://rickandmortyapi.com/api/episode/35', 'https://rickandmortyapi.com/api/episode/36', 'https://rickandmortyapi.com/api/episode/37', 'https://rickandmortyapi.com/api/episode/38', 'https://rickandmortyapi.com/api/episode/39', 'https://rickandmortyapi.com/api/episode/40', 'https://rickandmortyapi.com/api/episode/41']
     // gender: "Male"
@@ -11440,6 +11568,56 @@ var Cards = /*#__PURE__*/function () {
     // type: ""
 
   }, {
+    key: "getAllFilteredCharacters",
+    value: function () {
+      var _getAllFilteredCharacters = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        var countCharacters, lastCharacter, totalOrderCharacters;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                countCharacters = 1;
+                _context2.next = 3;
+                return (0, _rickmortyapi.getCharacter)(countCharacters);
+
+              case 3:
+                lastCharacter = _context2.sent;
+                totalOrderCharacters = [];
+
+              case 5:
+                // собираю всех персонажей в массив
+                totalOrderCharacters.push(lastCharacter.data);
+                countCharacters++;
+                _context2.next = 9;
+                return (0, _rickmortyapi.getCharacter)(countCharacters);
+
+              case 9:
+                lastCharacter = _context2.sent;
+
+              case 10:
+                if (lastCharacter.statusMessage != 'Character not found') {
+                  _context2.next = 5;
+                  break;
+                }
+
+              case 11:
+                return _context2.abrupt("return", totalOrderCharacters);
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      function getAllFilteredCharacters() {
+        return _getAllFilteredCharacters.apply(this, arguments);
+      }
+
+      return getAllFilteredCharacters;
+    }()
+  }, {
     key: "setModalCardContent",
     value: function setModalCardContent(_ref) {
       var id = _ref.id,
@@ -11450,8 +11628,8 @@ var Cards = /*#__PURE__*/function () {
           location = _ref.location,
           origin = _ref.origin,
           gender = _ref.gender;
-      var modalContent = "<div class=\"character-modal\" id=\"lyModal-content\">\n         <div class=\"character-modal__image-area\">\n            <div class=\"character-modal__image-area-name\">".concat(name, "</div>\n            <div class=\"character-modal__image-area-img\">\n               <img src=\"").concat(image, "\" alt=\"\">\n            </div>\n         </div>\n         <div class=\"character-modal__content\">\n            <div class=\"character-modal__info-item\">Status: ").concat(status, "</div>\n            <div class=\"character-modal__info-item\">Species: ").concat(species, "</div>\n            <div class=\"character-modal__info-item\">Location: ").concat(location.name, "</div>\n            <div class=\"character-modal__info-item\">Gender: ").concat(gender, "</div>\n         </div>\n      </div>");
-      newModal.setContent("<div class=\"character-modal__image-area\">\n            <div class=\"character-modal__image-area-name\">".concat(name, "</div>\n            <div class=\"character-modal__image-area-img\">\n               <img src=\"").concat(image, "\" alt=\"\">\n            </div>\n         </div>\n         <div class=\"character-modal__content\">\n            <div class=\"character-modal__info-item\">Status: ").concat(status, "</div>\n            <div class=\"character-modal__info-item\">Species: ").concat(species, "</div>\n            <div class=\"character-modal__info-item\">Location: ").concat(location.name, "</div>\n            <div class=\"character-modal__info-item\">Gender: ").concat(gender, "</div>\n         </div>"));
+      var modalContent = "\n         <div class=\"character-modal__image-area\">\n            <div class=\"character-modal__image-area-name\">".concat(name, "</div>\n            <div class=\"character-modal__image-area-img\">\n               <img src=\"").concat(image, "\" alt=\"\">\n            </div>\n         </div>\n         <div class=\"character-modal__content\">\n            <div class=\"character-modal__info-item\">Status: ").concat(status, "</div>\n            <div class=\"character-modal__info-item\">Species: ").concat(species, "</div>\n            <div class=\"character-modal__info-item\">Location: ").concat(location.name, "</div>\n            <div class=\"character-modal__info-item\">Gender: ").concat(gender, "</div>\n         </div>\n         ");
+      newModal.setContent(modalContent);
     }
   }, {
     key: "cardModalRender",
@@ -11495,21 +11673,6 @@ var Cards = /*#__PURE__*/function () {
     value: function renderModalCard(ep) {
       console.log(ep); // modal.open(); 
       // TODO модалка переделана 
-    } //метод с функциями для обработки всех архитектурных элементов сайта
-
-  }, {
-    key: "initArchi",
-    value: function initArchi() {
-      (function initToggleSections() {
-        var pointers = document.querySelectorAll(".cards-list__turn-section");
-        pointers.forEach(function (point) {
-          point.addEventListener('click', function () {
-            var id = point.dataset.sectionPoint;
-            var section = document.querySelector("[data-section=\"".concat(id, "\"]"));
-            section.parentElement.classList.toggle('disable');
-          });
-        });
-      })();
     }
   }]);
 
@@ -11517,7 +11680,198 @@ var Cards = /*#__PURE__*/function () {
 }();
 
 exports.Cards = Cards;
-},{"../../../My-plugins/LyModale-plugin/LyModal":"../../My-plugins/LyModale-plugin/LyModal.js","rickmortyapi":"node_modules/rickmortyapi/dist/index.js"}],"js/app.js":[function(require,module,exports) {
+},{"../../../My-plugins/LyModale-plugin/LyModal":"../../My-plugins/LyModale-plugin/LyModal.js","rickmortyapi":"node_modules/rickmortyapi/dist/index.js"}],"js/utils/interfaceArchitecture.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _rickmortyapi = require("rickmortyapi");
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var interfaceArchitecture = /*#__PURE__*/function () {
+  function interfaceArchitecture() {
+    _classCallCheck(this, interfaceArchitecture);
+  }
+
+  _createClass(interfaceArchitecture, [{
+    key: "render",
+    value: function () {
+      var _render = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(parametrs) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                /*#__PURE__*/
+                (function () {
+                  var _setCategoriesFiltering = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                    var _this = this;
+
+                    var filterArea, characters, listParametrs, key, innerList, wrapper, keyWords;
+                    return regeneratorRuntime.wrap(function _callee$(_context) {
+                      while (1) {
+                        switch (_context.prev = _context.next) {
+                          case 0:
+                            //Прорисовываю алгоритмом все необходимые данный с апи
+                            filterArea = document.querySelector('.cards__filter-themes');
+                            _context.next = 3;
+                            return (0, _rickmortyapi.getCharacters)();
+
+                          case 3:
+                            characters = _context.sent.data.results;
+                            // let characters = [];
+                            // for (let i = 1; i < 100; i++) {
+                            //    let c = (await getCharacters()).data.results
+                            //    characters.push(c);
+                            //    console.log(i);
+                            // }
+                            listParametrs = {};
+                            characters.forEach(function (character) {
+                              var _loop = function _loop() {
+                                var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+                                    key = _Object$entries$_i[0],
+                                    value = _Object$entries$_i[1];
+
+                                var checkPath = parametrs.find(function (par) {
+                                  return par.split('-')[1] && par.split('-')[0] == key;
+                                });
+
+                                if (checkPath) {
+                                  //обход вложенного массива необходимых параметров с апишки
+                                  var pathParameter = checkPath.split('-');
+                                  var totalParameter = character;
+                                  key = "";
+
+                                  for (var pathKey in pathParameter) {
+                                    key = pathParameter[pathKey] + '-' + key;
+                                    totalParameter = totalParameter[pathParameter[pathKey]];
+                                  }
+
+                                  key = key.slice(0, -1);
+                                  value = totalParameter;
+                                }
+
+                                if (checkPath || parametrs.includes(key)) {
+                                  !listParametrs[key] ? listParametrs[key] = new Set() : 0;
+                                  listParametrs[key].add(value);
+                                }
+                              };
+
+                              for (var _i = 0, _Object$entries = Object.entries(character); _i < _Object$entries.length; _i++) {
+                                _loop();
+                              }
+                            });
+
+                            for (key in listParametrs) {
+                              innerList = "";
+                              listParametrs[key].forEach(function (value) {
+                                if (value == 'unknown') return;
+                                innerList += "<li class=\"cards__filter-item choisable-item\" data-value=\"".concat(value, "\">").concat(value, "</li>");
+                              });
+                              wrapper = "\n               <div class=\"cards__filter-content\">\n                  <div class=\"cards__filter-item filter__item_".concat(key, "\" id=\"key-list-area\" data-list-key=\"filter-").concat(key, "-key\">\n                     <span class=\"cards__filter-item-title\"> ").concat(key[0].toUpperCase() + key.slice(1), " </span>\n                     <span class=\"material-icons\"> chevron_left </span>\n                  </div>\n                  <ul class=\"cards__filter-list\" data-filter-type=\"").concat(key, "\">\n                     ").concat(innerList, "\n                  </ul>\n               </div>\n            ");
+                              filterArea.insertAdjacentHTML('beforeend', wrapper);
+                            }
+
+                            keyWords = document.querySelectorAll('.cards__filter-content');
+                            keyWords.forEach(function (key) {
+                              return key.addEventListener('click', _this.renderOpenList.bind(_this, key));
+                            }); //отрисовка, функционал списка
+
+                            this.initStartWidthListItems();
+                            this.initClosableList();
+
+                          case 11:
+                          case "end":
+                            return _context.stop();
+                        }
+                      }
+                    }, _callee, this);
+                  }));
+
+                  function setCategoriesFiltering() {
+                    return _setCategoriesFiltering.apply(this, arguments);
+                  }
+
+                  return setCategoriesFiltering;
+                })().call(this);
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function render(_x) {
+        return _render.apply(this, arguments);
+      }
+
+      return render;
+    }()
+  }, {
+    key: "initStartWidthListItems",
+    value: function initStartWidthListItems() {
+      var toitalList = document.querySelectorAll('.cards__filter-content');
+      toitalList.forEach(function (item) {
+        var list = item.querySelector('.cards__filter-list');
+        list.style.display = 'block';
+        item.querySelector('.cards__filter-item-title').style.width = list.offsetWidth + 'px';
+        list.style.display = '';
+      });
+    }
+  }, {
+    key: "initClosableList",
+    value: function initClosableList() {
+      var _this2 = this;
+
+      var allListFields = document.querySelectorAll('.choisable-item');
+      allListFields.forEach(function (item) {
+        item.addEventListener('click', function () {
+          console.log(item.closest('.cards__filter-content').querySelector('#key-list-area'));
+          item.closest('.cards__filter-content').querySelector('.cards__filter-item-title').textContent = item.textContent;
+
+          _this2.renderOpenList(item.closest('.cards__filter-content').querySelector('#key-list-area'));
+        });
+      });
+    }
+  }, {
+    key: "renderOpenList",
+    value: function renderOpenList(key) {
+      key.classList.toggle('active');
+    }
+  }]);
+
+  return interfaceArchitecture;
+}();
+
+var _default = new interfaceArchitecture();
+
+exports.default = _default;
+},{"rickmortyapi":"node_modules/rickmortyapi/dist/index.js"}],"js/app.js":[function(require,module,exports) {
 'use strict';
 
 require("regenerator-runtime/runtime");
@@ -11528,6 +11882,8 @@ var _ProcessingAPI = require("./utils/ProcessingAPI");
 
 var _Cards = require("./Cards");
 
+var _interfaceArchitecture = _interopRequireDefault(require("./utils/interfaceArchitecture.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -11537,7 +11893,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 // const modal = new LyModal;
 // modal.open();
 var processingAPI = new _ProcessingAPI.ProcessingAPI();
-var cards = new _Cards.Cards();
+var cards = new _Cards.Cards(); // document.querySelectorAll('.cards__filter-list').classList.add('active');
+// console.log(document.querySelectorAll('.cards__filter-list'));
 
 _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
   var characters;
@@ -11546,20 +11903,26 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return processingAPI.getCharactersAPI([1, 2, 3, 4, 5]);
+          return _interfaceArchitecture.default.render(['status', 'species', 'gender', 'location-name']);
 
         case 2:
-          characters = _context.sent;
-          cards.renderCharacters(characters);
+          _context.next = 4;
+          return processingAPI.getCharactersAPI([1, 2, 3, 4, 5]);
 
         case 4:
+          characters = _context.sent;
+          //вводится массив индексов, которые показывать сначала 
+          // cards.setSourceCharacters(characters);
+          cards.renderCharacters(characters);
+
+        case 6:
         case "end":
           return _context.stop();
       }
     }
   }, _callee);
 }))();
-},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","axios":"node_modules/axios/index.js","./utils/ProcessingAPI":"js/utils/ProcessingAPI.js","./Cards":"js/Cards.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","axios":"node_modules/axios/index.js","./utils/ProcessingAPI":"js/utils/ProcessingAPI.js","./Cards":"js/Cards.js","./utils/interfaceArchitecture.js":"js/utils/interfaceArchitecture.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -11587,7 +11950,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62197" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64332" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -11763,5 +12126,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/app.js"], null)
+},{}]},{},["../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/app.js"], null)
 //# sourceMappingURL=/app.c3f9f951.js.map

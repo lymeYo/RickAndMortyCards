@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "axios": "^0.21.4",
+    "regenerator-runtime": "^0.13.9",
     "rickmortyapi": "^1.0.0"
   },
   "devDependencies": {
@@ -13,5 +14,15 @@
   "scripts": {
     "start": "parcel index.html --open",
     "build": "parcel build index.html"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lymeYo/RickAndMortyCards.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lymeYo/RickAndMortyCards/issues"
+  },
+  "homepage": "https://github.com/lymeYo/RickAndMortyCards#readme"
 }

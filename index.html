@@ -41,8 +41,26 @@
    
    <div class="cards-wrapper">
       <div class="container cards">
+         <div class="cards__filter-area">
+            <div class="cards__filter">
+               <div class="cards__filter-themes">
+                  <!-- по второму слову находится нижний компонент -->
+                  <!-- <div class="filter__content filter__item_status">
+                     <div class="cards__filter-item" data-list-key="filter-status-key"></div> 
+                     <ul class="cards__filter-list" data-filter-type="status">
+                        <li class="cards__filter-item">Alive</li>
+                        <li class="cards__filter-item">Dead</li>
+                     </ul>
+                  </div> -->
+                  
+               </div>
+            </div>
+            
+         </div>
+         
          <ul class="cards-list" id="cards-list">
             <!-- <section id="section-1">
+               прорисовка прошлой версии списка секций серий, не персонажей
                <li class="cards-list__item">
                   <div class="cards-list__logo">
                      <img src="https://i.guim.co.uk/img/media/b563ac5db4b4a4e1197c586bbca3edebca9173cd/0_12_3307_1985/master/3307.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=61a26bf43da26e4ca97e932e5ee113f7" alt="">
@@ -61,18 +79,16 @@
                </li> 
             </section> -->
          </ul>
-      </div>
-   </div>
 
-   <div class="card-info" id="card-info">
-      <div class="card-info__content">
-         <div class="card-info__title">Rick And Morty title</div>
-         <div class="card-info__description"></div>
-         <div class="card-info__characters"></div>
-         <div class="card-info__icon"></div>
+         <div class="cards__loader">
+            <div class="cards__loader-img">
+               <img src="/imgs/list-loader.svg" alt="">
+            </div>
+            
+         </div>
+         
       </div>
    </div>
-   <a href="http://127.0.0.1:5501/">Ссылка</a>
    
    <!-- <script src="/js/ProcessingAPI.js"></script> -->
    <script src="/js/app.js"></script>
