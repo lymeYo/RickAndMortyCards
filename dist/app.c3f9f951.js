@@ -11006,136 +11006,205 @@ var ProcessingAPI = /*#__PURE__*/function () {
   }
 
   _createClass(ProcessingAPI, [{
-    key: "getCharactersAPI",
+    key: "getAllCharactersAPI",
     value: function () {
-      var _getCharactersAPI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(amountTotalCharacters) {
-        var characters, _iterator, _step, id, character, i, _id, _character;
+      var _getAllCharactersAPI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(indexesGeneralCharacters) {
+        var countCharacters, lastCharacter, totalCharacters, _iterator, _step, id, character;
 
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // let responce = await getCharacters();
-                characters = [];
+                countCharacters = 1;
+                _context.next = 3;
+                return (0, _rickmortyapi.getCharacter)(countCharacters);
 
-                if (!+(amountTotalCharacters === null || amountTotalCharacters === void 0 ? void 0 : amountTotalCharacters[0])) {
-                  _context.next = 21;
+              case 3:
+                lastCharacter = _context.sent;
+                totalCharacters = [];
+
+                if (!(indexesGeneralCharacters && !Array.isArray(indexesGeneralCharacters))) {
+                  _context.next = 7;
                   break;
                 }
 
-                _iterator = _createForOfIteratorHelper(amountTotalCharacters);
-                _context.prev = 3;
+                throw new Error('getAllCharactersAPI parameter must be Array');
+
+              case 7:
+                if (!indexesGeneralCharacters) {
+                  _context.next = 27;
+                  break;
+                }
+
+                _iterator = _createForOfIteratorHelper(indexesGeneralCharacters);
+                _context.prev = 9;
 
                 _iterator.s();
 
-              case 5:
+              case 11:
                 if ((_step = _iterator.n()).done) {
-                  _context.next = 13;
+                  _context.next = 19;
                   break;
                 }
 
                 id = _step.value;
-                _context.next = 9;
+                _context.next = 15;
                 return (0, _rickmortyapi.getCharacter)(id);
 
-              case 9:
-                character = _context.sent;
-                characters.push(character.data);
-
-              case 11:
-                _context.next = 5;
-                break;
-
-              case 13:
-                _context.next = 18;
-                break;
-
               case 15:
-                _context.prev = 15;
-                _context.t0 = _context["catch"](3);
+                character = _context.sent;
+                totalCharacters.push(character.data);
+
+              case 17:
+                _context.next = 11;
+                break;
+
+              case 19:
+                _context.next = 24;
+                break;
+
+              case 21:
+                _context.prev = 21;
+                _context.t0 = _context["catch"](9);
 
                 _iterator.e(_context.t0);
 
-              case 18:
-                _context.prev = 18;
+              case 24:
+                _context.prev = 24;
 
                 _iterator.f();
 
-                return _context.finish(18);
+                return _context.finish(24);
 
-              case 21:
-                i = 1;
+              case 27:
+                countCharacters++;
 
-              case 22:
-                if (!(i <= AmountCharacters)) {
-                  _context.next = 32;
+                if (!(indexesGeneralCharacters !== null && indexesGeneralCharacters !== void 0 && indexesGeneralCharacters.includes(lastCharacter.data.id))) {
+                  totalCharacters.push(lastCharacter.data);
+                }
+
+                _context.next = 31;
+                return (0, _rickmortyapi.getCharacter)(countCharacters);
+
+              case 31:
+                lastCharacter = _context.sent;
+
+              case 32:
+                if (lastCharacter.statusMessage != 'Character not found') {
+                  _context.next = 27;
                   break;
                 }
 
-                _id = Math.ceil(Math.random() * 300 + 5);
+              case 33:
+                if (!this.totalCharacters) this.totalCharacters = totalCharacters;
+                this.indexesGeneralCharacters = indexesGeneralCharacters || [];
+                return _context.abrupt("return", totalCharacters);
 
-                while (amountTotalCharacters.includes(_id)) {
-                  _id = Math.ceil(Math.random() * 300 + 5);
-                }
-
-                _context.next = 27;
-                return (0, _rickmortyapi.getCharacter)(_id);
-
-              case 27:
-                _character = _context.sent;
-                characters.push(_character.data);
-
-              case 29:
-                i++;
-                _context.next = 22;
-                break;
-
-              case 32:
-                console.log(characters);
-                return _context.abrupt("return", characters);
-
-              case 34:
+              case 36:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[3, 15, 18, 21]]);
+        }, _callee, this, [[9, 21, 24, 27]]);
       }));
 
-      function getCharactersAPI(_x) {
-        return _getCharactersAPI.apply(this, arguments);
+      function getAllCharactersAPI(_x) {
+        return _getAllCharactersAPI.apply(this, arguments);
       }
 
-      return getCharactersAPI;
+      return getAllCharactersAPI;
+    }()
+  }, {
+    key: "getSeveralCharactersAPI",
+    value: function () {
+      var _getSeveralCharactersAPI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(amountCharacters) {
+        var _this = this;
+
+        var characters, _iterator2, _step2, _loop, i, id, character;
+
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                // let responce = await getCharacters();
+                characters = [];
+                _iterator2 = _createForOfIteratorHelper(this.indexesGeneralCharacters);
+
+                try {
+                  _loop = function _loop() {
+                    var id = _step2.value;
+
+                    var character = _this.totalCharacters.find(function (character) {
+                      return character.id == id;
+                    });
+
+                    characters.push(character);
+                  };
+
+                  for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+                    _loop();
+                  }
+                } catch (err) {
+                  _iterator2.e(err);
+                } finally {
+                  _iterator2.f();
+                }
+
+                for (i = 1; i <= amountCharacters; i++) {
+                  id = Math.ceil(Math.random() * 300 + 5);
+
+                  while (this.indexesGeneralCharacters.includes(id)) {
+                    id = Math.ceil(Math.random() * 300 + 5);
+                  }
+
+                  character = this.totalCharacters[id];
+                  characters.push(character);
+                }
+
+                return _context2.abrupt("return", characters);
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function getSeveralCharactersAPI(_x2) {
+        return _getSeveralCharactersAPI.apply(this, arguments);
+      }
+
+      return getSeveralCharactersAPI;
     }()
   }, {
     key: "getEpisodesAPI",
     value: function () {
-      var _getEpisodesAPI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+      var _getEpisodesAPI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
         var episodes, counter, ep;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
                 episodes = [];
                 counter = 1;
 
               case 2:
                 if (!(counter < 42)) {
-                  _context2.next = 10;
+                  _context3.next = 10;
                   break;
                 }
 
-                _context2.next = 5;
+                _context3.next = 5;
                 return (0, _rickmortyapi.getEpisode)(counter);
 
               case 5:
-                ep = _context2.sent;
+                ep = _context3.sent;
                 episodes.push(ep);
 
               case 7:
                 counter++;
-                _context2.next = 2;
+                _context3.next = 2;
                 break;
 
               case 10:
@@ -11144,14 +11213,14 @@ var ProcessingAPI = /*#__PURE__*/function () {
                 }); // console.log(episodes);
 
                 this.setEpisodeDescription(episodes);
-                return _context2.abrupt("return", episodes);
+                return _context3.abrupt("return", episodes);
 
               case 13:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, this);
+        }, _callee3, this);
       }));
 
       function getEpisodesAPI() {
@@ -11419,87 +11488,26 @@ var Cards = /*#__PURE__*/function () {
   }
 
   _createClass(Cards, [{
-    key: "setSourceCharacters",
-    value: function setSourceCharacters(orderCharacters) {
-      this.sourceOrderCharacters = orderCharacters;
-      this.renderCharacters(orderCharacters);
-    }
-  }, {
     key: "renderCharacters",
-    value: function renderCharacters(orderCharacters) {
-      var _this = this;
-
-      console.log(orderCharacters);
-      this.sourceOrderCharacters = orderCharacters;
-      orderCharacters.forEach(function (data) {
-        var name = data.name,
-            image = data.image,
-            id = data.id;
-        var html = "\n            <li class=\"cards-list__item character-item\">\n               <div class=\"cards-list__logo\">\n                  <img src=\"".concat(image, "\" alt=\"\">\n               </div>\n               <div class=\"cards-list__title\">").concat(name, "</div>\n               <div class=\"cards-list__button-area\">\n               <button class=\"cards-list__button\">\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435</button>\n               </div>\n            </li>\n         ");
-
-        _this.list.insertAdjacentHTML('beforeend', html);
-
-        var currentButton = document.querySelectorAll('.cards-list__button')[document.querySelectorAll('.cards-list__button').length - 1];
-        currentButton.addEventListener('click', function () {
-          return _this.cardModalRender(data);
-        });
-      });
-      this.filterArguments = document.querySelectorAll('.choisable-item');
-      this.filterArguments.forEach(function (argument) {
-        argument.addEventListener('click', _this.renderSeedingCards.bind(_this, argument));
-      });
-      this.renderLodaerList(false);
-    } // фильтрация всех данных, которая получает на вход html элемент с соответствующими дата элементами
-
-  }, {
-    key: "renderSeedingCards",
     value: function () {
-      var _renderSeedingCards = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(argument) {
-        var filterKey, filterValue, countCharacters, lastCharacter, totalOrderCharacters, _this$_parsingKeyPath, currentCharacter, valueInKeyPath;
+      var _renderCharacters = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(allCharacters, someCharacters) {
+        var _this = this;
 
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // console.log(argument);
-                filterKey = argument.parentNode.dataset.filterType; // беру указанные данные в датасете по объектам API для фильтрации
-
-                filterValue = argument.dataset.value;
-                _context.next = 4;
-                return this.renderLodaerList(true);
-
-              case 4:
-                countCharacters = 1;
-                _context.next = 7;
-                return (0, _rickmortyapi.getCharacter)(countCharacters);
+                if (!this.totalCharcters) this.totalCharcters = allCharacters;
+                if (!this.filterOptions) this.filterOptions = {};
+                this.renderHtmlCards(someCharacters);
+                this.initSearchArea();
+                this.filterArguments = document.querySelectorAll('.choisable-item');
+                this.filterArguments.forEach(function (argument) {
+                  argument.addEventListener('click', _this.preRenderArgumentsForSeedingCards.bind(_this, argument));
+                });
+                this.renderLodaerList(false);
 
               case 7:
-                lastCharacter = _context.sent;
-                totalOrderCharacters = [];
-
-              case 9:
-                // если свойство по которому происходит фильтрация находится во вложенных обmектах, 
-                //то я достаю этот вложенный объект, и присваю его currentCharacter, а свойство в valueInKeyPath
-                _this$_parsingKeyPath = this._parsingKeyPath(filterKey, lastCharacter.data), currentCharacter = _this$_parsingKeyPath.currentCharacter, valueInKeyPath = _this$_parsingKeyPath.valueInKeyPath;
-                if (currentCharacter[valueInKeyPath] == filterValue) totalOrderCharacters.push(lastCharacter.data);
-                countCharacters++;
-                _context.next = 14;
-                return (0, _rickmortyapi.getCharacter)(countCharacters);
-
-              case 14:
-                lastCharacter = _context.sent;
-
-              case 15:
-                if (lastCharacter.statusMessage != 'Character not found') {
-                  _context.next = 9;
-                  break;
-                }
-
-              case 16:
-                this.list.innerHTML = "";
-                this.renderCharacters(totalOrderCharacters);
-
-              case 18:
               case "end":
                 return _context.stop();
             }
@@ -11507,18 +11515,91 @@ var Cards = /*#__PURE__*/function () {
         }, _callee, this);
       }));
 
-      function renderSeedingCards(_x) {
-        return _renderSeedingCards.apply(this, arguments);
+      function renderCharacters(_x, _x2) {
+        return _renderCharacters.apply(this, arguments);
       }
 
-      return renderSeedingCards;
+      return renderCharacters;
     }()
+  }, {
+    key: "initSearchArea",
+    value: function initSearchArea() {
+      var _this2 = this;
+
+      var searchInput = document.querySelector('#search-input');
+      var searchBtn = document.querySelector('#search-button');
+      searchBtn.addEventListener('click', function () {
+        return _this2.renderSearchFiltering.call(_this2, searchInput.value);
+      });
+      window.addEventListener('keydown', function (event) {
+        if (event.key == 'Enter' && searchInput.value) _this2.renderSearchFiltering(searchInput.value);
+      });
+    }
+  }, {
+    key: "renderHtmlCards",
+    value: function renderHtmlCards(orderCharacters) {
+      var _this3 = this;
+
+      orderCharacters.forEach(function (data) {
+        var name = data.name,
+            image = data.image,
+            id = data.id;
+        var html = "\n            <li class=\"cards-list__item character-item\">\n               <div class=\"cards-list__logo\">\n                  <img src=\"".concat(image, "\" alt=\"\">\n               </div>\n               <div class=\"cards-list__title\">").concat(name, "</div>\n               <div class=\"cards-list__button-area\">\n               <button class=\"cards-list__button\">\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435</button>\n               </div>\n            </li>\n         ");
+
+        _this3.list.insertAdjacentHTML('beforeend', html);
+
+        var currentButton = document.querySelectorAll('.cards-list__button')[document.querySelectorAll('.cards-list__button').length - 1];
+        currentButton.addEventListener('click', function () {
+          return _this3.cardModalRender(data);
+        });
+      });
+      this.renderLodaerList(false);
+    } // фильтрация всех данных, которая получает на вход html элемент с соответствующими дата элементами
+
+  }, {
+    key: "preRenderArgumentsForSeedingCards",
+    value: function preRenderArgumentsForSeedingCards(argument) {
+      var filterKey = argument.parentNode.dataset.filterType; // беру указанные данные в датасете по объектам API для фильтрации
+
+      var filterValue = argument.dataset.value;
+      this.renderSeedingCards(filterKey, filterValue);
+    }
+  }, {
+    key: "renderSeedingCards",
+    value: function renderSeedingCards(filterKey, filterValue) {
+      var _this4 = this;
+
+      console.log(filterKey, filterValue);
+      this.renderLodaerList(true);
+      this.setFilterParametrs(filterKey, filterValue);
+      var filteringCharacters = this.totalCharcters.filter(function (character) {
+        for (var _filterKey in _this4.filterOptions) {
+          var _this4$_parsingKeyPat = _this4._parsingKeyPath(_filterKey, character),
+              valueInKeyPath = _this4$_parsingKeyPat.valueInKeyPath,
+              currentCharacter = _this4$_parsingKeyPat.currentCharacter; // прохожу по цепочке вложенных объектов до нужного свойства
+
+
+          var charcterValue = currentCharacter[valueInKeyPath];
+          var _filterValue = _this4.filterOptions[_filterKey];
+          if (_filterValue != 'all' && !charcterValue.toLowerCase().includes(_filterValue.toLowerCase()) && _filterValue != '') return false;
+        }
+
+        return true;
+      });
+      this.list.innerHTML = "";
+      this.renderHtmlCards(filteringCharacters);
+    }
+  }, {
+    key: "setFilterParametrs",
+    value: function setFilterParametrs(filterKey, filterValue) {
+      this.filterOptions[filterKey] = filterValue;
+    }
   }, {
     key: "_parsingKeyPath",
     value: function _parsingKeyPath(filterKey, currentCharacter) {
       var keyPath = filterKey.split('-').reverse(); // прохожусь по указанному пути до исходного ключа, если это объекты (obj-obj-key)
 
-      var valueInKeyPath = keyPath.slice(-1);
+      var valueInKeyPath = keyPath.slice(-1)[0];
       keyPath = keyPath.slice(0, -1); // разбиваю путь на объекты и финальное значение (valueInKeyPath)
 
       if (keyPath.length) {
@@ -11538,8 +11619,8 @@ var Cards = /*#__PURE__*/function () {
       }
 
       return {
-        currentCharacter: currentCharacter,
-        valueInKeyPath: valueInKeyPath
+        valueInKeyPath: valueInKeyPath,
+        currentCharacter: currentCharacter
       };
     }
   }, {
@@ -11555,6 +11636,13 @@ var Cards = /*#__PURE__*/function () {
         list.classList.remove('disable');
         loaderArea.classList.remove('active');
       }
+    }
+  }, {
+    key: "renderSearchFiltering",
+    value: function renderSearchFiltering(inputValue) {
+      var filterKey = 'name';
+      var filterValue = inputValue;
+      this.renderSeedingCards(filterKey, filterValue);
     } // created: "2017-11-04T18:48:46.250Z"
     // episode: (41)['https://rickandmortyapi.com/api/episode/1', 'https://rickandmortyapi.com/api/episode/2', 'https://rickandmortyapi.com/api/episode/3', 'https://rickandmortyapi.com/api/episode/4', 'https://rickandmortyapi.com/api/episode/5', 'https://rickandmortyapi.com/api/episode/6', 'https://rickandmortyapi.com/api/episode/7', 'https://rickandmortyapi.com/api/episode/8', 'https://rickandmortyapi.com/api/episode/9', 'https://rickandmortyapi.com/api/episode/10', 'https://rickandmortyapi.com/api/episode/11', 'https://rickandmortyapi.com/api/episode/12', 'https://rickandmortyapi.com/api/episode/13', 'https://rickandmortyapi.com/api/episode/14', 'https://rickandmortyapi.com/api/episode/15', 'https://rickandmortyapi.com/api/episode/16', 'https://rickandmortyapi.com/api/episode/17', 'https://rickandmortyapi.com/api/episode/18', 'https://rickandmortyapi.com/api/episode/19', 'https://rickandmortyapi.com/api/episode/20', 'https://rickandmortyapi.com/api/episode/21', 'https://rickandmortyapi.com/api/episode/22', 'https://rickandmortyapi.com/api/episode/23', 'https://rickandmortyapi.com/api/episode/24', 'https://rickandmortyapi.com/api/episode/25', 'https://rickandmortyapi.com/api/episode/26', 'https://rickandmortyapi.com/api/episode/27', 'https://rickandmortyapi.com/api/episode/28', 'https://rickandmortyapi.com/api/episode/29', 'https://rickandmortyapi.com/api/episode/30', 'https://rickandmortyapi.com/api/episode/31', 'https://rickandmortyapi.com/api/episode/32', 'https://rickandmortyapi.com/api/episode/33', 'https://rickandmortyapi.com/api/episode/34', 'https://rickandmortyapi.com/api/episode/35', 'https://rickandmortyapi.com/api/episode/36', 'https://rickandmortyapi.com/api/episode/37', 'https://rickandmortyapi.com/api/episode/38', 'https://rickandmortyapi.com/api/episode/39', 'https://rickandmortyapi.com/api/episode/40', 'https://rickandmortyapi.com/api/episode/41']
     // gender: "Male"
@@ -11567,56 +11655,6 @@ var Cards = /*#__PURE__*/function () {
     // status: "Alive"
     // type: ""
 
-  }, {
-    key: "getAllFilteredCharacters",
-    value: function () {
-      var _getAllFilteredCharacters = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-        var countCharacters, lastCharacter, totalOrderCharacters;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                countCharacters = 1;
-                _context2.next = 3;
-                return (0, _rickmortyapi.getCharacter)(countCharacters);
-
-              case 3:
-                lastCharacter = _context2.sent;
-                totalOrderCharacters = [];
-
-              case 5:
-                // собираю всех персонажей в массив
-                totalOrderCharacters.push(lastCharacter.data);
-                countCharacters++;
-                _context2.next = 9;
-                return (0, _rickmortyapi.getCharacter)(countCharacters);
-
-              case 9:
-                lastCharacter = _context2.sent;
-
-              case 10:
-                if (lastCharacter.statusMessage != 'Character not found') {
-                  _context2.next = 5;
-                  break;
-                }
-
-              case 11:
-                return _context2.abrupt("return", totalOrderCharacters);
-
-              case 12:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }));
-
-      function getAllFilteredCharacters() {
-        return _getAllFilteredCharacters.apply(this, arguments);
-      }
-
-      return getAllFilteredCharacters;
-    }()
   }, {
     key: "setModalCardContent",
     value: function setModalCardContent(_ref) {
@@ -11640,7 +11678,7 @@ var Cards = /*#__PURE__*/function () {
   }, {
     key: "renderEpisodes",
     value: function renderEpisodes(orderEpisodes) {
-      var _this2 = this;
+      var _this5 = this;
 
       orderEpisodes.forEach(function (episodeInfo) {
         var name = episodeInfo.name,
@@ -11657,22 +11695,16 @@ var Cards = /*#__PURE__*/function () {
           section.classList.add('section-items');
           section.innerHTML = "\n               <div class='cards-list__turn-section' data-section-point=\"".concat(id, "\">\n                  ").concat(id, " - \u0421\u0435\u0437\u043E\u043D\n                  <span class=\"material-icons section-open-icon\"> expand_more </span>\n               </div>\n               <div class='cards-list__content-section' data-section=\"").concat(id, "\"></div>\n            ");
 
-          _this2.list.insertAdjacentElement('beforeend', section);
+          _this5.list.insertAdjacentElement('beforeend', section);
         }
 
         ;
         var htmlCurrentSection = document.querySelector("[data-section=\"".concat(id, "\"]"));
         htmlCurrentSection.insertAdjacentHTML('beforeend', html);
         htmlCurrentSection.querySelector("[data-seria=\"".concat(seria, "\"]")).querySelector('.cards-list__button').addEventListener('click', function () {
-          _this2.renderModalCard(episodeInfo);
+          _this5.renderModalCard(episodeInfo);
         });
       });
-    }
-  }, {
-    key: "renderModalCard",
-    value: function renderModalCard(ep) {
-      console.log(ep); // modal.open(); 
-      // TODO модалка переделана 
     }
   }]);
 
@@ -11720,110 +11752,23 @@ var interfaceArchitecture = /*#__PURE__*/function () {
   _createClass(interfaceArchitecture, [{
     key: "render",
     value: function () {
-      var _render = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(parametrs) {
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      var _render = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(parameters) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context.prev = _context.next) {
               case 0:
-                /*#__PURE__*/
-                (function () {
-                  var _setCategoriesFiltering = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                    var _this = this;
+                _context.next = 2;
+                return this.setCategoriesFiltering(parameters);
 
-                    var filterArea, characters, listParametrs, key, innerList, wrapper, keyWords;
-                    return regeneratorRuntime.wrap(function _callee$(_context) {
-                      while (1) {
-                        switch (_context.prev = _context.next) {
-                          case 0:
-                            //Прорисовываю алгоритмом все необходимые данный с апи
-                            filterArea = document.querySelector('.cards__filter-themes');
-                            _context.next = 3;
-                            return (0, _rickmortyapi.getCharacters)();
+              case 2:
+                this.startPageParameters();
 
-                          case 3:
-                            characters = _context.sent.data.results;
-                            // let characters = [];
-                            // for (let i = 1; i < 100; i++) {
-                            //    let c = (await getCharacters()).data.results
-                            //    characters.push(c);
-                            //    console.log(i);
-                            // }
-                            listParametrs = {};
-                            characters.forEach(function (character) {
-                              var _loop = function _loop() {
-                                var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-                                    key = _Object$entries$_i[0],
-                                    value = _Object$entries$_i[1];
-
-                                var checkPath = parametrs.find(function (par) {
-                                  return par.split('-')[1] && par.split('-')[0] == key;
-                                });
-
-                                if (checkPath) {
-                                  //обход вложенного массива необходимых параметров с апишки
-                                  var pathParameter = checkPath.split('-');
-                                  var totalParameter = character;
-                                  key = "";
-
-                                  for (var pathKey in pathParameter) {
-                                    key = pathParameter[pathKey] + '-' + key;
-                                    totalParameter = totalParameter[pathParameter[pathKey]];
-                                  }
-
-                                  key = key.slice(0, -1);
-                                  value = totalParameter;
-                                }
-
-                                if (checkPath || parametrs.includes(key)) {
-                                  !listParametrs[key] ? listParametrs[key] = new Set() : 0;
-                                  listParametrs[key].add(value);
-                                }
-                              };
-
-                              for (var _i = 0, _Object$entries = Object.entries(character); _i < _Object$entries.length; _i++) {
-                                _loop();
-                              }
-                            });
-
-                            for (key in listParametrs) {
-                              innerList = "";
-                              listParametrs[key].forEach(function (value) {
-                                if (value == 'unknown') return;
-                                innerList += "<li class=\"cards__filter-item choisable-item\" data-value=\"".concat(value, "\">").concat(value, "</li>");
-                              });
-                              wrapper = "\n               <div class=\"cards__filter-content\">\n                  <div class=\"cards__filter-item filter__item_".concat(key, "\" id=\"key-list-area\" data-list-key=\"filter-").concat(key, "-key\">\n                     <span class=\"cards__filter-item-title\"> ").concat(key[0].toUpperCase() + key.slice(1), " </span>\n                     <span class=\"material-icons\"> chevron_left </span>\n                  </div>\n                  <ul class=\"cards__filter-list\" data-filter-type=\"").concat(key, "\">\n                     ").concat(innerList, "\n                  </ul>\n               </div>\n            ");
-                              filterArea.insertAdjacentHTML('beforeend', wrapper);
-                            }
-
-                            keyWords = document.querySelectorAll('.cards__filter-content');
-                            keyWords.forEach(function (key) {
-                              return key.addEventListener('click', _this.renderOpenList.bind(_this, key));
-                            }); //отрисовка, функционал списка
-
-                            this.initStartWidthListItems();
-                            this.initClosableList();
-
-                          case 11:
-                          case "end":
-                            return _context.stop();
-                        }
-                      }
-                    }, _callee, this);
-                  }));
-
-                  function setCategoriesFiltering() {
-                    return _setCategoriesFiltering.apply(this, arguments);
-                  }
-
-                  return setCategoriesFiltering;
-                })().call(this);
-
-              case 1:
+              case 3:
               case "end":
-                return _context2.stop();
+                return _context.stop();
             }
           }
-        }, _callee2, this);
+        }, _callee, this);
       }));
 
       function render(_x) {
@@ -11831,6 +11776,111 @@ var interfaceArchitecture = /*#__PURE__*/function () {
       }
 
       return render;
+    }()
+  }, {
+    key: "setCategoriesFiltering",
+    value: function () {
+      var _setCategoriesFiltering = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(parametrs) {
+        var _this = this;
+
+        var filterArea, characters, i, c, listParametrs, key, innerList, wrapper, keyWords;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                //Прорисовываю алгоритмом все необходимые данный с апи
+                filterArea = document.querySelector('.cards__filter-themes'); // let characters = (await getCharacters()).data.results;
+
+                characters = [];
+                i = 1;
+
+              case 3:
+                if (!(i < 100)) {
+                  _context2.next = 11;
+                  break;
+                }
+
+                _context2.next = 6;
+                return (0, _rickmortyapi.getCharacter)(i);
+
+              case 6:
+                c = _context2.sent.data;
+                characters.push(c);
+
+              case 8:
+                i++;
+                _context2.next = 3;
+                break;
+
+              case 11:
+                listParametrs = {};
+                characters.forEach(function (character) {
+                  var _loop = function _loop() {
+                    var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+                        key = _Object$entries$_i[0],
+                        value = _Object$entries$_i[1];
+
+                    var checkPath = parametrs.find(function (par) {
+                      return par.split('-')[1] && par.split('-')[0] == key;
+                    });
+
+                    if (checkPath) {
+                      //обход вложенного массива необходимых параметров с апишки
+                      var pathParameter = checkPath.split('-');
+                      var totalParameter = character;
+                      key = "";
+
+                      for (var pathKey in pathParameter) {
+                        key = pathParameter[pathKey] + '-' + key;
+                        totalParameter = totalParameter[pathParameter[pathKey]];
+                      }
+
+                      key = key.slice(0, -1);
+                      value = totalParameter;
+                    }
+
+                    if (checkPath || parametrs.includes(key)) {
+                      !listParametrs[key] ? listParametrs[key] = new Set() : 0;
+                      listParametrs[key].add(value);
+                    }
+                  };
+
+                  for (var _i = 0, _Object$entries = Object.entries(character); _i < _Object$entries.length; _i++) {
+                    _loop();
+                  }
+                });
+
+                for (key in listParametrs) {
+                  innerList = "<li class=\"cards__filter-item choisable-item\" data-value=\"all\">All</li>";
+                  listParametrs[key].forEach(function (value) {
+                    if (value == 'unknown') return;
+                    innerList += "<li class=\"cards__filter-item choisable-item\" data-value=\"".concat(value, "\">").concat(value, "</li>");
+                  });
+                  wrapper = "\n                  <div class=\"cards__filter-content\">\n                     <div class=\"cards__filter-item filter__item_".concat(key, "\" id=\"key-list-area\" data-list-key=\"filter-").concat(key, "-key\">\n                        <span class=\"cards__filter-item-title\"> ").concat(key[0].toUpperCase() + key.slice(1), " </span>\n                        <span class=\"material-icons\"> chevron_left </span>\n                     </div>\n                     <ul class=\"cards__filter-list\" data-filter-type=\"").concat(key, "\">\n                        ").concat(innerList, "\n                     </ul>\n                  </div>\n               ");
+                  filterArea.insertAdjacentHTML('beforeend', wrapper);
+                }
+
+                keyWords = document.querySelectorAll('.cards__filter-content');
+                keyWords.forEach(function (key) {
+                  return key.addEventListener('click', _this.renderOpenList.bind(_this, key));
+                }); //отрисовка, функционал списка
+
+                this.initStartWidthListItems();
+                this.initClosableList();
+
+              case 18:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function setCategoriesFiltering(_x2) {
+        return _setCategoriesFiltering.apply(this, arguments);
+      }
+
+      return setCategoriesFiltering;
     }()
   }, {
     key: "initStartWidthListItems",
@@ -11851,7 +11901,6 @@ var interfaceArchitecture = /*#__PURE__*/function () {
       var allListFields = document.querySelectorAll('.choisable-item');
       allListFields.forEach(function (item) {
         item.addEventListener('click', function () {
-          console.log(item.closest('.cards__filter-content').querySelector('#key-list-area'));
           item.closest('.cards__filter-content').querySelector('.cards__filter-item-title').textContent = item.textContent;
 
           _this2.renderOpenList(item.closest('.cards__filter-content').querySelector('#key-list-area'));
@@ -11862,6 +11911,11 @@ var interfaceArchitecture = /*#__PURE__*/function () {
     key: "renderOpenList",
     value: function renderOpenList(key) {
       key.classList.toggle('active');
+    }
+  }, {
+    key: "startPageParameters",
+    value: function startPageParameters() {
+      window.scrollTop = 0;
     }
   }]);
 
@@ -11897,25 +11951,33 @@ var cards = new _Cards.Cards(); // document.querySelectorAll('.cards__filter-lis
 // console.log(document.querySelectorAll('.cards__filter-list'));
 
 _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-  var characters;
+  var allCharacters, someCharcters;
   return regeneratorRuntime.wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          _context.next = 2;
-          return _interfaceArchitecture.default.render(['status', 'species', 'gender', 'location-name']);
+          cards.renderLodaerList(true);
+          _context.next = 3;
+          return _interfaceArchitecture.default.render(['species', 'location-name', 'status', 'gender']);
 
-        case 2:
-          _context.next = 4;
-          return processingAPI.getCharactersAPI([1, 2, 3, 4, 5]);
+        case 3:
+          _context.next = 5;
+          return processingAPI.getAllCharactersAPI([1, 2, 3, 4, 5, 77]);
 
-        case 4:
-          characters = _context.sent;
-          //вводится массив индексов, которые показывать сначала 
-          // cards.setSourceCharacters(characters);
-          cards.renderCharacters(characters);
+        case 5:
+          allCharacters = _context.sent;
+          _context.next = 8;
+          return processingAPI.getSeveralCharactersAPI(30);
 
-        case 6:
+        case 8:
+          someCharcters = _context.sent;
+          _context.next = 11;
+          return cards.renderCharacters(allCharacters, someCharcters);
+
+        case 11:
+          cards.renderLodaerList(false);
+
+        case 12:
         case "end":
           return _context.stop();
       }
@@ -11950,7 +12012,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64332" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55806" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

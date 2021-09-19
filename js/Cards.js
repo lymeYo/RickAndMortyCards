@@ -9,16 +9,38 @@ export class Cards {
    constructor() {
       this.list = document.querySelector('#cards-list');
    }
+   
+   async renderCharacters(allCharacters, someCharacters) { 
+      if (!this.totalCharcters) 
+         this.totalCharcters = allCharacters;
 
-   setSourceCharacters(orderCharacters) {
-      this.sourceOrderCharacters = orderCharacters;
-      this.renderCharacters(orderCharacters);
+      if (!this.filterOptions)
+         this.filterOptions = {};
+
+      this.renderHtmlCards(someCharacters);
+
+      this.initSearchArea()
+
+      this.filterArguments = document.querySelectorAll('.choisable-item');
+
+      this.filterArguments.forEach(argument => {
+         argument.addEventListener('click', this.preRenderArgumentsForSeedingCards.bind(this, argument))
+      })
+
+      this.renderLodaerList(false);
+   }
+
+   initSearchArea() {
+      let searchInput = document.querySelector('#search-input');
+      let searchBtn = document.querySelector('#search-button');
+      searchBtn.addEventListener('click', () => this.renderSearchFiltering.call(this, searchInput.value));
+      window.addEventListener('keydown', (event) => {
+         if (event.key == 'Enter' && searchInput.value)
+            this.renderSearchFiltering(searchInput.value);
+      })
    }
    
-   renderCharacters(orderCharacters) {
-      console.log(orderCharacters);
-      this.sourceOrderCharacters = orderCharacters;
-
+   renderHtmlCards(orderCharacters) {
       orderCharacters.forEach((data) => {
          let { name, image, id } = data;
          let html = `
@@ -39,54 +61,60 @@ export class Cards {
          currentButton.addEventListener('click', () => this.cardModalRender(data));
       });
 
-      this.filterArguments = document.querySelectorAll('.choisable-item');
-
-      this.filterArguments.forEach(argument => {
-         argument.addEventListener('click', this.renderSeedingCards.bind(this, argument))
-      })
-
       this.renderLodaerList(false);
    }
-
+   
    // фильтрация всех данных, которая получает на вход html элемент с соответствующими дата элементами
-   async renderSeedingCards(argument) {
-      // console.log(argument);
-
+   preRenderArgumentsForSeedingCards(argument) {
       let filterKey = argument.parentNode.dataset.filterType; // беру указанные данные в датасете по объектам API для фильтрации
       let filterValue = argument.dataset.value;
+
+      this.renderSeedingCards(filterKey, filterValue)
+   }
+   
+   renderSeedingCards(filterKey, filterValue) {
+      console.log(filterKey, filterValue);
       
-      await this.renderLodaerList(true);
+      this.renderLodaerList(true);
 
-      let countCharacters = 1;
-      let lastCharacter = await getCharacter(countCharacters);
-      const totalOrderCharacters = [];
+      this.setFilterParametrs(filterKey, filterValue);
 
-      do {
-         // если свойство по которому происходит фильтрация находится во вложенных обmектах, 
-         //то я достаю этот вложенный объект, и присваю его currentCharacter, а свойство в valueInKeyPath
-         let { currentCharacter, valueInKeyPath } = this._parsingKeyPath(filterKey, lastCharacter.data); 
+      
+      let filteringCharacters = this.totalCharcters.filter(character => {
          
-         if (currentCharacter[valueInKeyPath] == filterValue)
-            totalOrderCharacters.push(lastCharacter.data);
-            
-         countCharacters++;
-         lastCharacter = await getCharacter(countCharacters);
-      } while (lastCharacter.statusMessage != 'Character not found')
+         for (let filterKey in this.filterOptions) {
+
+            let { valueInKeyPath, currentCharacter } = this._parsingKeyPath(filterKey, character); // прохожу по цепочке вложенных объектов до нужного свойства
+            let charcterValue = currentCharacter[valueInKeyPath];
+            let filterValue = this.filterOptions[filterKey];
+
+            if (filterValue != 'all' && !charcterValue.toLowerCase().includes(filterValue.toLowerCase()) && filterValue != '') return false;
+         }
+
+         return true;
+      });
+
       
       this.list.innerHTML = "";
-      this.renderCharacters(totalOrderCharacters);
+      this.renderHtmlCards(filteringCharacters);
+   }
+
+   setFilterParametrs(filterKey, filterValue) {
+      this.filterOptions[filterKey] = filterValue;
    }
 
    _parsingKeyPath(filterKey, currentCharacter) {
+      
       let keyPath = filterKey.split('-').reverse(); // прохожусь по указанному пути до исходного ключа, если это объекты (obj-obj-key)
-      let valueInKeyPath = keyPath.slice(-1);
+      let valueInKeyPath = keyPath.slice(-1)[0];
+      
       keyPath = keyPath.slice(0, -1) // разбиваю путь на объекты и финальное значение (valueInKeyPath)
 
       if (keyPath.length)
          for (let pathStep of keyPath)
             currentCharacter = currentCharacter[pathStep];
 
-      return { currentCharacter, valueInKeyPath };
+      return { valueInKeyPath, currentCharacter };
    }
 
    renderLodaerList(renderLoader) {
@@ -102,6 +130,13 @@ export class Cards {
          loaderArea.classList.remove('active');
       }
    }
+
+   renderSearchFiltering(inputValue) {
+      let filterKey = 'name';
+      let filterValue = inputValue;
+
+      this.renderSeedingCards(filterKey, filterValue)
+   }
    
    // created: "2017-11-04T18:48:46.250Z"
    // episode: (41)['https://rickandmortyapi.com/api/episode/1', 'https://rickandmortyapi.com/api/episode/2', 'https://rickandmortyapi.com/api/episode/3', 'https://rickandmortyapi.com/api/episode/4', 'https://rickandmortyapi.com/api/episode/5', 'https://rickandmortyapi.com/api/episode/6', 'https://rickandmortyapi.com/api/episode/7', 'https://rickandmortyapi.com/api/episode/8', 'https://rickandmortyapi.com/api/episode/9', 'https://rickandmortyapi.com/api/episode/10', 'https://rickandmortyapi.com/api/episode/11', 'https://rickandmortyapi.com/api/episode/12', 'https://rickandmortyapi.com/api/episode/13', 'https://rickandmortyapi.com/api/episode/14', 'https://rickandmortyapi.com/api/episode/15', 'https://rickandmortyapi.com/api/episode/16', 'https://rickandmortyapi.com/api/episode/17', 'https://rickandmortyapi.com/api/episode/18', 'https://rickandmortyapi.com/api/episode/19', 'https://rickandmortyapi.com/api/episode/20', 'https://rickandmortyapi.com/api/episode/21', 'https://rickandmortyapi.com/api/episode/22', 'https://rickandmortyapi.com/api/episode/23', 'https://rickandmortyapi.com/api/episode/24', 'https://rickandmortyapi.com/api/episode/25', 'https://rickandmortyapi.com/api/episode/26', 'https://rickandmortyapi.com/api/episode/27', 'https://rickandmortyapi.com/api/episode/28', 'https://rickandmortyapi.com/api/episode/29', 'https://rickandmortyapi.com/api/episode/30', 'https://rickandmortyapi.com/api/episode/31', 'https://rickandmortyapi.com/api/episode/32', 'https://rickandmortyapi.com/api/episode/33', 'https://rickandmortyapi.com/api/episode/34', 'https://rickandmortyapi.com/api/episode/35', 'https://rickandmortyapi.com/api/episode/36', 'https://rickandmortyapi.com/api/episode/37', 'https://rickandmortyapi.com/api/episode/38', 'https://rickandmortyapi.com/api/episode/39', 'https://rickandmortyapi.com/api/episode/40', 'https://rickandmortyapi.com/api/episode/41']
@@ -115,20 +150,6 @@ export class Cards {
    // status: "Alive"
    // type: ""
 
-   async getAllFilteredCharacters() {
-      let countCharacters = 1;
-      let lastCharacter = await getCharacter(countCharacters);
-      const totalOrderCharacters = [];
-
-      do {
-         // собираю всех персонажей в массив
-         totalOrderCharacters.push(lastCharacter.data);
-         countCharacters++;
-         lastCharacter = await getCharacter(countCharacters);
-      } while (lastCharacter.statusMessage != 'Character not found')
-
-      return totalOrderCharacters;
-   }
 
    setModalCardContent({ id, status, name, image, species, location, origin, gender }) {
       let modalContent = `
@@ -197,12 +218,5 @@ export class Cards {
             .querySelector('.cards-list__button')
             .addEventListener('click', () => { this.renderModalCard(episodeInfo) })
       });
-   }
-
-   renderModalCard(ep) {
-      console.log(ep);
-      
-      // modal.open(); 
-      // TODO модалка переделана 
    }
 }

@@ -9,31 +9,56 @@ const AmountCharacters = 30;
 export class ProcessingAPI {
    constructor() { }
 
-   async getCharactersAPI(amountTotalCharacters) {
+   async getAllCharactersAPI(indexesGeneralCharacters) {
+      
+      let countCharacters = 1;
+      let lastCharacter = await getCharacter(countCharacters);
+      let totalCharacters = [];
+
+      if (indexesGeneralCharacters && !Array.isArray(indexesGeneralCharacters)) throw new Error('getAllCharactersAPI parameter must be Array')
+
+      if (indexesGeneralCharacters) {
+         for (let id of indexesGeneralCharacters) {
+            let character = await getCharacter(id);
+            totalCharacters.push(character.data);
+         }
+      } // добавляю в начало массива основных персонажей
+
+      do {
+
+         countCharacters++;
+         if (!indexesGeneralCharacters?.includes(lastCharacter.data.id)) {
+            totalCharacters.push(lastCharacter.data);
+         }
+         lastCharacter = await getCharacter(countCharacters);
+      } while (lastCharacter.statusMessage != 'Character not found')
+      
+      if (!this.totalCharacters) this.totalCharacters = totalCharacters;
+      this.indexesGeneralCharacters = indexesGeneralCharacters || [];
+
+      return totalCharacters;
+   }
+   
+   async getSeveralCharactersAPI(amountCharacters) {
       
       // let responce = await getCharacters();
       const characters = [];
 
-      if (+amountTotalCharacters?.[0]) {
-         for (let id of amountTotalCharacters) {
-            let character = await getCharacter(id);
-            characters.push(character.data);
-         }
-      } // добавляю в начало массива основных персонажей
+      for (let id of this.indexesGeneralCharacters) {
+         let character = this.totalCharacters.find(character => character.id == id);
+         characters.push(character);
+      }
       
-      for (let i = 1; i <= AmountCharacters; i++) {
+      for (let i = 1; i <= amountCharacters; i++) {
          let id = Math.ceil(Math.random() * 300 + 5);
 
-         while (amountTotalCharacters.includes(id)) {
+         while (this.indexesGeneralCharacters.includes(id)) {
             id = Math.ceil(Math.random() * 300 + 5);
          }
          
-         let character = await getCharacter(id);
-         characters.push(character.data);
-      }
-
-      console.log(characters);
-      
+         let character = this.totalCharacters[id];
+         characters.push(character);
+      }      
 
       return characters;
    }

@@ -165,6 +165,9 @@ body {
   width: 100%;
   max-width: 380px;
   min-width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .header__search > input {
@@ -174,12 +177,22 @@ body {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
+.header__search > button {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 0 7px;
+}
+
+.header__search > button > span {
+  color: #fff;
+  opacity: 0.750;
+}
+
 .header__menu {
   display: none;
 }
 
 .cards-wrapper {
-  margin: 60px 0px 0px 0px;
+  padding: 60px 0px 0px 0px;
 }
 
 .cards {
@@ -405,7 +418,6 @@ body {
 .cards__filter-content {
   position: relative;
   background-color: #5176bb;
-  border: 1px solid #000;
   overflow: hidden;
 }
 

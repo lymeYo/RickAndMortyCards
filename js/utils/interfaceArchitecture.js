@@ -4,81 +4,85 @@ import { getCharacter } from 'rickmortyapi';
 class interfaceArchitecture {
    constructor() {}
    
-   async render(parametrs) {
-      
-      (async function setCategoriesFiltering() {
-         //Прорисовываю алгоритмом все необходимые данный с апи
-         const filterArea = document.querySelector('.cards__filter-themes');
-         let characters = (await getCharacters()).data.results;
-         // let characters = [];
-         // for (let i = 1; i < 100; i++) {
-         //    let c = (await getCharacters()).data.results
-         //    characters.push(c);
-         //    console.log(i);
-            
-         // }
-         
-         
-         let listParametrs = {};
-         characters.forEach(character => {
-            for (let [key, value] of Object.entries(character)) {
+   async render(parameters) {
+      await this.setCategoriesFiltering(parameters)
+
+      this.startPageParameters()
+   }
+
+   async setCategoriesFiltering(parametrs) {
+      //Прорисовываю алгоритмом все необходимые данный с апи
+      const filterArea = document.querySelector('.cards__filter-themes');
+      // let characters = (await getCharacters()).data.results;
+
+      let characters = [];
+      for (let i = 1; i < 100; i++) {
+         let c = (await getCharacter(i)).data;
+         characters.push(c);
+
+      }
 
 
-               let checkPath = parametrs.find(par => par.split('-')[1] && par.split('-')[0] == key);
-               if (checkPath) { //обход вложенного массива необходимых параметров с апишки
-                  
-                  let pathParameter = checkPath.split('-');
-                  let totalParameter = character;
-                  key = "";
-                  for (let pathKey in pathParameter) {
-                     key = pathParameter[pathKey] + '-' + key;
-                     totalParameter = totalParameter[pathParameter[pathKey]];
-                  }
-                  key = key.slice(0, -1);
-                  
-                  value = totalParameter;
+      let listParametrs = {};
+      characters.forEach(character => {
+         for (let [key, value] of Object.entries(character)) {
+
+
+            let checkPath = parametrs.find(par => par.split('-')[1] && par.split('-')[0] == key);
+            if (checkPath) { //обход вложенного массива необходимых параметров с апишки
+
+               let pathParameter = checkPath.split('-');
+               let totalParameter = character;
+               key = "";
+               for (let pathKey in pathParameter) {
+                  key = pathParameter[pathKey] + '-' + key;
+                  totalParameter = totalParameter[pathParameter[pathKey]];
                }
-               
+               key = key.slice(0, -1);
 
-               if (checkPath || parametrs.includes(key)) {
-                  (!listParametrs[key]) ? listParametrs[key] = new Set() : 0;
-                  listParametrs[key].add(value);
-               }
+               value = totalParameter;
             }
+
+
+            if (checkPath || parametrs.includes(key)) {
+               (!listParametrs[key]) ? listParametrs[key] = new Set() : 0;
+               listParametrs[key].add(value);
+            }
+         }
+      })
+
+      for (let key in listParametrs) {
+         let innerList = `<li class="cards__filter-item choisable-item" data-value="all">All</li>`;
+
+         listParametrs[key].forEach(value => {
+            if (value == 'unknown') return;
+
+            innerList += `<li class="cards__filter-item choisable-item" data-value="${value}">${value}</li>`;
          })
 
-         for (let key in listParametrs) {
-            let innerList = ``;
 
-            listParametrs[key].forEach(value => {
-               if (value == 'unknown') return;
-               
-               innerList += `<li class="cards__filter-item choisable-item" data-value="${value}">${value}</li>`;
-            })
-            
-
-            let wrapper = `
-               <div class="cards__filter-content">
-                  <div class="cards__filter-item filter__item_${key}" id="key-list-area" data-list-key="filter-${key}-key">
-                     <span class="cards__filter-item-title"> ${key[0].toUpperCase() + key.slice(1)} </span>
-                     <span class="material-icons"> chevron_left </span>
+         let wrapper = `
+                  <div class="cards__filter-content">
+                     <div class="cards__filter-item filter__item_${key}" id="key-list-area" data-list-key="filter-${key}-key">
+                        <span class="cards__filter-item-title"> ${key[0].toUpperCase() + key.slice(1)} </span>
+                        <span class="material-icons"> chevron_left </span>
+                     </div>
+                     <ul class="cards__filter-list" data-filter-type="${key}">
+                        ${innerList}
+                     </ul>
                   </div>
-                  <ul class="cards__filter-list" data-filter-type="${key}">
-                     ${innerList}
-                  </ul>
-               </div>
-            `;
-            filterArea.insertAdjacentHTML('beforeend', wrapper);
-         }
+               `;
+         filterArea.insertAdjacentHTML('beforeend', wrapper);
+      }
 
-         let keyWords = document.querySelectorAll('.cards__filter-content');
+      let keyWords = document.querySelectorAll('.cards__filter-content');
 
-         keyWords.forEach(key => key.addEventListener('click', this.renderOpenList.bind(this, key)));
+      keyWords.forEach(key => key.addEventListener('click', this.renderOpenList.bind(this, key)));
 
-         //отрисовка, функционал списка
-         this.initStartWidthListItems();
-         this.initClosableList();
-      }).call(this);
+      //отрисовка, функционал списка
+      this.initStartWidthListItems();
+      this.initClosableList();
+
    }
 
    initStartWidthListItems() {
@@ -96,7 +100,6 @@ class interfaceArchitecture {
 
       allListFields.forEach(item => {
          item.addEventListener('click', () => {
-            console.log(item.closest('.cards__filter-content').querySelector('#key-list-area'))
             item.closest('.cards__filter-content').querySelector('.cards__filter-item-title').textContent = item.textContent;
             
             this.renderOpenList(item.closest('.cards__filter-content').querySelector('#key-list-area'));
@@ -106,6 +109,10 @@ class interfaceArchitecture {
 
    renderOpenList(key) {
       key.classList.toggle('active');
+   }
+
+   startPageParameters() {
+      window.scrollTop = 0;
    }
 }
 
