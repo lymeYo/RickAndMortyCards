@@ -51,6 +51,7 @@ body {
 
    &__title {
       flex: 0 0 auto;
+      cursor: pointer;
 
       &-pc {
          
@@ -118,6 +119,25 @@ body {
    &__menu {
       display: none;
    }
+
+   &__sections {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      font-size: 20px;
+
+      &-title {
+         display: flex;
+         align-items: center;
+         cursor: pointer;
+         height: 60%;
+         padding: 0px 20px 0px 20px;
+
+         &:hover {
+            background-color: rgba(255, 255, 255, 0.075);
+         }
+      }
+   }
 }
 
 
@@ -128,6 +148,7 @@ body {
    background-color: $listBg;
    
    &-list {
+      position: relative;
       padding: 0px 20px 0px 20px;
       display: grid;
       gap: 30px;
@@ -198,6 +219,7 @@ body {
       }
 
       &__item {
+         position: relative;
          border: 2px solid $borderCardsClr;
          background-color: #fff;
          border-radius: 10px;
@@ -258,6 +280,7 @@ body {
       }
 
       &__button-area {
+         position: relative;
          width: 100%;
          margin: 20px 0px 0px 0px;
          display: flex;
@@ -284,6 +307,38 @@ body {
 
       &__air-date {
          text-align: right;
+      }
+      
+      &__favorites {
+         position: absolute;
+         right: 0;
+         top: 50%;
+         transform: translateY(-50%);
+         cursor: pointer;
+         
+         &:hover {
+
+            span {
+               transform: translateY(-3px);
+            }
+         }
+
+         span {
+            transition: transform .3s ease;
+            display: none;
+         }
+
+         .icon-default {
+            
+         }
+
+         .icon-active {
+            color: rgb(127, 178, 245);
+         }
+
+         span.active {
+            display: block;
+         }
       }
    } 
    
@@ -340,6 +395,8 @@ body {
          display: none;
          transition: top .5s ease;
          cursor: pointer;
+         max-height: 380px;
+         overflow: auto;
       }
 
       #key-list-area {
@@ -387,7 +444,62 @@ body {
          }
       }
    }
+
+   &__favorites-area {
+      display: none;
+      margin: 20px 0px 75px 0px;
+      font-size: 26px;
+      color: #fff;
+      text-transform: uppercase;
+      
+      p {
+         text-align: center;
+      }
+   }
 }
+
+.favorites-wrapper {
+}
+.favorites {
+
+
+   &__notif {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 300px;
+      padding: 10px;
+      visibility: hidden;
+      opacity: 0;
+      transition: all .35s ease;
+      background-color: rgb(198, 235, 167);
+
+      &.active {
+         visibility: visible;
+         opacity: 1;
+      }
+      
+      &-btn {
+         position: absolute;
+         top: 0;
+         right: 0;
+         
+         > button {
+            background-color: transparent;
+            
+            > span {
+               background-color: transparent;
+            }
+         }
+      }
+
+      &-text {
+         
+      }
+   }
+
+}
+
 
 .character-modal {
    background-color: #fff;

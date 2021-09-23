@@ -2,6 +2,8 @@ import { LyModal } from '../../../My-plugins/LyModale-plugin/LyModal';
 import { getCharacters } from 'rickmortyapi';
 import { getCharacter } from 'rickmortyapi';
 import { getEpisodes } from 'rickmortyapi';
+import favorites from './Favorites.js';
+import localeStorageProccesing from './utils/LocaleStorageProccesing';
 
 let newModal = new LyModal(`<div class="character-modal" id="lyModal-content"></div>`);
 
@@ -10,16 +12,20 @@ export class Cards {
       this.list = document.querySelector('#cards-list');
    }
    
-   async renderCharacters(allCharacters, someCharacters) { 
+   async renderCharacters(allCharacters, startCharacters) { 
       if (!this.totalCharcters) 
          this.totalCharcters = allCharacters;
 
       if (!this.filterOptions)
          this.filterOptions = {};
 
-      this.renderHtmlCards(someCharacters);
+      this.renderHtmlCards(startCharacters);
 
-      this.initSearchArea()
+      this.initSearchArea();
+
+      this.collectFavorites();
+
+      this.renderSeedNavigation();
 
       this.filterArguments = document.querySelectorAll('.choisable-item');
 
@@ -29,28 +35,34 @@ export class Cards {
 
       this.renderLodaerList(false);
    }
-
-   initSearchArea() {
-      let searchInput = document.querySelector('#search-input');
-      let searchBtn = document.querySelector('#search-button');
-      searchBtn.addEventListener('click', () => this.renderSearchFiltering.call(this, searchInput.value));
-      window.addEventListener('keydown', (event) => {
-         if (event.key == 'Enter' && searchInput.value)
-            this.renderSearchFiltering(searchInput.value);
-      })
-   }
    
-   renderHtmlCards(orderCharacters) {
+   renderHtmlCards(orderCharacters) { 
+      this.list.innerHTML = "";
+
+      if (!orderCharacters) orderCharacters = this.totalCharcters;
+      
       orderCharacters.forEach((data) => {
          let { name, image, id } = data;
+         let checkActiveIcon = '';
+         let checkDefaultIcon = 'active';
+
+         if (this.checkItemInstorage(id)) {
+            checkDefaultIcon = '';
+            checkActiveIcon = 'active';
+         }
+         
          let html = `
-            <li class="cards-list__item character-item">
+            <li class="cards-list__item character-item" data-id-character="${id}">
                <div class="cards-list__logo">
                   <img src="${image}" alt="">
                </div>
-               <div class="cards-list__title">${name}</div>
+               <div class="cards-list__title" data-name="${name}">${name}</div>
                <div class="cards-list__button-area">
-               <button class="cards-list__button">Подробнее</button>
+                  <button class="cards-list__button">Подробнее</button>
+                  <div class="cards-list__favorites">
+                     <span class="material-icons icon-active ${checkActiveIcon}"> favorite </span>
+                     <span class="material-icons icon-default ${checkDefaultIcon}"> favorite_border </span>
+                  </div>
                </div>
             </li>
          `;
@@ -59,7 +71,10 @@ export class Cards {
 
          let currentButton = document.querySelectorAll('.cards-list__button')[document.querySelectorAll('.cards-list__button').length - 1];
          currentButton.addEventListener('click', () => this.cardModalRender(data));
+
       });
+       
+      favorites.render(this.totalCharcters);
 
       this.renderLodaerList(false);
    }
@@ -73,11 +88,11 @@ export class Cards {
    }
    
    renderSeedingCards(filterKey, filterValue) {
-      console.log(filterKey, filterValue);
       
       this.renderLodaerList(true);
 
-      this.setFilterParametrs(filterKey, filterValue);
+      if (filterKey)
+         this.setFilterParametrs(filterKey, filterValue);
 
       
       let filteringCharacters = this.totalCharcters.filter(character => {
@@ -95,7 +110,6 @@ export class Cards {
       });
 
       
-      this.list.innerHTML = "";
       this.renderHtmlCards(filteringCharacters);
    }
 
@@ -131,11 +145,79 @@ export class Cards {
       }
    }
 
+   renderSeedNavigation() {
+      const favoritesPointers = document.querySelectorAll('#pointer-favorites');
+
+      favoritesPointers.forEach(pointer => {
+         pointer.addEventListener('click', this.handFavoritesToHtmlRender.bind(this))
+      })
+
+
+      const generallPointer = document.querySelectorAll('#pointer-home');
+
+      generallPointer.forEach(pointer => {
+         pointer.addEventListener('click', this.handGenerallToHtmlRender.bind(this))
+      })
+   }
+
+   handFavoritesToHtmlRender() {
+      const favorites = localeStorageProccesing.getStorageData('favorite');
+      let favoritesTitle = document.querySelector('.cards__favorites-area');
+      let filterArea = document.querySelector('.cards__filter-area');
+      favoritesTitle.style.display = "block";
+      filterArea.style.display = "none";
+
+      this.renderHtmlCards(favorites);
+   }
+
+   handGenerallToHtmlRender() {
+      let favoritesTitle = document.querySelector('.cards__favorites-area');
+      let filterArea = document.querySelector('.cards__filter-area');
+      favoritesTitle.style.display = "none";
+      filterArea.style.display = "block";
+      this.renderSeedingCards(null);
+   }
+
+   initSearchArea() {
+      let searchInput = document.querySelector('#search-input');
+      let searchBtn = document.querySelector('#search-button');
+
+      searchBtn.addEventListener('click', () => {
+         this.renderSearchFiltering.call(this, searchInput.value)
+      });
+
+      window.addEventListener('keydown', (event) => {
+         if (event.code == 'Enter') 
+            this.renderSearchFiltering(searchInput.value);
+      })
+   }
+
    renderSearchFiltering(inputValue) {
       let filterKey = 'name';
       let filterValue = inputValue;
 
       this.renderSeedingCards(filterKey, filterValue)
+   }
+
+   // renderFavorites() {
+   //    //TODO поставить листенер на каждый html элемент favorites
+   //    const favoritesArea = document.querySelectorAll('.cards-list__favorites');
+
+   //    favoritesArea.forEach(favorite => favorite.addEventListener('click', () => {
+
+   //       let id = favorite.closest('.cards-list__item').dataset.idCharacter
+   //       console.log(id);
+   //    }))
+   // }
+   
+   collectFavorites() {
+   }
+
+   checkItemInstorage(id) {
+      let favorites = localeStorageProccesing.getStorageData('favorite');
+      
+      if (favorites.find(item => item.id == id)) return true;
+      return false;
    }
    
    // created: "2017-11-04T18:48:46.250Z"
@@ -174,6 +256,8 @@ export class Cards {
       newModal.open();
    }
    
+
+   //не до конца реализованный метод прорисовки эпизодов
    renderEpisodes(orderEpisodes) {
       
       orderEpisodes.forEach((episodeInfo) => {

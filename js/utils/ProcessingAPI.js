@@ -25,7 +25,7 @@ export class ProcessingAPI {
       } // добавляю в начало массива основных персонажей
 
       do {
-
+         //перебираю всех возможных персонажей с API
          countCharacters++;
          if (!indexesGeneralCharacters?.includes(lastCharacter.data.id)) {
             totalCharacters.push(lastCharacter.data);
@@ -50,6 +50,7 @@ export class ProcessingAPI {
       }
       
       for (let i = 1; i <= amountCharacters; i++) {
+         //выбираю случайных персонажей для стартовой отрисовки
          let id = Math.ceil(Math.random() * 300 + 5);
 
          while (this.indexesGeneralCharacters.includes(id)) {

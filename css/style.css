@@ -124,6 +124,7 @@ body {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
+  cursor: pointer;
 }
 
 .header__title-mobile {
@@ -191,6 +192,33 @@ body {
   display: none;
 }
 
+.header__sections {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  font-size: 20px;
+}
+
+.header__sections-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  height: 60%;
+  padding: 0px 20px 0px 20px;
+}
+
+.header__sections-title:hover {
+  background-color: rgba(255, 255, 255, 0.075);
+}
+
 .cards-wrapper {
   padding: 60px 0px 0px 0px;
 }
@@ -200,6 +228,7 @@ body {
 }
 
 .cards-list {
+  position: relative;
   padding: 0px 20px 0px 20px;
   display: -ms-grid;
   display: grid;
@@ -288,6 +317,7 @@ body {
 }
 
 .cards-list__item {
+  position: relative;
   border: 2px solid #779b9e;
   background-color: #fff;
   border-radius: 10px;
@@ -362,6 +392,7 @@ body {
 }
 
 .cards-list__button-area {
+  position: relative;
   width: 100%;
   margin: 20px 0px 0px 0px;
   display: -webkit-box;
@@ -392,6 +423,36 @@ body {
 
 .cards-list__air-date {
   text-align: right;
+}
+
+.cards-list__favorites {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.cards-list__favorites:hover span {
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+}
+
+.cards-list__favorites span {
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease;
+  display: none;
+}
+
+.cards-list__favorites .icon-active {
+  color: #7fb2f5;
+}
+
+.cards-list__favorites span.active {
+  display: block;
 }
 
 .cards__filter {
@@ -436,6 +497,8 @@ body {
   -webkit-transition: top .5s ease;
   transition: top .5s ease;
   cursor: pointer;
+  max-height: 380px;
+  overflow: auto;
 }
 
 .cards__filter #key-list-area {
@@ -484,6 +547,50 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.cards__favorites-area {
+  display: none;
+  margin: 20px 0px 75px 0px;
+  font-size: 26px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.cards__favorites-area p {
+  text-align: center;
+}
+
+.favorites__notif {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  padding: 10px;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all .35s ease;
+  transition: all .35s ease;
+  background-color: #c6eba7;
+}
+
+.favorites__notif.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.favorites__notif-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.favorites__notif-btn > button {
+  background-color: transparent;
+}
+
+.favorites__notif-btn > button > span {
+  background-color: transparent;
 }
 
 .character-modal {

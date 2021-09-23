@@ -6,28 +6,63 @@ import axios from 'axios'; //подключил библиотеку на слу
 import { ProcessingAPI } from './utils/ProcessingAPI'; // класс, который занимается обработкой API
 import { Cards } from './Cards';
 import interfaceArchitecture from './utils/interfaceArchitecture.js';
-
-
-// const modal = new LyModal;
-// modal.open();
+import favorites from './Favorites.js';
+import localeStorageProccesing from './utils/LocaleStorageProccesing.js';
 
 const processingAPI = new ProcessingAPI();
 
 const cards = new Cards();
 
-// document.querySelectorAll('.cards__filter-list').classList.add('active');
-// console.log(document.querySelectorAll('.cards__filter-list'));
+
+class Vehicle {
+   drive() {
+      console.log("Vehicle is driving");
+      this.establish()
+   }
+
+   establish() {
+      console.log('Vehicle is establishing');
+   }
+}
+
+class Car extends Vehicle {
+   constructor() {
+      super();
+   }
+   drive() {
+      super.drive();
+   }
+   establish() {
+      console.log("Car establish proccesing");
+   }
+}
+let car = new Car()
+car.method = () => 15;
+car.method2 = () => 30;
+Object.defineProperty(car, 'method', {
+   value: car.method,
+   enumerable: false,
+})
+
+for (let key in car) {
+   console.log(key, car[key]);
+   
+}
+
 
 (async function() {
-   cards.renderLodaerList(true);
+   cards.renderLodaerList(true); 
 
-   await interfaceArchitecture.render(['species', 'location-name', 'status', 'gender']);
-   
+   //перебираю всех возможных персонажей с API, в начале массива которых лежат необходимые
    let allCharacters = await processingAPI.getAllCharactersAPI([1, 2, 3, 4, 5, 77]); //[1, 2, 3, 4, 5, 125]
-   
-   let someCharcters = await processingAPI.getSeveralCharactersAPI(30); //вводится массив индексов, которые показывать сначала
 
-   await cards.renderCharacters(allCharacters, someCharcters);
+   await interfaceArchitecture.init(['species', 'location-name', 'status', 'gender'], allCharacters);
+   
+   let startCharacters = await processingAPI.getSeveralCharactersAPI(30); //вводится массив индексов, которые показывать сначала
+
+   await cards.renderCharacters(allCharacters, startCharacters);
+
+   //favorites.render(allCharacters); // рендер уведомлений вызываю внутри Cards renderHtmlCards
 
    cards.renderLodaerList(false);
-}());
+})();

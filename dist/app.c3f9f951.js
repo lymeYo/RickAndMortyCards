@@ -11077,6 +11077,7 @@ var ProcessingAPI = /*#__PURE__*/function () {
                 return _context.finish(24);
 
               case 27:
+                //перебираю всех возможных персонажей с API
                 countCharacters++;
 
                 if (!(indexesGeneralCharacters !== null && indexesGeneralCharacters !== void 0 && indexesGeneralCharacters.includes(lastCharacter.data.id))) {
@@ -11151,6 +11152,7 @@ var ProcessingAPI = /*#__PURE__*/function () {
                 }
 
                 for (i = 1; i <= amountCharacters; i++) {
+                  //выбираю случайных персонажей для стартовой отрисовки
                   id = Math.ceil(Math.random() * 300 + 5);
 
                   while (this.indexesGeneralCharacters.includes(id)) {
@@ -11264,6 +11266,7 @@ var LyModal = /*#__PURE__*/function () {
 
     _classCallCheck(this, LyModal);
 
+    window.addEventListener('resize', this.checkscrollbar);
     this.options = {
       clientContent: clientContent,
       title: title,
@@ -11285,6 +11288,11 @@ var LyModal = /*#__PURE__*/function () {
   }
 
   _createClass(LyModal, [{
+    key: "checkscrollbar",
+    value: function checkscrollbar() {
+      return window.innerWidth != document.body.clientWidth;
+    }
+  }, {
     key: "renderModale",
     value: function renderModale() {
       var options = this.options;
@@ -11340,9 +11348,7 @@ var LyModal = /*#__PURE__*/function () {
       this.openCheck = false; //animate__bounce
 
       this.modale.classList.add('active');
-
-      this._imitateScrollbar();
-
+      if (this.checkscrollbar()) this._imitateScrollbar();
       if (this.options.setAnim) setTimeout(this._renderAnim.bind(this, true), 500); // content.classList.add('.state-animate');
       //animation-name: heartBeat;
 
@@ -11361,9 +11367,7 @@ var LyModal = /*#__PURE__*/function () {
     key: "close",
     value: function close() {
       if (this.options.setAnim) this._renderAnim(false);
-
-      this._returnScrollbar();
-
+      if (this.checkscrollbar()) this._returnScrollbar();
       this.modale.classList.remove('active');
     }
   }, {
@@ -11379,6 +11383,7 @@ var LyModal = /*#__PURE__*/function () {
   }, {
     key: "_returnScrollbar",
     value: function _returnScrollbar() {
+      console.log('_returnScrollbar');
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.overflowY = '';
@@ -11387,6 +11392,7 @@ var LyModal = /*#__PURE__*/function () {
   }, {
     key: "_imitateScrollbar",
     value: function _imitateScrollbar() {
+      console.log('_imitateScrollbar');
       this.scrollTop = window.pageYOffset;
       document.body.style.position = 'fixed';
       document.body.style.top = -this.scrollTop + 'px';
@@ -11450,7 +11456,166 @@ exports.LyModal = LyModal;
 //    true,
 //    'Text content here!',
 // );
-},{}],"js/Cards.js":[function(require,module,exports) {
+},{}],"js/utils/LocaleStorageProccesing.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var LocaleStorageProccesing = /*#__PURE__*/function () {
+  function LocaleStorageProccesing() {
+    _classCallCheck(this, LocaleStorageProccesing);
+  }
+
+  _createClass(LocaleStorageProccesing, [{
+    key: "processStorageData",
+    value: function processStorageData(storageKey, item) {
+      var curData = this.getStorageData(storageKey);
+      var curDataIndexes = curData.map(function (item) {
+        return item.id;
+      });
+      var indexExistItem = curDataIndexes.indexOf(item.id);
+      console.log(indexExistItem);
+      if (indexExistItem + 1) curData.splice(indexExistItem, 1);else curData.push(item);
+      console.log(curData);
+      curData = JSON.stringify(curData);
+      localStorage.setItem(storageKey, curData);
+    }
+  }, {
+    key: "getStorageData",
+    value: function getStorageData(storageKey) {
+      if (localStorage.getItem(storageKey) === null) localStorage.setItem(storageKey, "[]"); // если массива значений нет, создаю
+
+      var curData = JSON.parse(localStorage.getItem(storageKey));
+      return curData;
+    }
+  }]);
+
+  return LocaleStorageProccesing;
+}();
+
+var _default = new LocaleStorageProccesing();
+
+exports.default = _default;
+},{}],"js/Favorites.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _LocaleStorageProccesing = _interopRequireDefault(require("./utils/LocaleStorageProccesing"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Favorites = /*#__PURE__*/function () {
+  function Favorites() {
+    _classCallCheck(this, Favorites);
+
+    this.notifStatus = true;
+    this.allCharacters = null;
+  }
+
+  _createClass(Favorites, [{
+    key: "render",
+    value: function render(allCharacters) {
+      var _this = this;
+
+      var favoritesArea = document.querySelectorAll('.cards-list__favorites');
+      if (!this.allCharacters) this.allCharacters = allCharacters;
+      favoritesArea.forEach(function (area) {
+        return area.addEventListener('click', function () {
+          var activeIcon = area.querySelector('.icon-active');
+          area.querySelector('.icon-default').classList.toggle('active');
+          activeIcon.classList.toggle('active');
+
+          if (activeIcon.classList.contains('active')) {
+            _this.renderFavoriteNotif(activeIcon);
+          }
+
+          _this.processFavoriteContent(activeIcon);
+        });
+      });
+    }
+  }, {
+    key: "renderFavoriteNotif",
+    value: function renderFavoriteNotif(activeIcon) {
+      if (!this.notifStatus) return;
+      var currentName = activeIcon.closest('.cards-list__item').querySelector('.cards-list__title').dataset.name;
+      var notifArea = document.querySelector('.favorites__notif');
+
+      if (notifArea.classList.contains('active')) {
+        this.notifStack(notifArea, this.renderFavoriteNotif.bind(this, activeIcon));
+        return;
+      }
+
+      var notifText = "\u041F\u0435\u0440\u0441\u043E\u043D\u0430\u0436 ".concat(currentName, " \u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u0432 \u0438\u0437\u0431\u0440\u0430\u043D\u043D\u043E\u0435");
+      notifArea.querySelector('#notif-text').textContent = notifText;
+      notifArea.classList.add('active');
+
+      var stackFn = function stackFn() {
+        var delayVisibleNotif = 1000;
+        setTimeout(function () {
+          return notifArea.classList.remove('active');
+        }, delayVisibleNotif);
+      };
+
+      document.querySelector('.favorites__notif-btn').addEventListener('click', function () {
+        return notifArea.classList.remove('active');
+      });
+      this.notifStack(notifArea, stackFn);
+    }
+  }, {
+    key: "notifStack",
+    value: function notifStack(notifArea, stackFn) {
+      //обработка функции stackFn по окончанию транзишиона notifArea, для очереди уведомлений
+      var listener = function listener() {
+        notifArea.removeEventListener('transitionend', listener);
+        stackFn();
+      };
+
+      notifArea.addEventListener('transitionend', listener);
+    }
+  }, {
+    key: "getApiItemFromIcon",
+    value: function getApiItemFromIcon(activeIcon) {
+      var listItem = activeIcon.closest('.cards-list__item');
+      var characterAPI = this.allCharacters.find(function (character) {
+        return character.id == listItem.dataset.idCharacter;
+      });
+      return characterAPI;
+    }
+  }, {
+    key: "processFavoriteContent",
+    value: function processFavoriteContent(activeIcon) {
+      var character = this.getApiItemFromIcon(activeIcon);
+
+      _LocaleStorageProccesing.default.processStorageData("favorite", character);
+    }
+  }]);
+
+  return Favorites;
+}();
+
+var _default = new Favorites();
+
+exports.default = _default;
+},{"./utils/LocaleStorageProccesing":"js/utils/LocaleStorageProccesing.js"}],"js/Cards.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11461,6 +11626,12 @@ exports.Cards = void 0;
 var _LyModal = require("../../../My-plugins/LyModale-plugin/LyModal");
 
 var _rickmortyapi = require("rickmortyapi");
+
+var _Favorites = _interopRequireDefault(require("./Favorites.js"));
+
+var _LocaleStorageProccesing = _interopRequireDefault(require("./utils/LocaleStorageProccesing"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
@@ -11490,7 +11661,7 @@ var Cards = /*#__PURE__*/function () {
   _createClass(Cards, [{
     key: "renderCharacters",
     value: function () {
-      var _renderCharacters = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(allCharacters, someCharacters) {
+      var _renderCharacters = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(allCharacters, startCharacters) {
         var _this = this;
 
         return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -11499,15 +11670,17 @@ var Cards = /*#__PURE__*/function () {
               case 0:
                 if (!this.totalCharcters) this.totalCharcters = allCharacters;
                 if (!this.filterOptions) this.filterOptions = {};
-                this.renderHtmlCards(someCharacters);
+                this.renderHtmlCards(startCharacters);
                 this.initSearchArea();
+                this.collectFavorites();
+                this.renderSeedNavigation();
                 this.filterArguments = document.querySelectorAll('.choisable-item');
                 this.filterArguments.forEach(function (argument) {
                   argument.addEventListener('click', _this.preRenderArgumentsForSeedingCards.bind(_this, argument));
                 });
                 this.renderLodaerList(false);
 
-              case 7:
+              case 9:
               case "end":
                 return _context.stop();
             }
@@ -11522,37 +11695,36 @@ var Cards = /*#__PURE__*/function () {
       return renderCharacters;
     }()
   }, {
-    key: "initSearchArea",
-    value: function initSearchArea() {
-      var _this2 = this;
-
-      var searchInput = document.querySelector('#search-input');
-      var searchBtn = document.querySelector('#search-button');
-      searchBtn.addEventListener('click', function () {
-        return _this2.renderSearchFiltering.call(_this2, searchInput.value);
-      });
-      window.addEventListener('keydown', function (event) {
-        if (event.key == 'Enter' && searchInput.value) _this2.renderSearchFiltering(searchInput.value);
-      });
-    }
-  }, {
     key: "renderHtmlCards",
     value: function renderHtmlCards(orderCharacters) {
-      var _this3 = this;
+      var _this2 = this;
 
+      this.list.innerHTML = "";
+      if (!orderCharacters) orderCharacters = this.totalCharcters;
       orderCharacters.forEach(function (data) {
         var name = data.name,
             image = data.image,
             id = data.id;
-        var html = "\n            <li class=\"cards-list__item character-item\">\n               <div class=\"cards-list__logo\">\n                  <img src=\"".concat(image, "\" alt=\"\">\n               </div>\n               <div class=\"cards-list__title\">").concat(name, "</div>\n               <div class=\"cards-list__button-area\">\n               <button class=\"cards-list__button\">\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435</button>\n               </div>\n            </li>\n         ");
+        var checkActiveIcon = '';
+        var checkDefaultIcon = 'active';
 
-        _this3.list.insertAdjacentHTML('beforeend', html);
+        if (_this2.checkItemInstorage(id)) {
+          checkDefaultIcon = '';
+          checkActiveIcon = 'active';
+        }
+
+        var html = "\n            <li class=\"cards-list__item character-item\" data-id-character=\"".concat(id, "\">\n               <div class=\"cards-list__logo\">\n                  <img src=\"").concat(image, "\" alt=\"\">\n               </div>\n               <div class=\"cards-list__title\" data-name=\"").concat(name, "\">").concat(name, "</div>\n               <div class=\"cards-list__button-area\">\n                  <button class=\"cards-list__button\">\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435</button>\n                  <div class=\"cards-list__favorites\">\n                     <span class=\"material-icons icon-active ").concat(checkActiveIcon, "\"> favorite </span>\n                     <span class=\"material-icons icon-default ").concat(checkDefaultIcon, "\"> favorite_border </span>\n                  </div>\n               </div>\n            </li>\n         ");
+
+        _this2.list.insertAdjacentHTML('beforeend', html);
 
         var currentButton = document.querySelectorAll('.cards-list__button')[document.querySelectorAll('.cards-list__button').length - 1];
         currentButton.addEventListener('click', function () {
-          return _this3.cardModalRender(data);
+          return _this2.cardModalRender(data);
         });
       });
+
+      _Favorites.default.render(this.totalCharcters);
+
       this.renderLodaerList(false);
     } // фильтрация всех данных, которая получает на вход html элемент с соответствующими дата элементами
 
@@ -11567,26 +11739,24 @@ var Cards = /*#__PURE__*/function () {
   }, {
     key: "renderSeedingCards",
     value: function renderSeedingCards(filterKey, filterValue) {
-      var _this4 = this;
+      var _this3 = this;
 
-      console.log(filterKey, filterValue);
       this.renderLodaerList(true);
-      this.setFilterParametrs(filterKey, filterValue);
+      if (filterKey) this.setFilterParametrs(filterKey, filterValue);
       var filteringCharacters = this.totalCharcters.filter(function (character) {
-        for (var _filterKey in _this4.filterOptions) {
-          var _this4$_parsingKeyPat = _this4._parsingKeyPath(_filterKey, character),
-              valueInKeyPath = _this4$_parsingKeyPat.valueInKeyPath,
-              currentCharacter = _this4$_parsingKeyPat.currentCharacter; // прохожу по цепочке вложенных объектов до нужного свойства
+        for (var _filterKey in _this3.filterOptions) {
+          var _this3$_parsingKeyPat = _this3._parsingKeyPath(_filterKey, character),
+              valueInKeyPath = _this3$_parsingKeyPat.valueInKeyPath,
+              currentCharacter = _this3$_parsingKeyPat.currentCharacter; // прохожу по цепочке вложенных объектов до нужного свойства
 
 
           var charcterValue = currentCharacter[valueInKeyPath];
-          var _filterValue = _this4.filterOptions[_filterKey];
+          var _filterValue = _this3.filterOptions[_filterKey];
           if (_filterValue != 'all' && !charcterValue.toLowerCase().includes(_filterValue.toLowerCase()) && _filterValue != '') return false;
         }
 
         return true;
       });
-      this.list.innerHTML = "";
       this.renderHtmlCards(filteringCharacters);
     }
   }, {
@@ -11638,11 +11808,80 @@ var Cards = /*#__PURE__*/function () {
       }
     }
   }, {
+    key: "renderSeedNavigation",
+    value: function renderSeedNavigation() {
+      var _this4 = this;
+
+      var favoritesPointers = document.querySelectorAll('#pointer-favorites');
+      favoritesPointers.forEach(function (pointer) {
+        pointer.addEventListener('click', _this4.handFavoritesToHtmlRender.bind(_this4));
+      });
+      var generallPointer = document.querySelectorAll('#pointer-home');
+      generallPointer.forEach(function (pointer) {
+        pointer.addEventListener('click', _this4.handGenerallToHtmlRender.bind(_this4));
+      });
+    }
+  }, {
+    key: "handFavoritesToHtmlRender",
+    value: function handFavoritesToHtmlRender() {
+      var favorites = _LocaleStorageProccesing.default.getStorageData('favorite');
+
+      var favoritesTitle = document.querySelector('.cards__favorites-area');
+      var filterArea = document.querySelector('.cards__filter-area');
+      favoritesTitle.style.display = "block";
+      filterArea.style.display = "none";
+      this.renderHtmlCards(favorites);
+    }
+  }, {
+    key: "handGenerallToHtmlRender",
+    value: function handGenerallToHtmlRender() {
+      var favoritesTitle = document.querySelector('.cards__favorites-area');
+      var filterArea = document.querySelector('.cards__filter-area');
+      favoritesTitle.style.display = "none";
+      filterArea.style.display = "block";
+      this.renderSeedingCards(null);
+    }
+  }, {
+    key: "initSearchArea",
+    value: function initSearchArea() {
+      var _this5 = this;
+
+      var searchInput = document.querySelector('#search-input');
+      var searchBtn = document.querySelector('#search-button');
+      searchBtn.addEventListener('click', function () {
+        _this5.renderSearchFiltering.call(_this5, searchInput.value);
+      });
+      window.addEventListener('keydown', function (event) {
+        if (event.code == 'Enter') _this5.renderSearchFiltering(searchInput.value);
+      });
+    }
+  }, {
     key: "renderSearchFiltering",
     value: function renderSearchFiltering(inputValue) {
       var filterKey = 'name';
       var filterValue = inputValue;
       this.renderSeedingCards(filterKey, filterValue);
+    } // renderFavorites() {
+    //    //TODO поставить листенер на каждый html элемент favorites
+    //    const favoritesArea = document.querySelectorAll('.cards-list__favorites');
+    //    favoritesArea.forEach(favorite => favorite.addEventListener('click', () => {
+    //       let id = favorite.closest('.cards-list__item').dataset.idCharacter
+    //       console.log(id);
+    //    }))
+    // }
+
+  }, {
+    key: "collectFavorites",
+    value: function collectFavorites() {}
+  }, {
+    key: "checkItemInstorage",
+    value: function checkItemInstorage(id) {
+      var favorites = _LocaleStorageProccesing.default.getStorageData('favorite');
+
+      if (favorites.find(function (item) {
+        return item.id == id;
+      })) return true;
+      return false;
     } // created: "2017-11-04T18:48:46.250Z"
     // episode: (41)['https://rickandmortyapi.com/api/episode/1', 'https://rickandmortyapi.com/api/episode/2', 'https://rickandmortyapi.com/api/episode/3', 'https://rickandmortyapi.com/api/episode/4', 'https://rickandmortyapi.com/api/episode/5', 'https://rickandmortyapi.com/api/episode/6', 'https://rickandmortyapi.com/api/episode/7', 'https://rickandmortyapi.com/api/episode/8', 'https://rickandmortyapi.com/api/episode/9', 'https://rickandmortyapi.com/api/episode/10', 'https://rickandmortyapi.com/api/episode/11', 'https://rickandmortyapi.com/api/episode/12', 'https://rickandmortyapi.com/api/episode/13', 'https://rickandmortyapi.com/api/episode/14', 'https://rickandmortyapi.com/api/episode/15', 'https://rickandmortyapi.com/api/episode/16', 'https://rickandmortyapi.com/api/episode/17', 'https://rickandmortyapi.com/api/episode/18', 'https://rickandmortyapi.com/api/episode/19', 'https://rickandmortyapi.com/api/episode/20', 'https://rickandmortyapi.com/api/episode/21', 'https://rickandmortyapi.com/api/episode/22', 'https://rickandmortyapi.com/api/episode/23', 'https://rickandmortyapi.com/api/episode/24', 'https://rickandmortyapi.com/api/episode/25', 'https://rickandmortyapi.com/api/episode/26', 'https://rickandmortyapi.com/api/episode/27', 'https://rickandmortyapi.com/api/episode/28', 'https://rickandmortyapi.com/api/episode/29', 'https://rickandmortyapi.com/api/episode/30', 'https://rickandmortyapi.com/api/episode/31', 'https://rickandmortyapi.com/api/episode/32', 'https://rickandmortyapi.com/api/episode/33', 'https://rickandmortyapi.com/api/episode/34', 'https://rickandmortyapi.com/api/episode/35', 'https://rickandmortyapi.com/api/episode/36', 'https://rickandmortyapi.com/api/episode/37', 'https://rickandmortyapi.com/api/episode/38', 'https://rickandmortyapi.com/api/episode/39', 'https://rickandmortyapi.com/api/episode/40', 'https://rickandmortyapi.com/api/episode/41']
     // gender: "Male"
@@ -11674,11 +11913,12 @@ var Cards = /*#__PURE__*/function () {
     value: function cardModalRender(id) {
       this.setModalCardContent(id);
       newModal.open();
-    }
+    } //не до конца реализованный метод прорисовки эпизодов
+
   }, {
     key: "renderEpisodes",
     value: function renderEpisodes(orderEpisodes) {
-      var _this5 = this;
+      var _this6 = this;
 
       orderEpisodes.forEach(function (episodeInfo) {
         var name = episodeInfo.name,
@@ -11695,14 +11935,14 @@ var Cards = /*#__PURE__*/function () {
           section.classList.add('section-items');
           section.innerHTML = "\n               <div class='cards-list__turn-section' data-section-point=\"".concat(id, "\">\n                  ").concat(id, " - \u0421\u0435\u0437\u043E\u043D\n                  <span class=\"material-icons section-open-icon\"> expand_more </span>\n               </div>\n               <div class='cards-list__content-section' data-section=\"").concat(id, "\"></div>\n            ");
 
-          _this5.list.insertAdjacentElement('beforeend', section);
+          _this6.list.insertAdjacentElement('beforeend', section);
         }
 
         ;
         var htmlCurrentSection = document.querySelector("[data-section=\"".concat(id, "\"]"));
         htmlCurrentSection.insertAdjacentHTML('beforeend', html);
         htmlCurrentSection.querySelector("[data-seria=\"".concat(seria, "\"]")).querySelector('.cards-list__button').addEventListener('click', function () {
-          _this5.renderModalCard(episodeInfo);
+          _this6.renderModalCard(episodeInfo);
         });
       });
     }
@@ -11712,7 +11952,7 @@ var Cards = /*#__PURE__*/function () {
 }();
 
 exports.Cards = Cards;
-},{"../../../My-plugins/LyModale-plugin/LyModal":"../../My-plugins/LyModale-plugin/LyModal.js","rickmortyapi":"node_modules/rickmortyapi/dist/index.js"}],"js/utils/interfaceArchitecture.js":[function(require,module,exports) {
+},{"../../../My-plugins/LyModale-plugin/LyModal":"../../My-plugins/LyModale-plugin/LyModal.js","rickmortyapi":"node_modules/rickmortyapi/dist/index.js","./Favorites.js":"js/Favorites.js","./utils/LocaleStorageProccesing":"js/utils/LocaleStorageProccesing.js"}],"js/utils/interfaceArchitecture.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11750,15 +11990,15 @@ var interfaceArchitecture = /*#__PURE__*/function () {
   }
 
   _createClass(interfaceArchitecture, [{
-    key: "render",
+    key: "init",
     value: function () {
-      var _render = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(parameters) {
+      var _init = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(parameters, allCharacters) {
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return this.setCategoriesFiltering(parameters);
+                return this.setCategoriesFiltering(parameters, allCharacters);
 
               case 2:
                 this.startPageParameters();
@@ -11771,50 +12011,27 @@ var interfaceArchitecture = /*#__PURE__*/function () {
         }, _callee, this);
       }));
 
-      function render(_x) {
-        return _render.apply(this, arguments);
+      function init(_x, _x2) {
+        return _init.apply(this, arguments);
       }
 
-      return render;
+      return init;
     }()
   }, {
     key: "setCategoriesFiltering",
     value: function () {
-      var _setCategoriesFiltering = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(parametrs) {
+      var _setCategoriesFiltering = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(parametrs, allCharacters) {
         var _this = this;
 
-        var filterArea, characters, i, c, listParametrs, key, innerList, wrapper, keyWords;
+        var filterArea, listParametrs, key, innerList, wrapper, keyWords;
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                //Прорисовываю алгоритмом все необходимые данный с апи
                 filterArea = document.querySelector('.cards__filter-themes'); // let characters = (await getCharacters()).data.results;
 
-                characters = [];
-                i = 1;
-
-              case 3:
-                if (!(i < 100)) {
-                  _context2.next = 11;
-                  break;
-                }
-
-                _context2.next = 6;
-                return (0, _rickmortyapi.getCharacter)(i);
-
-              case 6:
-                c = _context2.sent.data;
-                characters.push(c);
-
-              case 8:
-                i++;
-                _context2.next = 3;
-                break;
-
-              case 11:
                 listParametrs = {};
-                characters.forEach(function (character) {
+                allCharacters.forEach(function (character) {
                   var _loop = function _loop() {
                     var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
                         key = _Object$entries$_i[0],
@@ -11825,7 +12042,7 @@ var interfaceArchitecture = /*#__PURE__*/function () {
                     });
 
                     if (checkPath) {
-                      //обход вложенного массива необходимых параметров с апишки
+                      //обход вложенного массива необходимых параметров с апишки(таких как obj.obj.value)
                       var pathParameter = checkPath.split('-');
                       var totalParameter = character;
                       key = "";
@@ -11845,10 +12062,11 @@ var interfaceArchitecture = /*#__PURE__*/function () {
                     }
                   };
 
+                  //Прорисовываю алгоритмом все категории для фильтров
                   for (var _i = 0, _Object$entries = Object.entries(character); _i < _Object$entries.length; _i++) {
                     _loop();
                   }
-                });
+                }); //Прорисовываю все списки с категориями для фильтрации
 
                 for (key in listParametrs) {
                   innerList = "<li class=\"cards__filter-item choisable-item\" data-value=\"all\">All</li>";
@@ -11868,7 +12086,7 @@ var interfaceArchitecture = /*#__PURE__*/function () {
                 this.initStartWidthListItems();
                 this.initClosableList();
 
-              case 18:
+              case 8:
               case "end":
                 return _context2.stop();
             }
@@ -11876,7 +12094,7 @@ var interfaceArchitecture = /*#__PURE__*/function () {
         }, _callee2, this);
       }));
 
-      function setCategoriesFiltering(_x2) {
+      function setCategoriesFiltering(_x3, _x4) {
         return _setCategoriesFiltering.apply(this, arguments);
       }
 
@@ -11938,43 +12156,138 @@ var _Cards = require("./Cards");
 
 var _interfaceArchitecture = _interopRequireDefault(require("./utils/interfaceArchitecture.js"));
 
+var _Favorites = _interopRequireDefault(require("./Favorites.js"));
+
+var _LocaleStorageProccesing = _interopRequireDefault(require("./utils/LocaleStorageProccesing.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-// const modal = new LyModal;
-// modal.open();
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 var processingAPI = new _ProcessingAPI.ProcessingAPI();
-var cards = new _Cards.Cards(); // document.querySelectorAll('.cards__filter-list').classList.add('active');
-// console.log(document.querySelectorAll('.cards__filter-list'));
+var cards = new _Cards.Cards();
+
+var Vehicle = /*#__PURE__*/function () {
+  function Vehicle() {
+    _classCallCheck(this, Vehicle);
+  }
+
+  _createClass(Vehicle, [{
+    key: "drive",
+    value: function drive() {
+      console.log("Vehicle is driving");
+      this.establish();
+    }
+  }, {
+    key: "establish",
+    value: function establish() {
+      console.log('Vehicle is establishing');
+    }
+  }]);
+
+  return Vehicle;
+}();
+
+var Car = /*#__PURE__*/function (_Vehicle) {
+  _inherits(Car, _Vehicle);
+
+  var _super = _createSuper(Car);
+
+  function Car() {
+    _classCallCheck(this, Car);
+
+    return _super.call(this);
+  }
+
+  _createClass(Car, [{
+    key: "drive",
+    value: function drive() {
+      _get(_getPrototypeOf(Car.prototype), "drive", this).call(this);
+    }
+  }, {
+    key: "establish",
+    value: function establish() {
+      console.log("Car establish proccesing");
+    }
+  }]);
+
+  return Car;
+}(Vehicle);
+
+var car = new Car();
+
+car.method = function () {
+  return 15;
+};
+
+car.method2 = function () {
+  return 30;
+};
+
+Object.defineProperty(car, 'method', {
+  value: car.method,
+  enumerable: false
+});
+
+for (var key in car) {
+  console.log(key, car[key]);
+}
 
 _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-  var allCharacters, someCharcters;
+  var allCharacters, startCharacters;
   return regeneratorRuntime.wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          cards.renderLodaerList(true);
-          _context.next = 3;
-          return _interfaceArchitecture.default.render(['species', 'location-name', 'status', 'gender']);
+          cards.renderLodaerList(true); //перебираю всех возможных персонажей с API, в начале массива которых лежат необходимые
 
-        case 3:
-          _context.next = 5;
+          _context.next = 3;
           return processingAPI.getAllCharactersAPI([1, 2, 3, 4, 5, 77]);
 
-        case 5:
+        case 3:
           allCharacters = _context.sent;
+          _context.next = 6;
+          return _interfaceArchitecture.default.init(['species', 'location-name', 'status', 'gender'], allCharacters);
+
+        case 6:
           _context.next = 8;
           return processingAPI.getSeveralCharactersAPI(30);
 
         case 8:
-          someCharcters = _context.sent;
+          startCharacters = _context.sent;
           _context.next = 11;
-          return cards.renderCharacters(allCharacters, someCharcters);
+          return cards.renderCharacters(allCharacters, startCharacters);
 
         case 11:
+          //favorites.render(allCharacters); // рендер уведомлений вызываю внутри Cards renderHtmlCards
           cards.renderLodaerList(false);
 
         case 12:
@@ -11984,7 +12297,7 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
     }
   }, _callee);
 }))();
-},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","axios":"node_modules/axios/index.js","./utils/ProcessingAPI":"js/utils/ProcessingAPI.js","./Cards":"js/Cards.js","./utils/interfaceArchitecture.js":"js/utils/interfaceArchitecture.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","axios":"node_modules/axios/index.js","./utils/ProcessingAPI":"js/utils/ProcessingAPI.js","./Cards":"js/Cards.js","./utils/interfaceArchitecture.js":"js/utils/interfaceArchitecture.js","./Favorites.js":"js/Favorites.js","./utils/LocaleStorageProccesing.js":"js/utils/LocaleStorageProccesing.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -12012,7 +12325,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55806" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57927" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

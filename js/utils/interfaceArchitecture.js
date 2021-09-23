@@ -4,32 +4,25 @@ import { getCharacter } from 'rickmortyapi';
 class interfaceArchitecture {
    constructor() {}
    
-   async render(parameters) {
-      await this.setCategoriesFiltering(parameters)
+   async init(parameters, allCharacters) {
+      await this.setCategoriesFiltering(parameters, allCharacters)
 
-      this.startPageParameters()
+      this.startPageParameters();
    }
 
-   async setCategoriesFiltering(parametrs) {
-      //Прорисовываю алгоритмом все необходимые данный с апи
+   async setCategoriesFiltering(parametrs, allCharacters) {
       const filterArea = document.querySelector('.cards__filter-themes');
       // let characters = (await getCharacters()).data.results;
 
-      let characters = [];
-      for (let i = 1; i < 100; i++) {
-         let c = (await getCharacter(i)).data;
-         characters.push(c);
-
-      }
-
 
       let listParametrs = {};
-      characters.forEach(character => {
+      allCharacters.forEach(character => {
+         //Прорисовываю алгоритмом все категории для фильтров
          for (let [key, value] of Object.entries(character)) {
 
 
             let checkPath = parametrs.find(par => par.split('-')[1] && par.split('-')[0] == key);
-            if (checkPath) { //обход вложенного массива необходимых параметров с апишки
+            if (checkPath) { //обход вложенного массива необходимых параметров с апишки(таких как obj.obj.value)
 
                let pathParameter = checkPath.split('-');
                let totalParameter = character;
@@ -51,6 +44,7 @@ class interfaceArchitecture {
          }
       })
 
+      //Прорисовываю все списки с категориями для фильтрации
       for (let key in listParametrs) {
          let innerList = `<li class="cards__filter-item choisable-item" data-value="all">All</li>`;
 
@@ -114,6 +108,7 @@ class interfaceArchitecture {
    startPageParameters() {
       window.scrollTop = 0;
    }
+   
 }
 
 export default new interfaceArchitecture();
