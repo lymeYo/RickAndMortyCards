@@ -13,43 +13,6 @@ const processingAPI = new ProcessingAPI();
 
 const cards = new Cards();
 
-
-class Vehicle {
-   drive() {
-      console.log("Vehicle is driving");
-      this.establish()
-   }
-
-   establish() {
-      console.log('Vehicle is establishing');
-   }
-}
-
-class Car extends Vehicle {
-   constructor() {
-      super();
-   }
-   drive() {
-      super.drive();
-   }
-   establish() {
-      console.log("Car establish proccesing");
-   }
-}
-let car = new Car()
-car.method = () => 15;
-car.method2 = () => 30;
-Object.defineProperty(car, 'method', {
-   value: car.method,
-   enumerable: false,
-})
-
-for (let key in car) {
-   console.log(key, car[key]);
-   
-}
-
-
 (async function() {
    cards.renderLodaerList(true); 
 
