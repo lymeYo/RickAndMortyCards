@@ -1,4 +1,5 @@
 import 'regenerator-runtime/runtime';
+import localeStorageProccesing from './LocaleStorageProccesing.js';
 import { getEpisode } from 'rickmortyapi';
 import { getEpisodes } from 'rickmortyapi';
 import { getCharacter } from 'rickmortyapi';
@@ -10,6 +11,16 @@ export class ProcessingAPI {
    constructor() { }
 
    async getAllCharactersAPI(indexesGeneralCharacters) {
+
+      let totalStorageCharacters = localeStorageProccesing.getStorageData('allCharacters');
+
+      this.indexesGeneralCharacters = indexesGeneralCharacters || [];
+      
+      if (totalStorageCharacters[0]) { 
+         this.totalCharacters = totalStorageCharacters;
+         return totalStorageCharacters;
+      } 
+         
       
       let countCharacters = 1;
       let lastCharacter = await getCharacter(countCharacters);
@@ -34,7 +45,8 @@ export class ProcessingAPI {
       } while (lastCharacter.statusMessage != 'Character not found')
       
       if (!this.totalCharacters) this.totalCharacters = totalCharacters;
-      this.indexesGeneralCharacters = indexesGeneralCharacters || [];
+
+      localeStorageProccesing.setFullStorageData('allCharacters', this.totalCharacters);
 
       return totalCharacters;
    }
@@ -48,12 +60,11 @@ export class ProcessingAPI {
          let character = this.totalCharacters.find(character => character.id == id);
          characters.push(character);
       }
-      
       for (let i = 1; i <= amountCharacters; i++) {
          //выбираю случайных персонажей для стартовой отрисовки
          let id = Math.ceil(Math.random() * 300 + 5);
 
-         while (this.indexesGeneralCharacters.includes(id)) {
+         while (this.indexesGeneralCharacters.includes(id) || characters.find(item => item.id == id)) {
             id = Math.ceil(Math.random() * 300 + 5);
          }
          
@@ -61,6 +72,7 @@ export class ProcessingAPI {
          characters.push(character);
       }      
 
+      
       return characters;
    }
    
@@ -109,4 +121,5 @@ export class ProcessingAPI {
       });
       
    }
+      
 }

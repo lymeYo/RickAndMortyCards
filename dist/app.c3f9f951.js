@@ -2999,7 +2999,62 @@ module.exports.default = axios;
 
 },{"./utils":"node_modules/axios/lib/utils.js","./helpers/bind":"node_modules/axios/lib/helpers/bind.js","./core/Axios":"node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"node_modules/axios/lib/core/mergeConfig.js","./defaults":"node_modules/axios/lib/defaults.js","./cancel/Cancel":"node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"node_modules/axios/lib/helpers/spread.js","./helpers/isAxiosError":"node_modules/axios/lib/helpers/isAxiosError.js"}],"node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"node_modules/axios/lib/axios.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/capability.js":[function(require,module,exports) {
+},{"./lib/axios":"node_modules/axios/lib/axios.js"}],"js/utils/LocaleStorageProccesing.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var LocaleStorageProccesing = /*#__PURE__*/function () {
+  function LocaleStorageProccesing() {
+    _classCallCheck(this, LocaleStorageProccesing);
+  }
+
+  _createClass(LocaleStorageProccesing, [{
+    key: "processStorageData",
+    value: function processStorageData(storageKey, item) {
+      var curData = this.getStorageData(storageKey);
+      var curDataIndexes = curData.map(function (item) {
+        return item.id;
+      });
+      var indexExistItem = curDataIndexes.indexOf(item.id);
+      console.log(indexExistItem);
+      if (indexExistItem + 1) curData.splice(indexExistItem, 1);else curData.push(item);
+      console.log(curData);
+      curData = JSON.stringify(curData);
+      localStorage.setItem(storageKey, curData);
+    }
+  }, {
+    key: "setFullStorageData",
+    value: function setFullStorageData(storageKey, item) {
+      var curItem = JSON.stringify(item);
+      localStorage.setItem(storageKey, curItem);
+    }
+  }, {
+    key: "getStorageData",
+    value: function getStorageData(storageKey) {
+      if (localStorage.getItem(storageKey) === null) localStorage.setItem(storageKey, "[]"); // если массива значений нет, создаю
+
+      var curData = JSON.parse(localStorage.getItem(storageKey));
+      return curData;
+    }
+  }]);
+
+  return LocaleStorageProccesing;
+}();
+
+var _default = new LocaleStorageProccesing();
+
+exports.default = _default;
+},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/capability.js":[function(require,module,exports) {
 var global = arguments[3];
 exports.fetch = isFunction(global.fetch) && isFunction(global.ReadableStream)
 
@@ -10980,7 +11035,11 @@ exports.ProcessingAPI = void 0;
 
 require("regenerator-runtime/runtime");
 
+var _LocaleStorageProccesing = _interopRequireDefault(require("./LocaleStorageProccesing.js"));
+
 var _rickmortyapi = require("rickmortyapi");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
@@ -11009,74 +11068,86 @@ var ProcessingAPI = /*#__PURE__*/function () {
     key: "getAllCharactersAPI",
     value: function () {
       var _getAllCharactersAPI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(indexesGeneralCharacters) {
-        var countCharacters, lastCharacter, totalCharacters, _iterator, _step, id, character;
+        var totalStorageCharacters, countCharacters, lastCharacter, totalCharacters, _iterator, _step, id, character;
 
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                totalStorageCharacters = _LocaleStorageProccesing.default.getStorageData('allCharacters');
+                this.indexesGeneralCharacters = indexesGeneralCharacters || [];
+
+                if (!totalStorageCharacters[0]) {
+                  _context.next = 5;
+                  break;
+                }
+
+                this.totalCharacters = totalStorageCharacters;
+                return _context.abrupt("return", totalStorageCharacters);
+
+              case 5:
                 countCharacters = 1;
-                _context.next = 3;
+                _context.next = 8;
                 return (0, _rickmortyapi.getCharacter)(countCharacters);
 
-              case 3:
+              case 8:
                 lastCharacter = _context.sent;
                 totalCharacters = [];
 
                 if (!(indexesGeneralCharacters && !Array.isArray(indexesGeneralCharacters))) {
-                  _context.next = 7;
+                  _context.next = 12;
                   break;
                 }
 
                 throw new Error('getAllCharactersAPI parameter must be Array');
 
-              case 7:
+              case 12:
                 if (!indexesGeneralCharacters) {
-                  _context.next = 27;
+                  _context.next = 32;
                   break;
                 }
 
                 _iterator = _createForOfIteratorHelper(indexesGeneralCharacters);
-                _context.prev = 9;
+                _context.prev = 14;
 
                 _iterator.s();
 
-              case 11:
+              case 16:
                 if ((_step = _iterator.n()).done) {
-                  _context.next = 19;
+                  _context.next = 24;
                   break;
                 }
 
                 id = _step.value;
-                _context.next = 15;
+                _context.next = 20;
                 return (0, _rickmortyapi.getCharacter)(id);
 
-              case 15:
+              case 20:
                 character = _context.sent;
                 totalCharacters.push(character.data);
 
-              case 17:
-                _context.next = 11;
+              case 22:
+                _context.next = 16;
                 break;
 
-              case 19:
-                _context.next = 24;
+              case 24:
+                _context.next = 29;
                 break;
 
-              case 21:
-                _context.prev = 21;
-                _context.t0 = _context["catch"](9);
+              case 26:
+                _context.prev = 26;
+                _context.t0 = _context["catch"](14);
 
                 _iterator.e(_context.t0);
 
-              case 24:
-                _context.prev = 24;
+              case 29:
+                _context.prev = 29;
 
                 _iterator.f();
 
-                return _context.finish(24);
+                return _context.finish(29);
 
-              case 27:
+              case 32:
                 //перебираю всех возможных персонажей с API
                 countCharacters++;
 
@@ -11084,29 +11155,31 @@ var ProcessingAPI = /*#__PURE__*/function () {
                   totalCharacters.push(lastCharacter.data);
                 }
 
-                _context.next = 31;
+                _context.next = 36;
                 return (0, _rickmortyapi.getCharacter)(countCharacters);
 
-              case 31:
+              case 36:
                 lastCharacter = _context.sent;
 
-              case 32:
+              case 37:
                 if (lastCharacter.statusMessage != 'Character not found') {
-                  _context.next = 27;
+                  _context.next = 32;
                   break;
                 }
 
-              case 33:
+              case 38:
                 if (!this.totalCharacters) this.totalCharacters = totalCharacters;
-                this.indexesGeneralCharacters = indexesGeneralCharacters || [];
+
+                _LocaleStorageProccesing.default.setFullStorageData('allCharacters', this.totalCharacters);
+
                 return _context.abrupt("return", totalCharacters);
 
-              case 36:
+              case 41:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[9, 21, 24, 27]]);
+        }, _callee, this, [[14, 26, 29, 32]]);
       }));
 
       function getAllCharactersAPI(_x) {
@@ -11121,7 +11194,7 @@ var ProcessingAPI = /*#__PURE__*/function () {
       var _getSeveralCharactersAPI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(amountCharacters) {
         var _this = this;
 
-        var characters, _iterator2, _step2, _loop, i, id, character;
+        var characters, _iterator2, _step2, _loop2, _loop, i;
 
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
@@ -11132,7 +11205,7 @@ var ProcessingAPI = /*#__PURE__*/function () {
                 _iterator2 = _createForOfIteratorHelper(this.indexesGeneralCharacters);
 
                 try {
-                  _loop = function _loop() {
+                  _loop2 = function _loop2() {
                     var id = _step2.value;
 
                     var character = _this.totalCharacters.find(function (character) {
@@ -11143,7 +11216,7 @@ var ProcessingAPI = /*#__PURE__*/function () {
                   };
 
                   for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-                    _loop();
+                    _loop2();
                   }
                 } catch (err) {
                   _iterator2.e(err);
@@ -11151,21 +11224,27 @@ var ProcessingAPI = /*#__PURE__*/function () {
                   _iterator2.f();
                 }
 
-                for (i = 1; i <= amountCharacters; i++) {
+                _loop = function _loop(i) {
                   //выбираю случайных персонажей для стартовой отрисовки
-                  id = Math.ceil(Math.random() * 300 + 5);
+                  var id = Math.ceil(Math.random() * 300 + 5);
 
-                  while (this.indexesGeneralCharacters.includes(id)) {
+                  while (_this.indexesGeneralCharacters.includes(id) || characters.find(function (item) {
+                    return item.id == id;
+                  })) {
                     id = Math.ceil(Math.random() * 300 + 5);
                   }
 
-                  character = this.totalCharacters[id];
+                  var character = _this.totalCharacters[id];
                   characters.push(character);
+                };
+
+                for (i = 1; i <= amountCharacters; i++) {
+                  _loop(i);
                 }
 
                 return _context2.abrupt("return", characters);
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -11246,7 +11325,7 @@ var ProcessingAPI = /*#__PURE__*/function () {
 }();
 
 exports.ProcessingAPI = ProcessingAPI;
-},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","rickmortyapi":"node_modules/rickmortyapi/dist/index.js"}],"../../My-plugins/LyModale-plugin/LyModal.js":[function(require,module,exports) {
+},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","./LocaleStorageProccesing.js":"js/utils/LocaleStorageProccesing.js","rickmortyapi":"node_modules/rickmortyapi/dist/index.js"}],"../../My-plugins/LyModale-plugin/LyModal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11383,7 +11462,6 @@ var LyModal = /*#__PURE__*/function () {
   }, {
     key: "_returnScrollbar",
     value: function _returnScrollbar() {
-      console.log('_returnScrollbar');
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.overflowY = '';
@@ -11392,7 +11470,6 @@ var LyModal = /*#__PURE__*/function () {
   }, {
     key: "_imitateScrollbar",
     value: function _imitateScrollbar() {
-      console.log('_imitateScrollbar');
       this.scrollTop = window.pageYOffset;
       document.body.style.position = 'fixed';
       document.body.style.top = -this.scrollTop + 'px';
@@ -11456,55 +11533,6 @@ exports.LyModal = LyModal;
 //    true,
 //    'Text content here!',
 // );
-},{}],"js/utils/LocaleStorageProccesing.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var LocaleStorageProccesing = /*#__PURE__*/function () {
-  function LocaleStorageProccesing() {
-    _classCallCheck(this, LocaleStorageProccesing);
-  }
-
-  _createClass(LocaleStorageProccesing, [{
-    key: "processStorageData",
-    value: function processStorageData(storageKey, item) {
-      var curData = this.getStorageData(storageKey);
-      var curDataIndexes = curData.map(function (item) {
-        return item.id;
-      });
-      var indexExistItem = curDataIndexes.indexOf(item.id);
-      console.log(indexExistItem);
-      if (indexExistItem + 1) curData.splice(indexExistItem, 1);else curData.push(item);
-      console.log(curData);
-      curData = JSON.stringify(curData);
-      localStorage.setItem(storageKey, curData);
-    }
-  }, {
-    key: "getStorageData",
-    value: function getStorageData(storageKey) {
-      if (localStorage.getItem(storageKey) === null) localStorage.setItem(storageKey, "[]"); // если массива значений нет, создаю
-
-      var curData = JSON.parse(localStorage.getItem(storageKey));
-      return curData;
-    }
-  }]);
-
-  return LocaleStorageProccesing;
-}();
-
-var _default = new LocaleStorageProccesing();
-
-exports.default = _default;
 },{}],"js/Favorites.js":[function(require,module,exports) {
 "use strict";
 
@@ -11905,7 +11933,7 @@ var Cards = /*#__PURE__*/function () {
           location = _ref.location,
           origin = _ref.origin,
           gender = _ref.gender;
-      var modalContent = "\n         <div class=\"character-modal__image-area\">\n            <div class=\"character-modal__image-area-name\">".concat(name, "</div>\n            <div class=\"character-modal__image-area-img\">\n               <img src=\"").concat(image, "\" alt=\"\">\n            </div>\n         </div>\n         <div class=\"character-modal__content\">\n            <div class=\"character-modal__info-item\">Status: ").concat(status, "</div>\n            <div class=\"character-modal__info-item\">Species: ").concat(species, "</div>\n            <div class=\"character-modal__info-item\">Location: ").concat(location.name, "</div>\n            <div class=\"character-modal__info-item\">Gender: ").concat(gender, "</div>\n         </div>\n         ");
+      var modalContent = "\n         <div class=\"character-modal__close-btn\">\n            <button><span class=\"material-icons close-lyModal\">close</span></button>\n         </div>\n         <div class=\"character-modal__image-area\">\n            <div class=\"character-modal__image-area-name\">".concat(name, "</div>\n            <div class=\"character-modal__image-area-img\">\n               <img src=\"").concat(image, "\" alt=\"\">\n            </div>\n         </div>\n         <div class=\"character-modal__content\">\n            <div class=\"character-modal__info-item\">Status: ").concat(status, "</div>\n            <div class=\"character-modal__info-item\">Species: ").concat(species, "</div>\n            <div class=\"character-modal__info-item\">Location: ").concat(location.name, "</div>\n            <div class=\"character-modal__info-item\">Gender: ").concat(gender, "</div>\n         </div>\n         ");
       newModal.setContent(modalContent);
     }
   }, {
@@ -12028,6 +12056,14 @@ var interfaceArchitecture = /*#__PURE__*/function () {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                if (parametrs) {
+                  _context2.next = 2;
+                  break;
+                }
+
+                return _context2.abrupt("return");
+
+              case 2:
                 filterArea = document.querySelector('.cards__filter-themes'); // let characters = (await getCharacters()).data.results;
 
                 listParametrs = {};
@@ -12085,8 +12121,27 @@ var interfaceArchitecture = /*#__PURE__*/function () {
 
                 this.initStartWidthListItems();
                 this.initClosableList();
+                window.addEventListener('resize', function () {
+                  console.log(document.body.offsetWidth);
 
-              case 8:
+                  if (document.body.offsetWidth < 801) {
+                    var _filterArea = document.querySelector('.cards__filter');
+
+                    _filterArea.style.fontSize = '15px';
+
+                    _this.initStartWidthListItems();
+                  }
+
+                  if (document.body.offsetWidth < 650) {
+                    var _filterArea2 = document.querySelector('.cards__filter');
+
+                    _filterArea2.style.fontSize = '12px';
+
+                    _this.initStartWidthListItems();
+                  }
+                });
+
+              case 11:
               case "end":
                 return _context2.stop();
             }
@@ -12205,7 +12260,7 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
     }
   }, _callee);
 }))();
-},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","axios":"node_modules/axios/index.js","./utils/ProcessingAPI":"js/utils/ProcessingAPI.js","./Cards":"js/Cards.js","./utils/interfaceArchitecture.js":"js/utils/interfaceArchitecture.js","./Favorites.js":"js/Favorites.js","./utils/LocaleStorageProccesing.js":"js/utils/LocaleStorageProccesing.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","axios":"node_modules/axios/index.js","./utils/ProcessingAPI":"js/utils/ProcessingAPI.js","./Cards":"js/Cards.js","./utils/interfaceArchitecture.js":"js/utils/interfaceArchitecture.js","./Favorites.js":"js/Favorites.js","./utils/LocaleStorageProccesing.js":"js/utils/LocaleStorageProccesing.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -12233,7 +12288,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57927" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63473" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -12409,5 +12464,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/app.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/app.js"], null)
 //# sourceMappingURL=/app.c3f9f951.js.map

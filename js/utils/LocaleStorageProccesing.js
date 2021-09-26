@@ -21,6 +21,11 @@ class LocaleStorageProccesing {
       localStorage.setItem(storageKey, curData);
    }
 
+   setFullStorageData(storageKey, item) {
+      let curItem = JSON.stringify(item);
+      localStorage.setItem(storageKey, curItem);
+   }
+
    getStorageData(storageKey) {
       
       if (localStorage.getItem(storageKey) === null) localStorage.setItem(storageKey, "[]") // если массива значений нет, создаю

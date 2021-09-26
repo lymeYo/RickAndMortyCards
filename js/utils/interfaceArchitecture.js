@@ -5,17 +5,21 @@ class interfaceArchitecture {
    constructor() {}
    
    async init(parameters, allCharacters) {
+      
       await this.setCategoriesFiltering(parameters, allCharacters)
 
       this.startPageParameters();
    }
 
    async setCategoriesFiltering(parametrs, allCharacters) {
+      if (!parametrs) return;
+      
       const filterArea = document.querySelector('.cards__filter-themes');
       // let characters = (await getCharacters()).data.results;
 
 
       let listParametrs = {};
+
       allCharacters.forEach(character => {
          //Прорисовываю алгоритмом все категории для фильтров
          for (let [key, value] of Object.entries(character)) {
@@ -76,6 +80,20 @@ class interfaceArchitecture {
       //отрисовка, функционал списка
       this.initStartWidthListItems();
       this.initClosableList();
+      window.addEventListener('resize', () => {
+         console.log(document.body.offsetWidth);
+         
+         if (document.body.offsetWidth < 801) {
+            let filterArea = document.querySelector('.cards__filter');
+            filterArea.style.fontSize = '15px';
+            this.initStartWidthListItems()
+         }
+         if (document.body.offsetWidth < 650) {
+            let filterArea = document.querySelector('.cards__filter');
+            filterArea.style.fontSize = '12px';
+            this.initStartWidthListItems()
+         }
+      })
 
    }
 

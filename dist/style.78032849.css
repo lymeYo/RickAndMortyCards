@@ -131,7 +131,7 @@ body {
   display: none;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 750px) {
   .header__title-pc {
     display: none;
   }
@@ -155,7 +155,7 @@ body {
      object-fit: cover;
 }
 
-@media (max-width: 730px) {
+@media (max-width: 1000px) {
   .header__logo {
     display: none;
   }
@@ -604,6 +604,20 @@ body {
   max-width: 600px;
   font-size: 18px;
   font-family: Glory;
+}
+
+.character-modal__close-btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.character-modal__close-btn button {
+  background-color: #fff;
+}
+
+.character-modal__close-btn button span {
+  color: #000;
 }
 
 .character-modal__image-area {

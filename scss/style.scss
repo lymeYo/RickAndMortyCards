@@ -60,7 +60,7 @@ body {
          display: none;
       }
 
-      @media(max-width: 520px) {
+      @media(max-width: 750px) {
          &-pc {
             display: none;
          }
@@ -81,7 +81,7 @@ body {
          object-fit: cover;
       }
 
-      @media(max-width: 730px) {
+      @media(max-width: 1000px) {
          display: none;
 
          > img {
@@ -418,7 +418,8 @@ body {
          padding: 10px;
          cursor: pointer; 
 
-         &-title {}
+         &-title {
+         }
 
          &:hover {
             background-color: $mainClr-hover;
@@ -511,6 +512,20 @@ body {
    font-size: 18px;
    font-family: $mainFF;
 
+
+   &__close-btn {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+
+      button {
+         background-color: #fff;
+         
+         span {
+            color: #000;
+         }
+      }
+   }
 
    &__image-area {
       margin: 0px 30px 0px 0px;

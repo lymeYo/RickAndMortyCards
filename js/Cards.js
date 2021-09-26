@@ -13,6 +13,7 @@ export class Cards {
    }
    
    async renderCharacters(allCharacters, startCharacters) { 
+
       if (!this.totalCharcters) 
          this.totalCharcters = allCharacters;
 
@@ -235,6 +236,9 @@ export class Cards {
 
    setModalCardContent({ id, status, name, image, species, location, origin, gender }) {
       let modalContent = `
+         <div class="character-modal__close-btn">
+            <button><span class="material-icons close-lyModal">close</span></button>
+         </div>
          <div class="character-modal__image-area">
             <div class="character-modal__image-area-name">${name}</div>
             <div class="character-modal__image-area-img">
