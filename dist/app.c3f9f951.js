@@ -1896,7 +1896,7 @@ module.exports = function xhrAdapter(config) {
   });
 };
 
-},{"./../utils":"node_modules/axios/lib/utils.js","./../core/settle":"node_modules/axios/lib/core/settle.js","./../helpers/cookies":"node_modules/axios/lib/helpers/cookies.js","./../helpers/buildURL":"node_modules/axios/lib/helpers/buildURL.js","../core/buildFullPath":"node_modules/axios/lib/core/buildFullPath.js","./../helpers/parseHeaders":"node_modules/axios/lib/helpers/parseHeaders.js","./../helpers/isURLSameOrigin":"node_modules/axios/lib/helpers/isURLSameOrigin.js","../core/createError":"node_modules/axios/lib/core/createError.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js":[function(require,module,exports) {
+},{"./../utils":"node_modules/axios/lib/utils.js","./../core/settle":"node_modules/axios/lib/core/settle.js","./../helpers/cookies":"node_modules/axios/lib/helpers/cookies.js","./../helpers/buildURL":"node_modules/axios/lib/helpers/buildURL.js","../core/buildFullPath":"node_modules/axios/lib/core/buildFullPath.js","./../helpers/parseHeaders":"node_modules/axios/lib/helpers/parseHeaders.js","./../helpers/isURLSameOrigin":"node_modules/axios/lib/helpers/isURLSameOrigin.js","../core/createError":"node_modules/axios/lib/core/createError.js"}],"node_modules/process/browser.js":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -2242,7 +2242,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-},{"./utils":"node_modules/axios/lib/utils.js","./helpers/normalizeHeaderName":"node_modules/axios/lib/helpers/normalizeHeaderName.js","./core/enhanceError":"node_modules/axios/lib/core/enhanceError.js","./adapters/xhr":"node_modules/axios/lib/adapters/xhr.js","./adapters/http":"node_modules/axios/lib/adapters/xhr.js","process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"node_modules/axios/lib/core/transformData.js":[function(require,module,exports) {
+},{"./utils":"node_modules/axios/lib/utils.js","./helpers/normalizeHeaderName":"node_modules/axios/lib/helpers/normalizeHeaderName.js","./core/enhanceError":"node_modules/axios/lib/core/enhanceError.js","./adapters/xhr":"node_modules/axios/lib/adapters/xhr.js","./adapters/http":"node_modules/axios/lib/adapters/xhr.js","process":"node_modules/process/browser.js"}],"node_modules/axios/lib/core/transformData.js":[function(require,module,exports) {
 'use strict';
 
 var utils = require('./../utils');
@@ -3054,7 +3054,7 @@ var LocaleStorageProccesing = /*#__PURE__*/function () {
 var _default = new LocaleStorageProccesing();
 
 exports.default = _default;
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/capability.js":[function(require,module,exports) {
+},{}],"node_modules/stream-http/lib/capability.js":[function(require,module,exports) {
 var global = arguments[3];
 exports.fetch = isFunction(global.fetch) && isFunction(global.ReadableStream)
 
@@ -3130,7 +3130,7 @@ function isFunction (value) {
 
 xhr = null // Help gc
 
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js":[function(require,module,exports) {
+},{}],"node_modules/inherits/inherits_browser.js":[function(require,module,exports) {
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -3159,7 +3159,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process-nextick-args/index.js":[function(require,module,exports) {
+},{}],"node_modules/process-nextick-args/index.js":[function(require,module,exports) {
 var process = require("process");
 'use strict';
 
@@ -3207,14 +3207,14 @@ function nextTick(fn, arg1, arg2, arg3) {
 }
 
 
-},{"process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/isarray/index.js":[function(require,module,exports) {
+},{"process":"node_modules/process/browser.js"}],"node_modules/isarray/index.js":[function(require,module,exports) {
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/events/events.js":[function(require,module,exports) {
+},{}],"node_modules/events/events.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -3681,10 +3681,10 @@ function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
     throw new TypeError('The "emitter" argument must be of type EventEmitter. Received type ' + typeof emitter);
   }
 }
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/stream-browser.js":[function(require,module,exports) {
+},{}],"node_modules/readable-stream/lib/internal/streams/stream-browser.js":[function(require,module,exports) {
 module.exports = require('events').EventEmitter;
 
-},{"events":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/events/events.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/base64-js/index.js":[function(require,module,exports) {
+},{"events":"node_modules/events/events.js"}],"node_modules/base64-js/index.js":[function(require,module,exports) {
 'use strict'
 
 exports.byteLength = byteLength
@@ -3836,7 +3836,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/ieee754/index.js":[function(require,module,exports) {
+},{}],"node_modules/ieee754/index.js":[function(require,module,exports) {
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -3923,7 +3923,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js":[function(require,module,exports) {
+},{}],"node_modules/buffer/index.js":[function(require,module,exports) {
 
 var global = arguments[3];
 /*!
@@ -5716,7 +5716,7 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-},{"base64-js":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/base64-js/index.js","ieee754":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/ieee754/index.js","isarray":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/isarray/index.js","buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/safe-buffer/index.js":[function(require,module,exports) {
+},{"base64-js":"node_modules/base64-js/index.js","ieee754":"node_modules/ieee754/index.js","isarray":"node_modules/isarray/index.js","buffer":"node_modules/buffer/index.js"}],"node_modules/safe-buffer/index.js":[function(require,module,exports) {
 
 /* eslint-disable node/no-deprecated-api */
 var buffer = require('buffer')
@@ -5781,7 +5781,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
   return buffer.SlowBuffer(size)
 }
 
-},{"buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/core-util-is/lib/util.js":[function(require,module,exports) {
+},{"buffer":"node_modules/buffer/index.js"}],"node_modules/core-util-is/lib/util.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -5890,9 +5890,9 @@ function objectToString(o) {
   return Object.prototype.toString.call(o);
 }
 
-},{"buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/_empty.js":[function(require,module,exports) {
+},{"buffer":"node_modules/buffer/index.js"}],"node_modules/parcel-bundler/src/builtins/_empty.js":[function(require,module,exports) {
 
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/BufferList.js":[function(require,module,exports) {
+},{}],"node_modules/readable-stream/lib/internal/streams/BufferList.js":[function(require,module,exports) {
 
 'use strict';
 
@@ -5973,7 +5973,7 @@ if (util && util.inspect && util.inspect.custom) {
     return this.constructor.name + ' ' + obj;
   };
 }
-},{"safe-buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/safe-buffer/index.js","util":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/_empty.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/destroy.js":[function(require,module,exports) {
+},{"safe-buffer":"node_modules/safe-buffer/index.js","util":"node_modules/parcel-bundler/src/builtins/_empty.js"}],"node_modules/readable-stream/lib/internal/streams/destroy.js":[function(require,module,exports) {
 'use strict';
 
 /*<replacement>*/
@@ -6048,7 +6048,7 @@ module.exports = {
   destroy: destroy,
   undestroy: undestroy
 };
-},{"process-nextick-args":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process-nextick-args/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/util-deprecate/browser.js":[function(require,module,exports) {
+},{"process-nextick-args":"node_modules/process-nextick-args/index.js"}],"node_modules/util-deprecate/browser.js":[function(require,module,exports) {
 var global = arguments[3];
 
 /**
@@ -6118,7 +6118,7 @@ function config (name) {
   return String(val).toLowerCase() === 'true';
 }
 
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_writable.js":[function(require,module,exports) {
+},{}],"node_modules/readable-stream/lib/_stream_writable.js":[function(require,module,exports) {
 var process = require("process");
 
 var global = arguments[3];
@@ -6797,7 +6797,7 @@ Writable.prototype._destroy = function (err, cb) {
   this.end();
   cb(err);
 };
-},{"process-nextick-args":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process-nextick-args/index.js","core-util-is":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/core-util-is/lib/util.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js","util-deprecate":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/util-deprecate/browser.js","./internal/streams/stream":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/stream-browser.js","safe-buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/safe-buffer/index.js","./internal/streams/destroy":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/destroy.js","./_stream_duplex":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_duplex.js","process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_duplex.js":[function(require,module,exports) {
+},{"process-nextick-args":"node_modules/process-nextick-args/index.js","core-util-is":"node_modules/core-util-is/lib/util.js","inherits":"node_modules/inherits/inherits_browser.js","util-deprecate":"node_modules/util-deprecate/browser.js","./internal/streams/stream":"node_modules/readable-stream/lib/internal/streams/stream-browser.js","safe-buffer":"node_modules/safe-buffer/index.js","./internal/streams/destroy":"node_modules/readable-stream/lib/internal/streams/destroy.js","./_stream_duplex":"node_modules/readable-stream/lib/_stream_duplex.js","process":"node_modules/process/browser.js"}],"node_modules/readable-stream/lib/_stream_duplex.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -6929,7 +6929,7 @@ Duplex.prototype._destroy = function (err, cb) {
 
   pna.nextTick(cb, err);
 };
-},{"process-nextick-args":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process-nextick-args/index.js","core-util-is":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/core-util-is/lib/util.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js","./_stream_readable":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_readable.js","./_stream_writable":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_writable.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/string_decoder/lib/string_decoder.js":[function(require,module,exports) {
+},{"process-nextick-args":"node_modules/process-nextick-args/index.js","core-util-is":"node_modules/core-util-is/lib/util.js","inherits":"node_modules/inherits/inherits_browser.js","./_stream_readable":"node_modules/readable-stream/lib/_stream_readable.js","./_stream_writable":"node_modules/readable-stream/lib/_stream_writable.js"}],"node_modules/string_decoder/lib/string_decoder.js":[function(require,module,exports) {
 
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -7227,7 +7227,7 @@ function simpleWrite(buf) {
 function simpleEnd(buf) {
   return buf && buf.length ? this.write(buf) : '';
 }
-},{"safe-buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/safe-buffer/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_readable.js":[function(require,module,exports) {
+},{"safe-buffer":"node_modules/safe-buffer/index.js"}],"node_modules/readable-stream/lib/_stream_readable.js":[function(require,module,exports) {
 
 var global = arguments[3];
 var process = require("process");
@@ -8250,7 +8250,7 @@ function indexOf(xs, x) {
   }
   return -1;
 }
-},{"process-nextick-args":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process-nextick-args/index.js","isarray":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/isarray/index.js","events":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/events/events.js","./internal/streams/stream":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/stream-browser.js","safe-buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/safe-buffer/index.js","core-util-is":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/core-util-is/lib/util.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js","util":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/_empty.js","./internal/streams/BufferList":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/BufferList.js","./internal/streams/destroy":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/internal/streams/destroy.js","./_stream_duplex":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_duplex.js","string_decoder/":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/string_decoder/lib/string_decoder.js","process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_transform.js":[function(require,module,exports) {
+},{"process-nextick-args":"node_modules/process-nextick-args/index.js","isarray":"node_modules/isarray/index.js","events":"node_modules/events/events.js","./internal/streams/stream":"node_modules/readable-stream/lib/internal/streams/stream-browser.js","safe-buffer":"node_modules/safe-buffer/index.js","core-util-is":"node_modules/core-util-is/lib/util.js","inherits":"node_modules/inherits/inherits_browser.js","util":"node_modules/parcel-bundler/src/builtins/_empty.js","./internal/streams/BufferList":"node_modules/readable-stream/lib/internal/streams/BufferList.js","./internal/streams/destroy":"node_modules/readable-stream/lib/internal/streams/destroy.js","./_stream_duplex":"node_modules/readable-stream/lib/_stream_duplex.js","string_decoder/":"node_modules/string_decoder/lib/string_decoder.js","process":"node_modules/process/browser.js"}],"node_modules/readable-stream/lib/_stream_transform.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -8465,7 +8465,7 @@ function done(stream, er, data) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_duplex.js","core-util-is":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/core-util-is/lib/util.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_passthrough.js":[function(require,module,exports) {
+},{"./_stream_duplex":"node_modules/readable-stream/lib/_stream_duplex.js","core-util-is":"node_modules/core-util-is/lib/util.js","inherits":"node_modules/inherits/inherits_browser.js"}],"node_modules/readable-stream/lib/_stream_passthrough.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -8513,7 +8513,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_transform.js","core-util-is":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/core-util-is/lib/util.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/readable-browser.js":[function(require,module,exports) {
+},{"./_stream_transform":"node_modules/readable-stream/lib/_stream_transform.js","core-util-is":"node_modules/core-util-is/lib/util.js","inherits":"node_modules/inherits/inherits_browser.js"}],"node_modules/readable-stream/readable-browser.js":[function(require,module,exports) {
 exports = module.exports = require('./lib/_stream_readable.js');
 exports.Stream = exports;
 exports.Readable = exports;
@@ -8522,7 +8522,7 @@ exports.Duplex = require('./lib/_stream_duplex.js');
 exports.Transform = require('./lib/_stream_transform.js');
 exports.PassThrough = require('./lib/_stream_passthrough.js');
 
-},{"./lib/_stream_readable.js":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_readable.js","./lib/_stream_writable.js":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_writable.js","./lib/_stream_duplex.js":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_duplex.js","./lib/_stream_transform.js":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_transform.js","./lib/_stream_passthrough.js":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/lib/_stream_passthrough.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/response.js":[function(require,module,exports) {
+},{"./lib/_stream_readable.js":"node_modules/readable-stream/lib/_stream_readable.js","./lib/_stream_writable.js":"node_modules/readable-stream/lib/_stream_writable.js","./lib/_stream_duplex.js":"node_modules/readable-stream/lib/_stream_duplex.js","./lib/_stream_transform.js":"node_modules/readable-stream/lib/_stream_transform.js","./lib/_stream_passthrough.js":"node_modules/readable-stream/lib/_stream_passthrough.js"}],"node_modules/stream-http/lib/response.js":[function(require,module,exports) {
 var process = require("process");
 var Buffer = require("buffer").Buffer;
 var global = arguments[3];
@@ -8751,7 +8751,7 @@ IncomingMessage.prototype._onXHRProgress = function () {
 	}
 }
 
-},{"./capability":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/capability.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js","readable-stream":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/readable-browser.js","process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js","buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/to-arraybuffer/index.js":[function(require,module,exports) {
+},{"./capability":"node_modules/stream-http/lib/capability.js","inherits":"node_modules/inherits/inherits_browser.js","readable-stream":"node_modules/readable-stream/readable-browser.js","process":"node_modules/process/browser.js","buffer":"node_modules/buffer/index.js"}],"node_modules/to-arraybuffer/index.js":[function(require,module,exports) {
 
 var Buffer = require('buffer').Buffer
 
@@ -8781,7 +8781,7 @@ module.exports = function (buf) {
 	}
 }
 
-},{"buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/request.js":[function(require,module,exports) {
+},{"buffer":"node_modules/buffer/index.js"}],"node_modules/stream-http/lib/request.js":[function(require,module,exports) {
 var Buffer = require("buffer").Buffer;
 var global = arguments[3];
 var process = require("process");
@@ -9113,7 +9113,7 @@ var unsafeHeaders = [
 	'via'
 ]
 
-},{"./capability":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/capability.js","inherits":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/inherits/inherits_browser.js","./response":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/response.js","readable-stream":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/readable-stream/readable-browser.js","to-arraybuffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/to-arraybuffer/index.js","buffer":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/buffer/index.js","process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/xtend/immutable.js":[function(require,module,exports) {
+},{"./capability":"node_modules/stream-http/lib/capability.js","inherits":"node_modules/inherits/inherits_browser.js","./response":"node_modules/stream-http/lib/response.js","readable-stream":"node_modules/readable-stream/readable-browser.js","to-arraybuffer":"node_modules/to-arraybuffer/index.js","buffer":"node_modules/buffer/index.js","process":"node_modules/process/browser.js"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
 module.exports = extend;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -9132,7 +9132,7 @@ function extend() {
 
   return target;
 }
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/builtin-status-codes/browser.js":[function(require,module,exports) {
+},{}],"node_modules/builtin-status-codes/browser.js":[function(require,module,exports) {
 module.exports = {
   "100": "Continue",
   "101": "Switching Protocols",
@@ -9198,7 +9198,7 @@ module.exports = {
   "511": "Network Authentication Required"
 }
 
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/node-libs-browser/node_modules/punycode/punycode.js":[function(require,module,exports) {
+},{}],"node_modules/node-libs-browser/node_modules/punycode/punycode.js":[function(require,module,exports) {
 var global = arguments[3];
 var define;
 /*! https://mths.be/punycode v1.4.1 by @mathias */
@@ -9735,7 +9735,7 @@ var define;
 
 }(this));
 
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/url/util.js":[function(require,module,exports) {
+},{}],"node_modules/url/util.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = {
@@ -9753,7 +9753,7 @@ module.exports = {
   }
 };
 
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/querystring-es3/decode.js":[function(require,module,exports) {
+},{}],"node_modules/querystring-es3/decode.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -9839,7 +9839,7 @@ module.exports = function (qs, sep, eq, options) {
 var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/querystring-es3/encode.js":[function(require,module,exports) {
+},{}],"node_modules/querystring-es3/encode.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -9928,12 +9928,12 @@ var objectKeys = Object.keys || function (obj) {
 
   return res;
 };
-},{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/querystring-es3/index.js":[function(require,module,exports) {
+},{}],"node_modules/querystring-es3/index.js":[function(require,module,exports) {
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
-},{"./decode":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/querystring-es3/decode.js","./encode":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/querystring-es3/encode.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/url/url.js":[function(require,module,exports) {
+},{"./decode":"node_modules/querystring-es3/decode.js","./encode":"node_modules/querystring-es3/encode.js"}],"node_modules/url/url.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -10667,7 +10667,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"punycode":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/node-libs-browser/node_modules/punycode/punycode.js","./util":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/url/util.js","querystring":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/querystring-es3/index.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/index.js":[function(require,module,exports) {
+},{"punycode":"node_modules/node-libs-browser/node_modules/punycode/punycode.js","./util":"node_modules/url/util.js","querystring":"node_modules/querystring-es3/index.js"}],"node_modules/stream-http/index.js":[function(require,module,exports) {
 var global = arguments[3];
 var ClientRequest = require('./lib/request')
 var response = require('./lib/response')
@@ -10754,7 +10754,7 @@ http.METHODS = [
 	'UNLOCK',
 	'UNSUBSCRIBE'
 ]
-},{"./lib/request":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/request.js","./lib/response":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/lib/response.js","xtend":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/xtend/immutable.js","builtin-status-codes":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/builtin-status-codes/browser.js","url":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/url/url.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/https-browserify/index.js":[function(require,module,exports) {
+},{"./lib/request":"node_modules/stream-http/lib/request.js","./lib/response":"node_modules/stream-http/lib/response.js","xtend":"node_modules/xtend/immutable.js","builtin-status-codes":"node_modules/builtin-status-codes/browser.js","url":"node_modules/url/url.js"}],"node_modules/https-browserify/index.js":[function(require,module,exports) {
 var http = require('http')
 var url = require('url')
 
@@ -10787,7 +10787,7 @@ function validateParams (params) {
   return params
 }
 
-},{"http":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/stream-http/index.js","url":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/url/url.js"}],"node_modules/rickmortyapi/dist/index.js":[function(require,module,exports) {
+},{"http":"node_modules/stream-http/index.js","url":"node_modules/url/url.js"}],"node_modules/rickmortyapi/dist/index.js":[function(require,module,exports) {
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -11025,7 +11025,7 @@ var I = function I() {
   getLocation: getLocation,
   getLocations: getLocations
 });
-},{"https":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/https-browserify/index.js"}],"js/utils/ProcessingAPI.js":[function(require,module,exports) {
+},{"https":"node_modules/https-browserify/index.js"}],"js/utils/ProcessingAPI.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11643,7 +11643,376 @@ var Favorites = /*#__PURE__*/function () {
 var _default = new Favorites();
 
 exports.default = _default;
-},{"./utils/LocaleStorageProccesing":"js/utils/LocaleStorageProccesing.js"}],"js/Cards.js":[function(require,module,exports) {
+},{"./utils/LocaleStorageProccesing":"js/utils/LocaleStorageProccesing.js"}],"../../My-plugins/HoverTooltip-plugin/HoverTooltip.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var HoverTooltip = /*#__PURE__*/function () {
+  function HoverTooltip(_ref) {
+    var elem = _ref.elem,
+        tooltip = _ref.tooltip,
+        position = _ref.position,
+        smooth = _ref.smooth;
+
+    _classCallCheck(this, HoverTooltip);
+
+    this.elem = elem;
+    this.tooltip = tooltip.type == 'create' ? this._createTooltip(tooltip) : tooltip;
+    this.posOfTooltip = position;
+    this.smooth = smooth;
+    this.render();
+    elem.addEventListener('mouseenter', this.initOver.bind(this));
+    elem.addEventListener('mouseleave', this.initOut.bind(this));
+  }
+
+  _createClass(HoverTooltip, [{
+    key: "render",
+    value: function render() {
+      this.tooltip.style.display = 'none';
+    }
+  }, {
+    key: "initOver",
+    value: function initOver() {
+      clearTimeout(this.idToolTimeout);
+      this.tooltip.style.display = 'block';
+
+      this._setTooltipPosition(this.elem, this.tooltip, this.posOfTooltip);
+    }
+  }, {
+    key: "_setTooltipPosition",
+    value: function _setTooltipPosition(elem, tooltip, pos) {
+      var elemPosition = {
+        top: elem.getBoundingClientRect().top + window.scrollY - tooltip.clientHeight,
+        bottom: elem.getBoundingClientRect().bottom + window.scrollY,
+        center: elem.getBoundingClientRect().left + window.scrollX - tooltip.clientWidth / 2 + elem.clientWidth / 2,
+        left: elem.getBoundingClientRect().left + window.scrollX - tooltip.clientWidth,
+        right: elem.getBoundingClientRect().left + window.scrollX + elem.clientWidth
+      }; // console.log(window.scrollY);
+
+      tooltip.style.top = elemPosition[pos] + 'px';
+      tooltip.style.left = elemPosition.center + 'px';
+    }
+  }, {
+    key: "initOut",
+    value: function initOut() {
+      var _this = this;
+
+      if (this.smooth) {
+        var delay = +this.smooth > 25 ? +this.smooth : 200;
+        this.idToolTimeout = setTimeout(function () {
+          return _this.tooltip.style.display = 'none';
+        }, delay);
+      }
+
+      this.tooltip.style.display = 'none';
+    }
+  }, {
+    key: "setTextContent",
+    value: function setTextContent(text) {
+      this.elem.textContent = text;
+    }
+  }, {
+    key: "_createTooltip",
+    value: function _createTooltip(_ref2) {
+      var text = _ref2.text,
+          tooltipClass = _ref2.tooltipClass;
+      var tooltip = document.createElement('div');
+      tooltip.className = tooltipClass;
+      tooltip.textContent = text;
+      document.body.insertAdjacentElement('beforeend', tooltip);
+      return tooltip;
+    }
+  }]);
+
+  return HoverTooltip;
+}();
+
+var _default = HoverTooltip; // const hoverTooltip = new HoverTooltip({
+//    elem: document.querySelector('.test'),
+//    tooltip: document.querySelector('.tooltip'),
+//    position: 'bottom',
+//    smooth: 150,
+//    // position: 'bottom',
+// });
+
+exports.default = _default;
+},{}],"js/utils/interfaceArchitecture.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _rickmortyapi = require("rickmortyapi");
+
+var _HoverTooltip = _interopRequireDefault(require("../../../../My-plugins/HoverTooltip-plugin/HoverTooltip.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var interfaceArchitecture = /*#__PURE__*/function () {
+  function interfaceArchitecture() {
+    _classCallCheck(this, interfaceArchitecture);
+  }
+
+  _createClass(interfaceArchitecture, [{
+    key: "init",
+    value: function () {
+      var _init = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(parameters, allCharacters) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return this.setCategoriesFiltering(parameters, allCharacters);
+
+              case 2:
+                this.startPageParameters();
+                this.renderHeaderParameters();
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function init(_x, _x2) {
+        return _init.apply(this, arguments);
+      }
+
+      return init;
+    }()
+  }, {
+    key: "finallyRender",
+    value: function finallyRender() {
+      this.setHoverContent();
+    }
+  }, {
+    key: "setCategoriesFiltering",
+    value: function () {
+      var _setCategoriesFiltering = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(parametrs, allCharacters) {
+        var _this = this;
+
+        var filterArea, listParametrs, key, innerList, wrapper, keyWords;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (parametrs) {
+                  _context2.next = 2;
+                  break;
+                }
+
+                return _context2.abrupt("return");
+
+              case 2:
+                filterArea = document.querySelector('.cards__filter-themes'); // let characters = (await getCharacters()).data.results;
+
+                listParametrs = {};
+                allCharacters.forEach(function (character) {
+                  var _loop = function _loop() {
+                    var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+                        key = _Object$entries$_i[0],
+                        value = _Object$entries$_i[1];
+
+                    var checkPath = parametrs.find(function (par) {
+                      return par.split('-')[1] && par.split('-')[0] == key;
+                    });
+
+                    if (checkPath) {
+                      //обход вложенного массива необходимых параметров с апишки(таких как obj.obj.value)
+                      var pathParameter = checkPath.split('-');
+                      var totalParameter = character;
+                      key = "";
+
+                      for (var pathKey in pathParameter) {
+                        key = pathParameter[pathKey] + '-' + key;
+                        totalParameter = totalParameter[pathParameter[pathKey]];
+                      }
+
+                      key = key.slice(0, -1);
+                      value = totalParameter;
+                    }
+
+                    if (checkPath || parametrs.includes(key)) {
+                      !listParametrs[key] ? listParametrs[key] = new Set() : 0;
+                      listParametrs[key].add(value);
+                    }
+                  };
+
+                  //Прорисовываю алгоритмом все категории для фильтров
+                  for (var _i = 0, _Object$entries = Object.entries(character); _i < _Object$entries.length; _i++) {
+                    _loop();
+                  }
+                }); //Прорисовываю все списки с категориями для фильтрации
+
+                for (key in listParametrs) {
+                  innerList = "<li class=\"cards__filter-item choisable-item\" data-value=\"all\">All</li>";
+                  listParametrs[key].forEach(function (value) {
+                    if (value == 'unknown') return;
+                    innerList += "<li class=\"cards__filter-item choisable-item\" data-value=\"".concat(value, "\">").concat(value, "</li>");
+                  });
+                  wrapper = "\n                  <div class=\"cards__filter-content\">\n                     <div class=\"cards__filter-item filter__item_".concat(key, "\" id=\"key-list-area\" data-list-key=\"filter-").concat(key, "-key\">\n                        <span class=\"cards__filter-item-title\"> ").concat(key[0].toUpperCase() + key.slice(1), " </span>\n                        <span class=\"material-icons\"> chevron_left </span>\n                     </div>\n                     <ul class=\"cards__filter-list\" data-filter-type=\"").concat(key, "\">\n                        ").concat(innerList, "\n                     </ul>\n                  </div>\n               ");
+                  filterArea.insertAdjacentHTML('beforeend', wrapper);
+                }
+
+                keyWords = document.querySelectorAll('.cards__filter-content');
+                keyWords.forEach(function (key) {
+                  return key.addEventListener('click', _this.renderOpenList.bind(_this, key));
+                }); //отрисовка, функционал списка
+
+                this.initStartWidthListItems();
+                this.initClosableList();
+                window.addEventListener('resize', function () {
+                  console.log(document.body.offsetWidth);
+
+                  if (document.body.offsetWidth < 801) {
+                    var _filterArea = document.querySelector('.cards__filter');
+
+                    _filterArea.style.fontSize = '15px';
+
+                    _this.initStartWidthListItems();
+                  }
+
+                  if (document.body.offsetWidth < 650) {
+                    var _filterArea2 = document.querySelector('.cards__filter');
+
+                    _filterArea2.style.fontSize = '12px';
+
+                    _this.initStartWidthListItems();
+                  }
+                });
+
+              case 11:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function setCategoriesFiltering(_x3, _x4) {
+        return _setCategoriesFiltering.apply(this, arguments);
+      }
+
+      return setCategoriesFiltering;
+    }()
+  }, {
+    key: "initStartWidthListItems",
+    value: function initStartWidthListItems() {
+      var toitalList = document.querySelectorAll('.cards__filter-content');
+      toitalList.forEach(function (item) {
+        var list = item.querySelector('.cards__filter-list');
+        list.style.display = 'block';
+        item.querySelector('.cards__filter-item-title').style.width = list.offsetWidth + 'px';
+        list.style.display = '';
+      });
+    }
+  }, {
+    key: "initClosableList",
+    value: function initClosableList() {
+      var _this2 = this;
+
+      var allListFields = document.querySelectorAll('.choisable-item');
+      allListFields.forEach(function (item) {
+        item.addEventListener('click', function () {
+          item.closest('.cards__filter-content').querySelector('.cards__filter-item-title').textContent = item.textContent;
+
+          _this2.renderOpenList(item.closest('.cards__filter-content').querySelector('#key-list-area'));
+        });
+      });
+    }
+  }, {
+    key: "setHoverContent",
+    value: function setHoverContent() {
+      var detailButtons = document.querySelectorAll('.detail-button');
+      detailButtons.forEach(function (btn) {
+        var hoverTooltip = new _HoverTooltip.default({
+          elem: btn,
+          tooltip: {
+            type: 'create',
+            tooltipClass: 'caregory-tooltip',
+            text: 'Описание'
+          },
+          position: 'bottom',
+          smooth: false
+        });
+      });
+    }
+  }, {
+    key: "renderOpenList",
+    value: function renderOpenList(key) {
+      key.classList.toggle('active');
+    }
+  }, {
+    key: "startPageParameters",
+    value: function startPageParameters() {
+      window.scrollTop = 0;
+      document.querySelector('.anchor-content').addEventListener('click', function () {
+        return window.scrollBy({
+          top: -window.scrollY,
+          behavior: 'smooth'
+        });
+      });
+    }
+  }, {
+    key: "renderHeaderParameters",
+    value: function renderHeaderParameters() {
+      var headerWrapper = document.querySelector('.header-wrapper');
+      var anchor = document.querySelector('.anchor-content');
+      var lastScroll = window.scrollY;
+      window.addEventListener('scroll', function (event) {
+        var typeHandlerHeaderWrapper = lastScroll < window.scrollY ? 'remove' : 'add';
+        lastScroll = window.scrollY;
+        headerWrapper.classList[typeHandlerHeaderWrapper]('active');
+        console.log(window.scrollY);
+        var typeHandlerAnchor = window.scrollY < 500 ? 'remove' : 'add';
+        anchor.classList[typeHandlerAnchor]('active');
+      });
+    }
+  }]);
+
+  return interfaceArchitecture;
+}();
+
+var _default = new interfaceArchitecture();
+
+exports.default = _default;
+},{"rickmortyapi":"node_modules/rickmortyapi/dist/index.js","../../../../My-plugins/HoverTooltip-plugin/HoverTooltip.js":"../../My-plugins/HoverTooltip-plugin/HoverTooltip.js"}],"js/Cards.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11658,6 +12027,8 @@ var _rickmortyapi = require("rickmortyapi");
 var _Favorites = _interopRequireDefault(require("./Favorites.js"));
 
 var _LocaleStorageProccesing = _interopRequireDefault(require("./utils/LocaleStorageProccesing"));
+
+var _interfaceArchitecture = _interopRequireDefault(require("./utils/interfaceArchitecture.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11741,7 +12112,7 @@ var Cards = /*#__PURE__*/function () {
           checkActiveIcon = 'active';
         }
 
-        var html = "\n            <li class=\"cards-list__item character-item\" data-id-character=\"".concat(id, "\">\n               <div class=\"cards-list__logo\">\n                  <img src=\"").concat(image, "\" alt=\"\">\n               </div>\n               <div class=\"cards-list__title\" data-name=\"").concat(name, "\">").concat(name, "</div>\n               <div class=\"cards-list__button-area\">\n                  <button class=\"cards-list__button\">\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435</button>\n                  <div class=\"cards-list__favorites\">\n                     <span class=\"material-icons icon-active ").concat(checkActiveIcon, "\"> favorite </span>\n                     <span class=\"material-icons icon-default ").concat(checkDefaultIcon, "\"> favorite_border </span>\n                  </div>\n               </div>\n            </li>\n         ");
+        var html = "\n            <li class=\"cards-list__item character-item\" data-id-character=\"".concat(id, "\">\n               <div class=\"cards-list__logo\">\n                  <img src=\"").concat(image, "\" alt=\"\">\n               </div>\n               <div class=\"cards-list__title\" data-name=\"").concat(name, "\">").concat(name, "</div>\n               <div class=\"cards-list__button-area\">\n                  <button class=\"cards-list__button detail-button\">More info</button>\n                  <div class=\"cards-list__favorites\">\n                     <span class=\"material-icons icon-active ").concat(checkActiveIcon, "\"> favorite </span>\n                     <span class=\"material-icons icon-default ").concat(checkDefaultIcon, "\"> favorite_border </span>\n                  </div>\n               </div>\n            </li>\n         ");
 
         _this2.list.insertAdjacentHTML('beforeend', html);
 
@@ -11752,6 +12123,8 @@ var Cards = /*#__PURE__*/function () {
       });
 
       _Favorites.default.render(this.totalCharcters);
+
+      _interfaceArchitecture.default.finallyRender();
 
       this.renderLodaerList(false);
     } // фильтрация всех данных, которая получает на вход html элемент с соответствующими дата элементами
@@ -11980,225 +12353,7 @@ var Cards = /*#__PURE__*/function () {
 }();
 
 exports.Cards = Cards;
-},{"../../../My-plugins/LyModale-plugin/LyModal":"../../My-plugins/LyModale-plugin/LyModal.js","rickmortyapi":"node_modules/rickmortyapi/dist/index.js","./Favorites.js":"js/Favorites.js","./utils/LocaleStorageProccesing":"js/utils/LocaleStorageProccesing.js"}],"js/utils/interfaceArchitecture.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _rickmortyapi = require("rickmortyapi");
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var interfaceArchitecture = /*#__PURE__*/function () {
-  function interfaceArchitecture() {
-    _classCallCheck(this, interfaceArchitecture);
-  }
-
-  _createClass(interfaceArchitecture, [{
-    key: "init",
-    value: function () {
-      var _init = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(parameters, allCharacters) {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return this.setCategoriesFiltering(parameters, allCharacters);
-
-              case 2:
-                this.startPageParameters();
-
-              case 3:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function init(_x, _x2) {
-        return _init.apply(this, arguments);
-      }
-
-      return init;
-    }()
-  }, {
-    key: "setCategoriesFiltering",
-    value: function () {
-      var _setCategoriesFiltering = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(parametrs, allCharacters) {
-        var _this = this;
-
-        var filterArea, listParametrs, key, innerList, wrapper, keyWords;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                if (parametrs) {
-                  _context2.next = 2;
-                  break;
-                }
-
-                return _context2.abrupt("return");
-
-              case 2:
-                filterArea = document.querySelector('.cards__filter-themes'); // let characters = (await getCharacters()).data.results;
-
-                listParametrs = {};
-                allCharacters.forEach(function (character) {
-                  var _loop = function _loop() {
-                    var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-                        key = _Object$entries$_i[0],
-                        value = _Object$entries$_i[1];
-
-                    var checkPath = parametrs.find(function (par) {
-                      return par.split('-')[1] && par.split('-')[0] == key;
-                    });
-
-                    if (checkPath) {
-                      //обход вложенного массива необходимых параметров с апишки(таких как obj.obj.value)
-                      var pathParameter = checkPath.split('-');
-                      var totalParameter = character;
-                      key = "";
-
-                      for (var pathKey in pathParameter) {
-                        key = pathParameter[pathKey] + '-' + key;
-                        totalParameter = totalParameter[pathParameter[pathKey]];
-                      }
-
-                      key = key.slice(0, -1);
-                      value = totalParameter;
-                    }
-
-                    if (checkPath || parametrs.includes(key)) {
-                      !listParametrs[key] ? listParametrs[key] = new Set() : 0;
-                      listParametrs[key].add(value);
-                    }
-                  };
-
-                  //Прорисовываю алгоритмом все категории для фильтров
-                  for (var _i = 0, _Object$entries = Object.entries(character); _i < _Object$entries.length; _i++) {
-                    _loop();
-                  }
-                }); //Прорисовываю все списки с категориями для фильтрации
-
-                for (key in listParametrs) {
-                  innerList = "<li class=\"cards__filter-item choisable-item\" data-value=\"all\">All</li>";
-                  listParametrs[key].forEach(function (value) {
-                    if (value == 'unknown') return;
-                    innerList += "<li class=\"cards__filter-item choisable-item\" data-value=\"".concat(value, "\">").concat(value, "</li>");
-                  });
-                  wrapper = "\n                  <div class=\"cards__filter-content\">\n                     <div class=\"cards__filter-item filter__item_".concat(key, "\" id=\"key-list-area\" data-list-key=\"filter-").concat(key, "-key\">\n                        <span class=\"cards__filter-item-title\"> ").concat(key[0].toUpperCase() + key.slice(1), " </span>\n                        <span class=\"material-icons\"> chevron_left </span>\n                     </div>\n                     <ul class=\"cards__filter-list\" data-filter-type=\"").concat(key, "\">\n                        ").concat(innerList, "\n                     </ul>\n                  </div>\n               ");
-                  filterArea.insertAdjacentHTML('beforeend', wrapper);
-                }
-
-                keyWords = document.querySelectorAll('.cards__filter-content');
-                keyWords.forEach(function (key) {
-                  return key.addEventListener('click', _this.renderOpenList.bind(_this, key));
-                }); //отрисовка, функционал списка
-
-                this.initStartWidthListItems();
-                this.initClosableList();
-                window.addEventListener('resize', function () {
-                  console.log(document.body.offsetWidth);
-
-                  if (document.body.offsetWidth < 801) {
-                    var _filterArea = document.querySelector('.cards__filter');
-
-                    _filterArea.style.fontSize = '15px';
-
-                    _this.initStartWidthListItems();
-                  }
-
-                  if (document.body.offsetWidth < 650) {
-                    var _filterArea2 = document.querySelector('.cards__filter');
-
-                    _filterArea2.style.fontSize = '12px';
-
-                    _this.initStartWidthListItems();
-                  }
-                });
-
-              case 11:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this);
-      }));
-
-      function setCategoriesFiltering(_x3, _x4) {
-        return _setCategoriesFiltering.apply(this, arguments);
-      }
-
-      return setCategoriesFiltering;
-    }()
-  }, {
-    key: "initStartWidthListItems",
-    value: function initStartWidthListItems() {
-      var toitalList = document.querySelectorAll('.cards__filter-content');
-      toitalList.forEach(function (item) {
-        var list = item.querySelector('.cards__filter-list');
-        list.style.display = 'block';
-        item.querySelector('.cards__filter-item-title').style.width = list.offsetWidth + 'px';
-        list.style.display = '';
-      });
-    }
-  }, {
-    key: "initClosableList",
-    value: function initClosableList() {
-      var _this2 = this;
-
-      var allListFields = document.querySelectorAll('.choisable-item');
-      allListFields.forEach(function (item) {
-        item.addEventListener('click', function () {
-          item.closest('.cards__filter-content').querySelector('.cards__filter-item-title').textContent = item.textContent;
-
-          _this2.renderOpenList(item.closest('.cards__filter-content').querySelector('#key-list-area'));
-        });
-      });
-    }
-  }, {
-    key: "renderOpenList",
-    value: function renderOpenList(key) {
-      key.classList.toggle('active');
-    }
-  }, {
-    key: "startPageParameters",
-    value: function startPageParameters() {
-      window.scrollTop = 0;
-    }
-  }]);
-
-  return interfaceArchitecture;
-}();
-
-var _default = new interfaceArchitecture();
-
-exports.default = _default;
-},{"rickmortyapi":"node_modules/rickmortyapi/dist/index.js"}],"js/app.js":[function(require,module,exports) {
+},{"../../../My-plugins/LyModale-plugin/LyModal":"../../My-plugins/LyModale-plugin/LyModal.js","rickmortyapi":"node_modules/rickmortyapi/dist/index.js","./Favorites.js":"js/Favorites.js","./utils/LocaleStorageProccesing":"js/utils/LocaleStorageProccesing.js","./utils/interfaceArchitecture.js":"js/utils/interfaceArchitecture.js"}],"js/app.js":[function(require,module,exports) {
 'use strict';
 
 require("regenerator-runtime/runtime");
@@ -12223,43 +12378,52 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var processingAPI = new _ProcessingAPI.ProcessingAPI();
 var cards = new _Cards.Cards();
+(function () {
+  var _render = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    var allCharacters, startCharacters;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            cards.renderLodaerList(true); //перебираю всех возможных персонажей с API, в начале массива которых лежат необходимые
 
-_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-  var allCharacters, startCharacters;
-  return regeneratorRuntime.wrap(function _callee$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-          cards.renderLodaerList(true); //перебираю всех возможных персонажей с API, в начале массива которых лежат необходимые
+            _context.next = 3;
+            return processingAPI.getAllCharactersAPI([1, 2, 3, 4, 5, 77]);
 
-          _context.next = 3;
-          return processingAPI.getAllCharactersAPI([1, 2, 3, 4, 5, 77]);
+          case 3:
+            allCharacters = _context.sent;
+            _context.next = 6;
+            return _interfaceArchitecture.default.init(['species', 'location-name', 'status', 'gender'], allCharacters);
 
-        case 3:
-          allCharacters = _context.sent;
-          _context.next = 6;
-          return _interfaceArchitecture.default.init(['species', 'location-name', 'status', 'gender'], allCharacters);
+          case 6:
+            _context.next = 8;
+            return processingAPI.getSeveralCharactersAPI(30);
 
-        case 6:
-          _context.next = 8;
-          return processingAPI.getSeveralCharactersAPI(30);
+          case 8:
+            startCharacters = _context.sent;
+            _context.next = 11;
+            return cards.renderCharacters(allCharacters, startCharacters);
 
-        case 8:
-          startCharacters = _context.sent;
-          _context.next = 11;
-          return cards.renderCharacters(allCharacters, startCharacters);
+          case 11:
+            _interfaceArchitecture.default.finallyRender(); //favorites.render(allCharacters); // рендер уведомлений вызываю внутри Cards renderHtmlCards
 
-        case 11:
-          //favorites.render(allCharacters); // рендер уведомлений вызываю внутри Cards renderHtmlCards
-          cards.renderLodaerList(false);
 
-        case 12:
-        case "end":
-          return _context.stop();
+            cards.renderLodaerList(false);
+
+          case 13:
+          case "end":
+            return _context.stop();
+        }
       }
-    }
-  }, _callee);
-}))();
+    }, _callee);
+  }));
+
+  function render() {
+    return _render.apply(this, arguments);
+  }
+
+  return render;
+})()();
 },{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","axios":"node_modules/axios/index.js","./utils/ProcessingAPI":"js/utils/ProcessingAPI.js","./Cards":"js/Cards.js","./utils/interfaceArchitecture.js":"js/utils/interfaceArchitecture.js","./Favorites.js":"js/Favorites.js","./utils/LocaleStorageProccesing.js":"js/utils/LocaleStorageProccesing.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -12288,7 +12452,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63473" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65176" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

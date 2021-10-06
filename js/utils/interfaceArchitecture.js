@@ -1,14 +1,22 @@
 import { getCharacters } from 'rickmortyapi';
 import { getCharacter } from 'rickmortyapi';
+import HoverTooltip from '../../../../My-plugins/HoverTooltip-plugin/HoverTooltip.js';
+
 
 class interfaceArchitecture {
    constructor() {}
    
    async init(parameters, allCharacters) {
-      
+
       await this.setCategoriesFiltering(parameters, allCharacters)
 
       this.startPageParameters();
+
+      this.renderHeaderParameters()
+   }
+
+   finallyRender() {
+      this.setHoverContent();
    }
 
    async setCategoriesFiltering(parametrs, allCharacters) {
@@ -93,8 +101,7 @@ class interfaceArchitecture {
             filterArea.style.fontSize = '12px';
             this.initStartWidthListItems()
          }
-      })
-
+      });
    }
 
    initStartWidthListItems() {
@@ -119,14 +126,51 @@ class interfaceArchitecture {
       })
    }
 
+   setHoverContent() {
+      const detailButtons = document.querySelectorAll('.detail-button');
+      detailButtons.forEach(btn => {
+         let hoverTooltip = new HoverTooltip({
+            elem: btn,
+            tooltip: {
+               type: 'create',
+               tooltipClass: 'caregory-tooltip',
+               text: 'Описание',
+            },
+            position: 'bottom',
+            smooth: false,
+         })
+      })
+   }
+
    renderOpenList(key) {
       key.classList.toggle('active');
    }
 
    startPageParameters() {
       window.scrollTop = 0;
+
+      document.querySelector('.anchor-content').addEventListener('click', () => window.scrollBy({
+         top: -window.scrollY,
+         behavior: 'smooth'
+      }))
    }
    
+   renderHeaderParameters() {
+      const headerWrapper = document.querySelector('.header-wrapper');
+      const anchor = document.querySelector('.anchor-content')
+      let lastScroll = window.scrollY;
+
+      window.addEventListener('scroll', (event) => {
+         let typeHandlerHeaderWrapper = (lastScroll < window.scrollY) ? 'remove' : 'add';
+         lastScroll = window.scrollY;
+         headerWrapper.classList[typeHandlerHeaderWrapper]('active');
+         
+         console.log(window.scrollY);
+         
+         let typeHandlerAnchor = (window.scrollY < 500) ? 'remove' : 'add';
+         anchor.classList[typeHandlerAnchor]('active');
+      })
+   }
 }
 
 export default new interfaceArchitecture();

@@ -13,7 +13,7 @@ const processingAPI = new ProcessingAPI();
 
 const cards = new Cards();
 
-(async function() {
+(async function render() {
    cards.renderLodaerList(true); 
 
    //перебираю всех возможных персонажей с API, в начале массива которых лежат необходимые
@@ -25,6 +25,7 @@ const cards = new Cards();
 
    await cards.renderCharacters(allCharacters, startCharacters);
 
+   interfaceArchitecture.finallyRender();
    //favorites.render(allCharacters); // рендер уведомлений вызываю внутри Cards renderHtmlCards
 
    cards.renderLodaerList(false);

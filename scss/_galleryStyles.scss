@@ -1,0 +1,114 @@
+$oneSlideSlickBreakpoint: 850px;
+
+.gallery-wrapper {
+   margin: 100px 0px 0px 0px;
+}
+
+.gallery {
+   // display: flex;
+   margin: 70px 0px 70px 0px;
+   position: relative;
+   // width: 90%;
+   // margin: 0 auto;
+   // border: 1px solid #000;
+
+   .slick-track {
+      display: flex;
+      justify-content: center;
+   }
+
+   .slick-list {
+      overflow: hidden;
+   }
+
+   .slick-slide {
+      // border: 2px solid #000;
+      display: flex;
+      justify-content: center;
+   }
+   
+   .slick-slide + .slick-slide {
+      // margin-left: 50px;
+   }
+
+   .slick-arrow {
+      position: absolute;
+      z-index: 10;
+      width: 50px;
+      height: 50px;
+      background-color: transparent;
+      font-size: 0;
+      top: 50%;
+      transform: translateY(-50%);
+   }
+   .slick-next {
+      right: 0;
+      background: url('https://img.icons8.com/external-becris-lineal-becris/64/ffffff/external-next-mintab-for-ios-becris-lineal-becris.png') center center / 25px 25px no-repeat;      
+   }
+   .slick-prev  {
+      left: 0;
+      background: url('https://img.icons8.com/ios-filled/50/ffffff/back.png') center center / 25px 25px no-repeat;
+   }
+
+   &__description {
+      margin: 50px 0px 0px 0px;
+      color: #fff;
+      text-align: center;
+      font-size: 24px;
+   }
+
+   &-modal {
+      display: none;
+      position: fixed;
+      z-index: 500;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(75, 75, 75, 0.7);
+
+      &.active {
+         display: flex;
+      }
+      
+      &-btn {
+         margin: 0 50px;
+         position: absolute;
+         background-color: transparent;
+      }
+      
+      &__prev {
+         left: 0;
+      }
+      
+      &__content {
+         width: 50%;
+
+         > img {
+            width: 100%;
+         }
+      }
+
+      &__next {
+         right: 0;
+      }
+   }
+   
+   &__item {
+      max-width: 550px;
+      padding: 0 30px;
+
+      @media(max-width:$oneSlideSlickBreakpoint) {
+         max-width: 750px;
+      }
+      // width: 300px;
+      
+      > img {
+         width: 100%;
+         object-fit: contain;
+         // display: none;
+      }
+   }
+}

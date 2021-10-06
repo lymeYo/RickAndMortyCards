@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type='text/css' href="css/style.css">
+   <link rel="icon" href="/imgs/icons8-морти-смит-100.png">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Glory:wght@100;300;400&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <title>RaM Gallery</title>
+</head>
+<body>
+   <header class="header-wrapper active">
+      <div class="container header">
+         <div class="header__title" id="pointer-home">
+            <span class="header__title-pc">Rick and Morty Cards</span>
+            <span class="header__title-mobile">RaM</span>
+         </div>
+         <div class="header__sections">
+            <a class="header__sections-title" href="./index.html" id="pointer-home">Главная</a>
+            <a class="header__sections-title" href="./gallery.html" id="pointer-favorites">Галлерея</a>
+         </div>
+   
+         <div class="header__search">
+            <input id="search-input" type="text" placeholder="Поиск">
+            <button id="search-button"><span class="material-icons">search</span></button>
+         </div>
+         <div class="header__logo">
+            <img src="/imgs/header__logo.png" alt="">
+         </div>
+         <div class="header__menu">
+            <span></span>
+            <span></span>
+            <span></span>
+         </div>
+      </div>
+   </header>
+
+   <div class="gallery__description">
+      <p>Тут представлена тестовая версия сборника артов с сериала</p>
+   </div>
+   
+   <div class="gallery-wrapper">
+   </div>
+
+   <div class="gallery-modal" id="gallery-modal">
+      <button class="gallery-modal__prev gallery-modal-btn">
+         <img src="https://img.icons8.com/ios-filled/50/ffffff/previous.png" />
+      </button>
+      <div class="gallery-modal__content">
+         <!-- <img class="gallery-modal__img" src="https://i.pinimg.com/originals/db/d1/ee/dbd1eef279d8bc436eeeca5940215638.jpg" alt=""> -->
+      </div>
+      <button class="gallery-modal__next gallery-modal-btn">
+         <img src="https://img.icons8.com/ios-filled/50/ffffff/next.png" />
+      </button>
+   </div>
+   
+   <script src="./js/appGallery.js"></script>
+</body>
+</html>

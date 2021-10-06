@@ -19,15 +19,16 @@
 <body>
    <div class="lyModal"></div>
    
-   <header class="header-wrapper">
+   <header class="header-wrapper active">
       <div class="container header">
          <div class="header__title" id="pointer-home">
             <span class="header__title-pc">Rick and Morty Cards</span>
             <span class="header__title-mobile">RaM</span>
          </div>
          <div class="header__sections">
-            <div class="header__sections-title" id="pointer-home">Главная</div>
+            <a class="header__sections-title" href="./index.html" id="pointer-home">Главная</a>
             <div class="header__sections-title" id="pointer-favorites">Избарнное</div>
+            <a class="header__sections-title" href="./gallery.html" id="pointer-favorites">Галлерея</a>
          </div>
          
          <div class="header__search">
@@ -107,6 +108,10 @@
          </div>
          <div class="favorites__notif-text" id="notif-text">Lorem ipsum dolor sit amet.</div>
       </div>
+   </div>
+
+   <div class="anchor-content">
+      <img src="https://img.icons8.com/material-rounded/36/000000/collapse-arrow.png" />
    </div>
    
    <!-- <script src="/js/ProcessingAPI.js"></script> -->

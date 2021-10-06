@@ -4,6 +4,7 @@ import { getCharacter } from 'rickmortyapi';
 import { getEpisodes } from 'rickmortyapi';
 import favorites from './Favorites.js';
 import localeStorageProccesing from './utils/LocaleStorageProccesing';
+import interfaceArchitecture from './utils/interfaceArchitecture.js';
 
 let newModal = new LyModal(`<div class="character-modal" id="lyModal-content"></div>`);
 
@@ -59,7 +60,7 @@ export class Cards {
                </div>
                <div class="cards-list__title" data-name="${name}">${name}</div>
                <div class="cards-list__button-area">
-                  <button class="cards-list__button">Подробнее</button>
+                  <button class="cards-list__button detail-button">More info</button>
                   <div class="cards-list__favorites">
                      <span class="material-icons icon-active ${checkActiveIcon}"> favorite </span>
                      <span class="material-icons icon-default ${checkDefaultIcon}"> favorite_border </span>
@@ -77,6 +78,9 @@ export class Cards {
        
       favorites.render(this.totalCharcters);
 
+      interfaceArchitecture.finallyRender()
+
+      
       this.renderLodaerList(false);
    }
    
